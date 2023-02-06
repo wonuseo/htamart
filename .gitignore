@@ -2,10 +2,16 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
 /Servers/
-log4j.xml
+
+log4j.properties
+
 MANIFEST.MF
+
 pom.xml
 pom.properties
+
+DBUtil.java
+persistence.xml
 
 
 ### Eclipse ###
