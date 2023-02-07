@@ -1,12 +1,11 @@
 package model.domain.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,32 +25,28 @@ import lombok.Setter;
 @ToString
 
 @Entity
-public class Product {
+public class User_info {
+	
 	@Id
 	@NonNull
-	private String p_id;
+	private String u_id;
 	
 	@NonNull
-	private String p_name;
-	
-	@ManyToOne
-	@JoinColumn(name = "c_id")
-	@NonNull
-	private Category category;
+	private String u_password;
 	
 	@NonNull
-	private Integer p_price;
+	private String u_name;
 	
 	@NonNull
-	private String p_info;
+	private String u_phone;
 	
 	@NonNull
-	private String p_img;
+	private String u_address;
 	
 	@NonNull
-	private String p_stock;
+	private Date u_date;
 	
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "user_info")
 	@NonNull
 	private List<Cart> cart = new ArrayList<Cart>();
 	

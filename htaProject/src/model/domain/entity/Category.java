@@ -34,5 +34,5 @@ public class Category {
 	private String c_name;
 	
 	@OneToMany(mappedBy = "category")
-	private List<Product> members = new ArrayList<Product>();
+	private List<Product> product = new ArrayList<Product>();
 }

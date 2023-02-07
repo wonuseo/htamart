@@ -26,10 +26,11 @@ public class RunningTest {
 	public static void insertProduct() {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		Category c = new Category("4", "fdf");
 		try {
 			tx.begin();
-			Category category2 = new Category("3", "fruit");
-			//Product category2 = new Product("1", "dd", "55", 4000, "34", "ymmu", "yes");
+			//Category category2 = new Category("3", "fruit");
+			Product category2 = new Product("2", "dd", c, 5000, "34", "ymmu", "yes");
 			em.persist(category2);
 			tx.commit();
 		} catch (Exception e) {
