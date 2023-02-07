@@ -8,10 +8,14 @@ log4j.properties
 
 MANIFEST.MF
 
+pom.xml
 pom.properties
 
 DBUtil.java
 persistence.xml
+
+hta-servlet.xml
+web.xml
 
 
 ### Eclipse ###
