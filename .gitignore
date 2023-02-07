@@ -3,9 +3,12 @@
 
 /Servers/
 
+/Servers/
+
 log4j.properties
-
-
+target/
+bulid/
+lib/
 
 MANIFEST.MF
 
@@ -19,6 +22,19 @@ persistence.xml
 hta-servlet.xml
 web.xml
 
+
+### Eclipse ###
+/.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
 
 ### Eclipse ###
 /.metadata/
