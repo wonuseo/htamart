@@ -6,8 +6,6 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
-import com.mysql.cj.Query;
-
 import model.domain.entity.category;
 import util.DBUtil;
 
