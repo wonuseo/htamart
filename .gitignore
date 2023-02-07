@@ -2,12 +2,12 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
 /Servers/
+target/
 
 log4j.properties
 
 MANIFEST.MF
 
-pom.xml
 pom.properties
 
 DBUtil.java
