@@ -28,7 +28,7 @@ public class Category {
 	
 	@Id
 	@NonNull
-	private Integer c_id;
+	private String c_id;
 	
 	@NonNull
 	private String c_name;

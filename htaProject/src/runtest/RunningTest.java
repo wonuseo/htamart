@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import model.domain.entity.Category;
+import model.domain.entity.Product;
 import util.DBUtil;
 
 public class RunningTest {
@@ -27,7 +28,8 @@ public class RunningTest {
 		EntityTransaction tx = em.getTransaction();
 		try {
 			tx.begin();
-			Category category2 = new Category(4, "dd");
+			Category category2 = new Category("3", "fruit");
+			//Product category2 = new Product("1", "dd", "55", 4000, "34", "ymmu", "yes");
 			em.persist(category2);
 			tx.commit();
 		} catch (Exception e) {
