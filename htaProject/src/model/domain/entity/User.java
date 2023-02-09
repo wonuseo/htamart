@@ -25,7 +25,7 @@ import lombok.ToString;
 @ToString
 
 @Entity
-public class User_info {
+public class User {
 	
 	@Id
 	@NonNull
@@ -46,7 +46,7 @@ public class User_info {
 	@NonNull
 	private Date u_date;
 	
-	@OneToMany(mappedBy = "user_info")
+	@OneToMany(mappedBy = "user")
 	@NonNull
 	private List<Cart> cart = new ArrayList<Cart>();
 	

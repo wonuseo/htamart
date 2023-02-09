@@ -43,7 +43,7 @@ public class RunningTest {
 	
 	public static void main(String[] args) {
 		
-		insertProduct();
+		getAllCategory();
 		
 	}
 
