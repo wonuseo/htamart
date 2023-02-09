@@ -14,8 +14,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.ToString;
 import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,12 +26,12 @@ import lombok.Setter;
 
 @Entity
 public class History {
-	
+
 	@Id
 	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer purchase_no;
-	
+
 	@NonNull
 	private String u_id;
 	
