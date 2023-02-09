@@ -1,9 +1,7 @@
 package model;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,7 +26,7 @@ public class UserDAO {
 		try {
 			tx.begin();
 
-			User user = new User(userId, userPassword, uName, uPhone, address, LocalDate.parse(uDate, formatter));
+			User user = new User(userId, userPassword, (String)uName, uPhone, (String)address, LocalDate.parse(uDate, formatter));
 
 			em.persist(user);
 
@@ -52,9 +50,7 @@ public class UserDAO {
 			
 			if(user.size() != 0) result = true;
 			
-		} catch (Exception e) {
-			System.out.println("해당되는 유저 없음");
-		} finally {
+		}finally {
 			em.close();
 		}
 		return result;

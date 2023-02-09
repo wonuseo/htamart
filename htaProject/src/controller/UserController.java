@@ -26,11 +26,12 @@ public class UserController {
 	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
 	protected String signUp(@RequestParam String userId,@RequestParam String userPassword, @RequestParam String uName, @RequestParam String uPhone, @RequestParam String address) throws Exception{
-		
+		System.out.println(uName);
+		System.out.println(address);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		userDAO.createUser(userId, userPassword, uName, uPhone, address, dateFormat.format(new Date()));
-		return "È¸¿ø °¡ÀÔ ¼º°ø";
+		return "íšŒì› ê°€ì… ì„±ê³µ";
 	}
 	
 	
@@ -42,13 +43,13 @@ public class UserController {
 		boolean valid = userDAO.validateUser(userId, userPassword);
 		
 		if(valid == true) {
-			System.out.println("·Î±×ÀÎ ¼º°ø");
+			System.out.println("ë¡œê·¸ì¸ ì„±ê³µ");
 			session.setAttribute("loginId", userId);
 			response.sendRedirect("/htaProject/sessionId.jsp");
 		} else {
-			System.out.println("·Î±×ÀÎ ½ÇÆĞ");
+			System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨");
 			PrintWriter out = response.getWriter();
-			out.print("<script> alert('·Î±×ÀÎ ½ÇÆĞ'); location.href='" + "/htaProject/login.html" + "'; </script>");
+			out.print("<script> alert('ë¡œê·¸ì¸ ì‹¤íŒ¨'); location.href='" + "/htaProject/login.html" + "'; </script>");
 			//response.sendRedirect("/htaProject/login.html");
 		}
 	}

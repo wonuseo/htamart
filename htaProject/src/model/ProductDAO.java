@@ -14,14 +14,14 @@ import util.DBUtil;
 public class ProductDAO {
 
 	public List<Product> findElement(String keyword) {
-		System.out.println("ºüÀÎµå ¿¤¸®¸ÕÆ® ½ÇÇà " + keyword); 
+		System.out.println("ë¹ ì¸ë“œ ì—˜ë¦¬ë¨¼íŠ¸ ì‹¤í–‰" + keyword); 
 		EntityManager em = DBUtil.getEntityManager(); 
 		
 		List<Product> all = em.createQuery("select p from Product p where p.p_name like '%"+keyword+"%' ").getResultList();
 		
 		for(int i=0; i<all.size(); i++) {
 			System.out.println(all.get(i).getP_name());
-		} //¼º°øÀûÀ¸·Î sqlÀÌ ½ÇÇàµÇ¼­ µ¥ÀÌÅÍ°¡ list¿¡ ÀúÀåµÇ¾î ÀÖ´ÂÁö Å×½ºÆ®
+		} 
 		
 		return all;
 
