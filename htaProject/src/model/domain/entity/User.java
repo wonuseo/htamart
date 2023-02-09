@@ -1,6 +1,8 @@
 package model.domain.entity;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +10,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +28,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
-// @NamedQuery(name ="User.findByUser", query = "select u from User u where = u.u_id =:u.u_id")
 
 @Entity
 public class User {
@@ -47,8 +49,9 @@ public class User {
 	private String address;
 	
 	@NonNull
-	private Date u_date;
+	private LocalDate u_date;
 	
+	@NonNull
 	@OneToMany(mappedBy = "user")
 	private List<Cart> Cart = new ArrayList<Cart>();
 	

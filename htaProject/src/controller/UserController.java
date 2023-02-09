@@ -1,12 +1,15 @@
 package controller;
 
-import java.text.ParseException;
-import java.util.Map;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.UserDAO;
@@ -17,38 +20,34 @@ public class UserController {
 
 	@Autowired
 	public UserDAO userDAO;
-	
-	@PostMapping(value="/selectUser", produces = "application/json;charset=utf-8")	
-	protected String selectUser(@RequestBody Map<String, Object> vo) {
-		try {
-			userDAO.selectUser(vo);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return "ÌöåÏõê Ï°∞Ìöå ÏÑ±Í≥µ";
-	}
-	
-	@PostMapping(value="/getAlluser", produces = "application/json;charset=utf-8")	
-	protected String getAlluser() {
-		
-//		userDAO.selectUser();
-		
-		return "ÌöåÏõê Ï°∞Ìöå ÏÑ±Í≥µ";
 
+	
+	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
+	protected String signUp(@RequestParam String u_id,@RequestParam String u_password, @RequestParam String u_name, @RequestParam String u_phone, @RequestParam String address,@RequestParam String u_date) throws Exception{
+		userDAO.createUser(u_id, u_password, u_name, u_phone, address, u_date);
+		return "»∏ø¯ ∞°¿‘ º∫∞¯";
 	}
 	
 	
+	@PostMapping(value="/login")
+	protected void login(@RequestParam("userId") String userId, @RequestParam("userPassword") String userPassword, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception{
+		System.out.println(userId + " " + userPassword);
+		response.setContentType("text/html; charset=utf-8");
+		
+		boolean valid = userDAO.validateUser(userId, userPassword);
+		
+		if(valid == true) {
+			System.out.println("∑Œ±◊¿Œ º∫∞¯");
+			session.setAttribute("loginId", userId);
+			response.sendRedirect("/htaProject/sessionId.jsp");
+		} else {
+			System.out.println("∑Œ±◊¿Œ Ω«∆–");
+			PrintWriter out = response.getWriter();
+			out.print("<script> alert('∑Œ±◊¿Œ Ω«∆–'); location.href='" + "/htaProject/login.html" + "'; </script>");
+			//response.sendRedirect("/htaProject/login.html");
+		}
+	}
 	
-	
-	
-	
-//	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-//	protected String createUser() {
-//	
-//	userDAO.createUser();
-//	
-//	return "ÌöåÏõê Í∞ÄÏûÖ ÏÑ±Í≥µ";
-//	
-//	}
+
 	
 }
