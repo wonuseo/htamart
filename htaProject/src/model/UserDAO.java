@@ -1,7 +1,9 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,18 +17,18 @@ import util.DBUtil;
 @Repository
 public class UserDAO {
 
-	public void createUser(String u_id, String u_password, String u_name, String u_phone, String address, String u_date)
+	public void createUser(String userId, String userPassword, String uName, String uPhone, String address, String uDate)
 			throws Exception {
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		// LocalDate date = LocalDate.parse(u_date, formatter);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");		
+		// LocalDate date = LocalDate.parse(uDate, formatter);
 
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		try {
 			tx.begin();
 
-			User user = new User(u_id, u_password, u_name, u_phone, address, LocalDate.parse(u_date, formatter));
+			User user = new User(userId, userPassword, uName, uPhone, address, LocalDate.parse(uDate, formatter));
 
 			em.persist(user);
 
@@ -57,7 +59,6 @@ public class UserDAO {
 		}
 		return result;
 	}
-	
 	
 	
 }

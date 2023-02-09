@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>login.html</title>
 ​
 <link rel="stylesheet" href="css/login.css">
 ​
@@ -20,27 +20,33 @@
 					
 					<form action="userinfo/createUser" method="post">
 						<div class="input-group">
-							<i class='bx bxs-user'></i> <input type="text" 
-								placeholder="Username">
+							<i class='bx bxs-user'></i>
+							 <input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required >
 						</div>
 						
 						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i> <input type="password"
-								placeholder="Password">
+							<input type="password" id="userPassword" name="userPassword" placeholder="Password"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
 						</div>
 						
 						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i> <input type="text"
-								placeholder="Name">
+							<i class='bx bxs-lock-alt'></i> 
+							<input type="text" id="uName" name="uName" placeholder="Name" maxlength="10" pattern="^[a-zA-Z가-힣]+$" required>
 						</div>
 						
 						<div class="input-group">
-							<i class='bx bx-mail-send'></i> <input type="text"
-								placeholder="Address">
+							<i class='bx bxs-lock-alt'></i> 
+							<input type="text" id="uName" name="uPhone" placeholder="PhoneNumber" maxlength="20" pattern="^[0-9]+$" required>
 						</div>
-					</form>
+						
+						<div class="input-group">
+							<i class='bx bx-mail-send'></i>
+							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
+						</div>
+						
 						
 						<button type="submit">Sign up</button>
+					</form>
+						
 						<p>
 							<span> Already have an account? </span> <b onclick="toggle()"
 								class="pointer"> Sign in here </b>

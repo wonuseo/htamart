@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,8 +25,11 @@ public class UserController {
 
 	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-	protected String signUp(@RequestParam String u_id,@RequestParam String u_password, @RequestParam String u_name, @RequestParam String u_phone, @RequestParam String address,@RequestParam String u_date) throws Exception{
-		userDAO.createUser(u_id, u_password, u_name, u_phone, address, u_date);
+	protected String signUp(@RequestParam String userId,@RequestParam String userPassword, @RequestParam String uName, @RequestParam String uPhone, @RequestParam String address) throws Exception{
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		userDAO.createUser(userId, userPassword, uName, uPhone, address, dateFormat.format(new Date()));
 		return "회원 가입 성공";
 	}
 	
@@ -48,6 +53,10 @@ public class UserController {
 		}
 	}
 	
-
+	public static void main(String[] args) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String currentDate = dateFormat.format(new Date());
+		System.out.println(currentDate);
+	}
 	
 }
