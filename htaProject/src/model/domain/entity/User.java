@@ -25,7 +25,7 @@ import lombok.ToString;
 @ToString
 
 @Entity
-public class User_info {
+public class User {
 	
 	@Id
 	@NonNull

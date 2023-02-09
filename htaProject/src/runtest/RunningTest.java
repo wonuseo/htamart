@@ -26,10 +26,10 @@ public class RunningTest {
 	public static void insertProduct() {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		Category c = new Category("4", "fdf");
+		Category c = new Category("4", "fdf"); //product insert할 때 사용
 		try {
 			tx.begin();
-			//Category category2 = new Category("3", "fruit");
+			//Category category2 = new Category("3", "fruit"); //category insert시 사용
 			Product category2 = new Product("2", "dd", c, 5000, "34", "ymmu", "yes");
 			em.persist(category2);
 			tx.commit();
@@ -43,8 +43,8 @@ public class RunningTest {
 	
 	public static void main(String[] args) {
 		
-		insertProduct();
-		
+		//insertProduct();
+		getAllCategory();
 	}
 
 }
