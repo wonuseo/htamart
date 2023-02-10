@@ -54,8 +54,7 @@
                     <div class="action pull-right">
 
                         <ul>
-                            <li><a href="login.html"><i class="fa fa-user"></i>&nbsp로그인</a></li>
-                            <li><a href="???"><i class="fa fa-lock"></i>&nbsp회원가입</a></li>
+                            <li><a href="login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
                             <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
                         </ul>
                     </div>
@@ -277,6 +276,33 @@
 	<!-- Script -->
 
 	<script src="js/script.js"></script>
+	
+	
+	
+	<script type="text/javascript">
+
+		function getSession(sessionId) {
+
+		}
+		String loginid = (String) session.getAtrribute("loginId");
+
+		const login = '<a href="login.html"><i class="fa fa-user"></i>&nbsp로그인</a>';
+		const logout = '<a href="/userinfo/logout"><i class="fa fa-user"></i>&nbsp로그아웃</a>';
+		if(isLogin) {
+			// 로그인 상태
+			// 로그인 버튼 감추고
+			// 로그아웃 버튼 보이게
+			login_btn.innerHTML = logout;
+		} else {
+			// 로그아웃 상태
+			// 로그아웃 버튼 감추고
+			// 로그인 버튼 보이게
+			login_btn.innerHTML = login;
+		}
+
+
+	</script>
+	
 
 </body>
 </html>

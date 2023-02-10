@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.support.SessionStatus;
 
 import model.UserDAO;
 
@@ -57,6 +59,24 @@ public class UserController {
 			//response.sendRedirect("/htaProject/login.html");
 		}
 	}
+	
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(SessionStatus status, HttpSession session, HttpServletResponse response) {
+		
+		session.getAttribute("loginId");
+
+		status.setComplete();
+		System.out.println("로그아웃 성공");
+		return "redirect:/logout.jsp";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@PostMapping(value="/selectUser", produces = "application/json;charset=utf-8")	
 	protected String seletUser(@RequestBody Map<String, Object> vo) throws Exception{
