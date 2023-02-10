@@ -14,5 +14,6 @@
 	
 	<form action="userinfo/logout" method="post">
 		<button type ="submit">로그아웃</button>
+	</form>
 </body>
 </html>
