@@ -8,7 +8,6 @@
 </head>
 <body>
 	<!-- http://localhost:8080/htaProject/NewFile.jsp -->
-	
 
 	--현재 세션에 로그인된 아이디:${sessionScope.loginId }
 </body>

@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -26,7 +27,7 @@ public class UserDAO {
 		try {
 			tx.begin();
 
-			User user = new User(userId, userPassword, (String)uName, uPhone, (String)address, LocalDate.parse(uDate, formatter));
+			User user = new User(userId, userPassword, uName, uPhone, address, LocalDate.parse(uDate, formatter));
 
 			em.persist(user);
 
@@ -55,6 +56,25 @@ public class UserDAO {
 		}
 		return result;
 	}
+	
+	public void selectUser(Map<String, Object> vo) {
+		EntityManager em = DBUtil.getEntityManager();
+		
+			try {
+				User user = (User) em.createQuery("select u from User u where u_id = :u_id and u_password = :u_password ")
+						.setParameter("u_id", vo.get("u_id"))
+						.setParameter("u_password",vo.get("u_password"))
+						.getSingleResult();
+				
+				if (user != null) {
+					System.out.println("검색하신 회원의 정보입니다." + user.getU_id() + " " + user.getU_name() + " " + user.getU_password() + " " + user.getU_phone() + " " + user.getAddress() + " " + user.getU_date());
+				}
+			} catch(Exception e) {
+				System.out.println("검색하신 회원은 존재하지않습니다.");
+			}
+			em.close();
+		}
+	
 	
 	
 }

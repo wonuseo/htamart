@@ -3,6 +3,7 @@ package controller;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,8 +28,10 @@ public class UserController {
 	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
 	protected String signUp(@RequestParam String userId,@RequestParam String userPassword, @RequestParam String uName, @RequestParam String uPhone, @RequestParam String address) throws Exception{
+		
 		System.out.println(uName);
 		System.out.println(address);
+		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		userDAO.createUser(userId, userPassword, uName, uPhone, address, dateFormat.format(new Date()));
@@ -54,10 +58,11 @@ public class UserController {
 		}
 	}
 	
-	public static void main(String[] args) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String currentDate = dateFormat.format(new Date());
-		System.out.println(currentDate);
+	@PostMapping(value="/selectUser", produces = "application/json;charset=utf-8")	
+	protected String seletUser(@RequestBody Map<String, Object> vo) throws Exception{
+		
+		userDAO.selectUser(vo);
+		return "조회 성공";
 	}
 	
 }
