@@ -37,8 +37,9 @@ public class ProductViewController {
 		
 		mv.addObject("product", product);
 		mv.addObject("productallData", all);
+		mv.addObject("categoryname", category.getCategoryName());
 		mv.setViewName("productDetail");
 		
-		return mv;	
+		return mv;		
 	}
 }

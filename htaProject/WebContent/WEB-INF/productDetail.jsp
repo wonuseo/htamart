@@ -194,7 +194,7 @@
 				</div>
 
 				<div class="col-md-66">
-					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryName}</div>
+					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryname}</div>
 
 					<h1 class="display-5 fw-bolder font2" style="font-size:40px">${product.productName}</h1>
 					<br>
@@ -242,7 +242,7 @@
 	<!-- Related product -->
 	<section class="py-5 bg-light">
 		<div class="container px-4 px-lg-5 mt-5">
-			<h2 class="fw-bolder mb-4" style="font-size:25px">관련 상품</h2>
+			<h2 class="fw-bolder mb-4">관련 상품</h2>
 
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
@@ -286,10 +286,10 @@
 											
 											<!-- Product price-->
 											<div class="font2">
-		                                    	${pvo.productPirce}원		  
+		                                    	${pvo.productPrice}원		  
 		                                    </div>
 		                                    <br> <!-- <hr> -->
-		                                   <div class="font2">${pvo.productId}</div>
+		                                   <div class="font2">${pvo.productInfo}</div>
 										</div>
 									</div>
 									<!-- Product actions-->
