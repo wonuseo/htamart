@@ -15,10 +15,8 @@ public class ProductDAO {
 
 	public List<Product> findElement(String keyword) {
 		EntityManager em = DBUtil.getEntityManager();
-
 		List<Product> all = em.createQuery("select p from Product p where p.p_name like '%" + keyword + "%' ")
 				.getResultList();
-
 		return all;
 
 	}
@@ -26,8 +24,8 @@ public class ProductDAO {
 	public List<Product> getAllProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
 		Category c = new Category();
-
 		c.setC_id(c_id);
+
 		String sql = "select p from Product p where p.category = :category";
 
 		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
