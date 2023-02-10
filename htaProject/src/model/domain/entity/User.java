@@ -2,13 +2,16 @@ package model.domain.entity;
 
 
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,23 +35,28 @@ public class User {
 	
 	@Id
 	@NonNull
-	private String u_id;
+	@Column(name = "u_id")
+	private String userId;  
 	
 	@NonNull
-	private String u_password;
+	@Column(name = "u_password")
+	private String userPassword;
 	
 	@NonNull
-	private String u_name;
+	@Column(name = "u_name")
+	private String userName;
 	
 	@NonNull
-	private String u_phone;
+	@Column(name = "u_phone")
+	private String userPhone;
 	
 	@NonNull
-
 	private String address;
 	
 	@NonNull
-	private LocalDate u_date;
+	@Column(name = "u_date")
+	@Temporal(TemporalType.DATE)
+	private Date userDate;
 	
 	@NonNull
 	@OneToMany(mappedBy = "user")

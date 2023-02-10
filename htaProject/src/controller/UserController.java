@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import model.UserDAO;
+import model.domain.entity.User;
 
 @RestController
 @RequestMapping("userinfo")
@@ -27,18 +28,19 @@ public class UserController {
 	@Autowired
 	public UserDAO userDAO;
 
-	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-	protected String signUp(@RequestParam String userId,@RequestParam String userPassword, @RequestParam String uName, @RequestParam String uPhone, @RequestParam String address) throws Exception{
+	protected String createUser(User user) throws Exception{
 		
-		System.out.println(uName);
-		System.out.println(address);
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
-		userDAO.createUser(userId, userPassword, uName, uPhone, address, dateFormat.format(new Date()));
+		userDAO.createUser(user);
 		return "회원 가입 성공";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	@PostMapping(value="/login")

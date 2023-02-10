@@ -1,7 +1,6 @@
 package model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -16,19 +15,34 @@ import util.DBUtil;
 @Repository
 public class UserDAO {
 
-	public void createUser(String userId, String userPassword, String uName, String uPhone, String address, String uDate)
-			throws Exception {
-
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");		
-		// LocalDate date = LocalDate.parse(uDate, formatter);
-
+//	public void createUser(String userId, String userPassword, String uName, String uPhone, String address, String uDate)
+//			throws Exception {
+//
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");		
+//		// LocalDate date = LocalDate.parse(uDate, formatter);
+//
+//		EntityManager em = DBUtil.getEntityManager();
+//		EntityTransaction tx = em.getTransaction();
+//		try {
+//			tx.begin();
+//
+//			User user = new User(userId, userPassword, uName, uPhone, address, LocalDate.parse(uDate, formatter));
+//
+//			em.persist(user);
+//
+//			tx.commit();
+//		} finally {
+//			em.close();
+//		}
+//	}
+	
+	public void createUser(User user) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		try {
 			tx.begin();
-
-			User user = new User(userId, userPassword, uName, uPhone, address, LocalDate.parse(uDate, formatter));
-
+			
+			user.setUserDate(new Date());
 			em.persist(user);
 
 			tx.commit();
@@ -67,7 +81,9 @@ public class UserDAO {
 						.getSingleResult();
 				
 				if (user != null) {
-					System.out.println("검색하신 회원의 정보입니다." + user.getU_id() + " " + user.getU_name() + " " + user.getU_password() + " " + user.getU_phone() + " " + user.getAddress() + " " + user.getU_date());
+					System.out.println("검색하신 회원의 정보입니다." + user.getUserId() 
+					+ " " + user.getUserPassword() + " " + user.getUserName() + " " 
+							+ user.getUserPhone() + " " + user.getAddress() + " " + user.getUserDate());
 				}
 			} catch(Exception e) {
 				System.out.println("검색하신 회원은 존재하지않습니다.");
