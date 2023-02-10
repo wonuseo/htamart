@@ -51,7 +51,7 @@ public class UserDAO {
 			if(user.size() != 0) result = true;
 			
 		} catch (Exception e) {
-			System.out.println("ÇØ´çµÇ´Â À¯Àú ¾øÀ½");
+			//System.out.println("ï¿½Ø´ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} finally {
 			em.close();
 		}

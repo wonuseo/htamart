@@ -25,12 +25,12 @@ import lombok.ToString;
 
 @Entity
 public class Review {
-
+	
 	@Id
 	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer i_id;
-
+	
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "purchase_no")
@@ -50,5 +50,5 @@ public class Review {
 	
 	@NonNull
 	private Date r_date;
-
+	
 }

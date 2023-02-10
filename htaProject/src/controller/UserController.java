@@ -1,12 +1,15 @@
 package controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,13 +24,15 @@ public class UserController {
 	@Autowired
 	public UserDAO userDAO;
 
-	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-	protected String signUp(@RequestParam String u_id,@RequestParam String u_password, @RequestParam String u_name, @RequestParam String u_phone, @RequestParam String address,@RequestParam String u_date) throws Exception{
-		userDAO.createUser(u_id, u_password, u_name, u_phone, address, u_date);
-		return "È¸¿ø °¡ÀÔ ¼º°ø";
+	protected String signUp(@RequestParam String userId,@RequestParam String userPassword, @RequestParam String uName, @RequestParam String uPhone, @RequestParam String address) throws Exception{
+		System.out.println(uName);
+		System.out.println(address);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		userDAO.createUser(userId, userPassword, uName, uPhone, address, dateFormat.format(new Date()));
+		return "íšŒì› ê°€ì… ì„±ê³µ";
 	}
-	
 	
 	@PostMapping(value="/login")
 	protected void login(@RequestParam("userId") String userId, @RequestParam("userPassword") String userPassword, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception{
@@ -37,13 +42,13 @@ public class UserController {
 		boolean valid = userDAO.validateUser(userId, userPassword);
 		
 		if(valid == true) {
-			System.out.println("·Î±×ÀÎ ¼º°ø");
+			//System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			session.setAttribute("loginId", userId);
 			response.sendRedirect("/htaProject/sessionId.jsp");
 		} else {
-			System.out.println("·Î±×ÀÎ ½ÇÆĞ");
+			//System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			PrintWriter out = response.getWriter();
-			out.print("<script> alert('·Î±×ÀÎ ½ÇÆĞ'); location.href='" + "/htaProject/login.html" + "'; </script>");
+			out.print("<script> alert('ë¡œê·¸ì¸ ì‹¤íŒ¨'); location.href='" + "/htaProject/login.html" + "'; </script>");
 			//response.sendRedirect("/htaProject/login.html");
 		}
 	}

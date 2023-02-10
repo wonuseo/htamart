@@ -1,9 +1,8 @@
 package model.domain.entity;
 
-
-
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,9 +17,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
 @AllArgsConstructor
-
+@NoArgsConstructor
 @RequiredArgsConstructor
 
 @Getter
@@ -44,14 +42,13 @@ public class User {
 	private String u_phone;
 	
 	@NonNull
-
-	private String address;
+	private String u_address;
 	
 	@NonNull
 	private LocalDate u_date;
 	
-	@NonNull
 	@OneToMany(mappedBy = "user")
-	private List<Cart> Cart = new ArrayList<Cart>();
+	@NonNull
+	private List<Cart> cart = new ArrayList<Cart>();
 	
 }

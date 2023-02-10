@@ -25,7 +25,9 @@
 	 <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/liststyles.css" rel="stylesheet" />
     
-
+    <!-- 이미지 클릭시 확대 관련 import  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+    
 </head>
 <body>
 	
@@ -36,9 +38,6 @@
             
                 <div class="col-md-6">
                     <div class="social pull-left">
-
-
-
 
                         <ul>
                             <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -73,7 +72,7 @@
 
                 <div class="col-md-3 col-sm-4">
                     <div class="logo">
-                        <a href="../homepage.html"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
+                        <a href="../homepage.jsp"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
                     </div>
                 </div>
 
@@ -165,56 +164,7 @@
     
     <div class="List">
     
-    <!-- Section-->
-    <section class="py-5">
-			<div class="container px-4 px-lg-5 mt-5">
-				<div
-					class="row1 gx-4 gx-lg-5 row1-cols-2 row1-cols-md-3 row1-cols-xl-4 justify-content-center">
-
-					<c:forEach items="${requestScope.allData}" var="product">
-
-						<div class="col mb-5">
-							<div class="card h-100">
-								<!-- Product image-->
-								<img class="card-img-top" src="../${product.getP_img() }"
-									alt="..." />
-								<!-- Product details-->
-								<div class="card-body p-4">
-									<div class="text-center">
-										<!-- Product name-->
-										<div class="font2">
-										<h5 class="fw-bolder">${product.getP_name() }</h5>
-										</div>
-										<!-- Product price-->
-										<div class="font2">
-										${product.getP_price() }원
-										</div>
-										<br> <!-- <hr> -->
-		                                <div class="font2">
-		                                ${product.getP_info() }
-		                                </div>
-									</div>
-								</div>
-								<!-- Product actions-->
-								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<div class="text-center">
-									
-										<a class="btn btn-outline-dark mt-auto" href="???">물품 상세
-											보기</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</c:forEach>
-
-				</div>
-			</div>
-		</section>
-    
-    
-    
-    
+		<!-- Section-->
         <section class="py-5">
         		<c:choose>
 					<c:when test="${not empty requestScope.productallData}">
@@ -230,17 +180,35 @@
 		                        <div class="card h-100">
 		                        
 		                            <!-- Product image-->	
-		                            <div class="">
+		                            <div>
+		                            <a href="${pageContext.request.contextPath}/${pvo.p_img}" data-lightbox="example-set" data-title="${pvo.p_name}">
 		                            	<img src="${pageContext.request.contextPath}/${pvo.p_img}" width="450px" height="300px" />
+		                            </a>
 		                            </div>	                
 		                            
 		                            <!-- Product details-->
 		                            <div class="card-body p-4">
 		                                <div class="text-center">
+		                                
 		                                    <!-- Product name-->
-		                                    <a class="a font2" href="?" >
-		                                    	 <h5 class="fw-bolder">${pvo.p_name}</h5> 
-		                                    </a>
+		                                    <c:choose>
+												<c:when test="${pvo.p_stock == 'y'}">
+													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.p_id}" > <!-- 조건문 사용해서 해당 상품이 품절 or준비 중이면 자바스크립트 알림창으로 못넘어가게 제어 | 구매 가능이면 링크타고 넘어가게 제어 -->
+		                                    	 		<h4 class="fw-bolder">${pvo.p_name}</h4> 
+		                                    		</a>
+												</c:when>
+												<c:when test="${pvo.p_stock == 'n'}">
+													<a class="a font2" href="javascript:Accesscont()" > 
+		                                    	 		<h4 class="fw-bolder">${pvo.p_name}</h4> 
+		                                    		</a>
+												</c:when>
+												<c:otherwise>
+													<a class="a font2" href="javascript:Accesscont2()" > 
+		                                    	 		<h4 class="fw-bolder">${pvo.p_name}</h4> 
+		                                    		</a>
+												</c:otherwise>
+											</c:choose> 
+		                                    
 		                                    <!-- Product price-->
 		                                    <div class="font2">
 		                                    	${pvo.p_price}원		  
@@ -256,9 +224,9 @@
 					 							<div class="text-center" style="color:#4B89DC">구매 가능</div>
 											</c:when>
 											<c:when test="${pvo.p_stock == 'n'}">
-												<div class="text-center" style="color:">품절</div>
+												<div class="text-center" style="color:red">품절</div>
 											</c:when>
-										<c:otherwise> <!-- ${pvo.p_stock == 'o'} 준비 중 -->
+										<c:otherwise>
 												<div class="text-center" style="color:#CCCC00">준비 중</div>
 										</c:otherwise>
 										</c:choose> 
@@ -339,9 +307,13 @@
 
 	<script src="../js/script.js"></script>
 	
-	<!-- <script src="../js/scripts.js"></script> javascript:test() -->
+	<script src="../js/scripts.js"></script> 
 	
-	<!-- --------------------------------- -->
+	<!-- 이미지 클릭시 확대 관련 import  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+	
+	<!-- javascript:test()--------------------------------- -->
 	
 </body>
 

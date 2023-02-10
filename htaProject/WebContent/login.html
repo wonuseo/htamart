@@ -3,13 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-​
 <link rel="stylesheet" href="css/login.css">
-​
 </head>
-​
 <body>
-​
 	<div id="container" class="container">
 		<!-- FORM SECTION -->
 		<div class="row">
@@ -18,32 +14,37 @@
 				<div class="form-wrapper align-items-center">
 					<div class="form sign-up">
 					
-					<form action="userinfo/createUser" method="post">
+					<form action="userinfo/createUser" method="post" accept-charset="utf-8">
 						<div class="input-group">
-							<i class='bx bxs-user'></i> <input type="text" 
-								placeholder="Username">
+							<i class='bx bxs-user'></i>
+							 <input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required >
 						</div>
 						
 						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i> <input type="password"
-								placeholder="Password">
+							<input type="password" id="userPassword" name="userPassword" placeholder="Password"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
 						</div>
 						
 						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i> <input type="text"
-								placeholder="Name">
+							<i class='bx bxs-lock-alt'></i> 
+							<input type="text" id="uName" name="uName" placeholder="Name" maxlength="10" pattern="^[a-zA-Z가-힣]+$" required>
 						</div>
 						
 						<div class="input-group">
-							<i class='bx bx-mail-send'></i> <input type="text"
-								placeholder="Address">
+							<i class='bx bxs-lock-alt'></i> 
+							<input type="text" id="uPhone" name="uPhone" placeholder="PhoneNumber" maxlength="20" pattern="^[0-9]+$" required>
 						</div>
+						
+						<div class="input-group">
+							<i class='bx bx-mail-send'></i>
+							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
+						</div>
+						
+						
+						<button type="submit">가입</button>
 					</form>
-						
-						<button type="submit">Sign up</button>
+					
 						<p>
-							<span> Already have an account? </span> <b onclick="toggle()"
-								class="pointer"> Sign in here </b>
+							<b onclick="toggle()" class="pointer"> 로그인 </b>
 						</p>
 					</div>
 				</div>
@@ -59,7 +60,7 @@
 						<form action="userinfo/login" method="post">
 							<div class="input-group">
 								<i class='bx bxs-user'></i> 
-								<input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required >
+								<input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
 							</div>
 							
 							<div class="input-group">
@@ -67,15 +68,10 @@
 								<input type="password" id="userPassword" name="userPassword" placeholder="Password"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
 							</div>
 							
-							<button type="submit">Sign in</button>
+							<button type="submit">로그인</button>
 						</form>
-						
 						<p>
-							<b> Forgot password? </b>
-						</p>
-						<p>
-							<span> Don't have an account? </span> <b onclick="toggle()"
-								class="pointer"> Sign up here </b>
+							<b onclick="toggle()" class="pointer"> 회원가입 </b>
 						</p>
 					</div>
 				</div>

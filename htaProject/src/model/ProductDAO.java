@@ -14,30 +14,57 @@ import util.DBUtil;
 public class ProductDAO {
 
 	public List<Product> findElement(String keyword) {
-		System.out.println("ºüÀÎµå ¿¤¸®¸ÕÆ® ½ÇÇà " + keyword); 
-		EntityManager em = DBUtil.getEntityManager(); 
-		
-		List<Product> all = em.createQuery("select p from Product p where p.p_name like '%"+keyword+"%' ").getResultList();
-		
-		for(int i=0; i<all.size(); i++) {
-			System.out.println(all.get(i).getP_name());
-		} //¼º°øÀûÀ¸·Î sqlÀÌ ½ÇÇàµÇ¼­ µ¥ÀÌÅÍ°¡ list¿¡ ÀúÀåµÇ¾î ÀÖ´ÂÁö Å×½ºÆ®
-		
+		EntityManager em = DBUtil.getEntityManager();
+
+		List<Product> all = em.createQuery("select p from Product p where p.p_name like '%" + keyword + "%' ")
+				.getResultList();
+
 		return all;
 
 	}
-	
+
 	public List<Product> getAllProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
+		Category c = new Category();
+
+		c.setC_id(c_id);
+		String sql = "select p from Product p where p.category = :category";
+
+		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
+
+		em.close();
+
+		return all;
+	}
+
+	public Product getOneProduct(String c_id) {
+		EntityManager em = DBUtil.getEntityManager();
+
+		String sql = "select p from Product p where p.p_id = :p_id";
+
+		Product product = (Product) em.createQuery(sql).setParameter("p_id", c_id).getSingleResult();
+
+		return product;
+	}
+	
+	public List<Product> getProductdistinction(String c_id, String p_id) {
+		System.out.println("getProductdistinction ë©”ì†Œë“œ í˜¸ì¶œ ----- " + c_id + p_id);
+		EntityManager em = DBUtil.getEntityManager();
+		
 		Category c = new Category();
 		
 		c.setC_id(c_id);
 		String sql = "select p from Product p where p.category = :category";
-		
+
 		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
-				
-		em.close();
+		
+		for(int i=0; i<all.size(); i++) {
+			if(all.get(i).getP_id().equals(p_id)) {
+				all.remove(i);
+			}
+		}
 		
 		return all;
 	}
+
 }
