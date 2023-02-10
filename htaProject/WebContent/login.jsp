@@ -75,7 +75,7 @@
 								<input type="password" id="userPassword" name="userPassword" placeholder="Password"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
 							</div>
 							
-							<button type="submit">로그인</button>
+							<button type="submit" nclick="location.href='homepage.html'">Sign in</button>
 						</form>
 						
 						<p>
