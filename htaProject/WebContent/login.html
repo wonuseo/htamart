@@ -2,10 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>login.html</title>
+​
 <link rel="stylesheet" href="css/login.css">
+​
 </head>
+​
 <body>
+​
 	<div id="container" class="container">
 		<!-- FORM SECTION -->
 		<div class="row">
@@ -33,6 +37,7 @@
 						<div class="input-group">
 							<i class='bx bxs-phonenumber'></i> 
 							<input type="text" id="uPhone" name="uPhone" placeholder="PhoneNumber" maxlength="20" pattern="^[0-9]+$" required>
+
 						</div>
 						
 						<div class="input-group">
@@ -41,11 +46,12 @@
 						</div>
 						
 						
-						<button type="submit">가입</button>
+						<button type="submit">Sign up</button>
 					</form>
-					
+						
 						<p>
-							<b onclick="toggle()" class="pointer"> 로그인 </b>
+							<span> Already have an account? </span> <b onclick="toggle()"
+								class="pointer"> Sign in here </b>
 						</p>
 					</div>
 				</div>
@@ -61,7 +67,7 @@
 						<form action="userinfo/login" method="post">
 							<div class="input-group">
 								<i class='bx bxs-user'></i> 
-								<input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
+								<input type="text" id="userId" name="userId" placeholder="Username" maxlength="10" pattern="^[a-zA-Z0-9]+$" required> 
 							</div>
 							
 							<div class="input-group">
@@ -71,8 +77,13 @@
 							
 							<button type="submit">로그인</button>
 						</form>
+						
 						<p>
-							<b onclick="toggle()" class="pointer"> 회원가입 </b>
+							<b> Forgot password? </b>
+						</p>
+						<p>
+							<span> Don't have an account? </span> <b onclick="toggle()"
+								class="pointer"> Sign up here </b>
 						</p>
 					</div>
 				</div>
