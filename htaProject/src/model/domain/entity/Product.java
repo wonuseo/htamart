@@ -3,6 +3,7 @@ package model.domain.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -29,26 +30,32 @@ import lombok.ToString;
 public class Product {
 	@Id
 	@NonNull
-	private String p_id;
+	@Column(name = "p_id ")
+	private String productId;
 
 	@NonNull
-	private String p_name;
+	@Column(name = "p_name")
+	private String productName;
 
 	@ManyToOne
 	@JoinColumn(name = "c_id")
 	private Category category;
 
 	@NonNull
-	private Integer p_price;
+	@Column(name = "p_price")
+	private Integer productPrice;
 
 	@NonNull
-	private String p_info;
+	@Column(name = "p_info")
+	private String productInfo;
 
 	@NonNull
-	private String p_img;
+	@Column(name = "p_img")
+	private String productImg;
 
 	@NonNull
-	private String p_stock;
+	@Column(name = "p_stock")
+	private String productStock;
 	
 	@OneToMany(mappedBy = "product")
 	@NonNull

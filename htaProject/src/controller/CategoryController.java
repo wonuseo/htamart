@@ -36,7 +36,7 @@ public class CategoryController {
 		List<Product> all = dao.getAllProduct(c_id);
 		
 		for(Product p : all) {
-			System.out.println(p.getP_id());
+			System.out.println(p.getProductId());
 		}
 		
 		ModelAndView mv= new ModelAndView();

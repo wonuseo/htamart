@@ -2,6 +2,7 @@ package model.domain.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,8 @@ public class Review {
 	@Id
 	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer i_id;
+	@Column(name = "r_id")
+	private Integer reviewId;
 
 	@NonNull
 	@ManyToOne
@@ -37,18 +39,23 @@ public class Review {
 	private History history;
 	
 	@NonNull
-	private String u_id;
+	@Column(name = "u_id")
+	private String userId;
 	
 	@NonNull
-	private String p_id;
+	@Column(name = "p_id")
+	private String poductId;
 	
 	@NonNull
+	@Column(name = "star")
 	private Double star;
 	
 	@NonNull
+	@Column(name = "review")
 	private String review;
 	
 	@NonNull
-	private Date r_date;
+	@Column(name = "r_date")
+	private Date reviewDate;
 
 }

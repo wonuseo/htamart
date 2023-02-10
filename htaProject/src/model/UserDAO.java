@@ -15,27 +15,6 @@ import util.DBUtil;
 @Repository
 public class UserDAO {
 
-//	public void createUser(String userId, String userPassword, String uName, String uPhone, String address, String uDate)
-//			throws Exception {
-//
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");		
-//		// LocalDate date = LocalDate.parse(uDate, formatter);
-//
-//		EntityManager em = DBUtil.getEntityManager();
-//		EntityTransaction tx = em.getTransaction();
-//		try {
-//			tx.begin();
-//
-//			User user = new User(userId, userPassword, uName, uPhone, address, LocalDate.parse(uDate, formatter));
-//
-//			em.persist(user);
-//
-//			tx.commit();
-//		} finally {
-//			em.close();
-//		}
-//	}
-	
 	public void createUser(User user) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
