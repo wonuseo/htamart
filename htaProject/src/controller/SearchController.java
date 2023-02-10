@@ -22,7 +22,12 @@ public class SearchController {
 	public ModelAndView getProductSearch(@RequestParam(value = "keyword") String keyword) throws SQLException {
 		System.out.println("메소드 실행 " + keyword);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("productallData", productdao.findElement(keyword));
+		
+		if(keyword != null && keyword.length() != 0) {
+			mv.addObject("productallData", productdao.findElement(keyword));
+		} else {
+			mv.addObject("productallData");
+		}
 		mv.setViewName("list");
 		return mv;  
 	}

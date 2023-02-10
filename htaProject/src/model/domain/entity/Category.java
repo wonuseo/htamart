@@ -26,7 +26,7 @@ import lombok.ToString;
 
 @Entity
 public class Category {
-
+	
 	@Id
 	@NonNull
 	@Column(name = "c_id")
@@ -37,6 +37,5 @@ public class Category {
 	private String categoryName;
 
 	@OneToMany(mappedBy = "category")
-	private List<Product> products = new ArrayList<Product>();
-
+	private List<Product> product = new ArrayList<Product>();
 }

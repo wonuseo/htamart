@@ -1,7 +1,5 @@
 package model.domain.entity;
 
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,9 +19,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
 @AllArgsConstructor
-
+@NoArgsConstructor
 @RequiredArgsConstructor
 
 @Getter
@@ -52,14 +49,15 @@ public class User {
 	
 	@NonNull
 	private String address;
+
 	
 	@NonNull
 	@Column(name = "u_date")
 	@Temporal(TemporalType.DATE)
 	private Date userDate;
 	
-	@NonNull
 	@OneToMany(mappedBy = "user")
-	private List<Cart> Cart = new ArrayList<Cart>();
+	@NonNull
+	private List<Cart> cart = new ArrayList<Cart>();
 	
 }

@@ -15,8 +15,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.Setter;
 import lombok.ToString;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +27,7 @@ import lombok.ToString;
 
 @Entity
 public class History {
-
+	
 	@Id
 	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,8 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +30,7 @@ import lombok.ToString;
 public class Product {
 	@Id
 	@NonNull
-	@Column(name = "p_id ")
+	@Column(name = "p_id")
 	private String productId;
 
 	@NonNull
@@ -39,8 +39,9 @@ public class Product {
 
 	@ManyToOne
 	@JoinColumn(name = "c_id")
+	@NonNull
 	private Category category;
-
+	
 	@NonNull
 	@Column(name = "p_price")
 	private Integer productPrice;
@@ -60,7 +61,5 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	@NonNull
 	private List<Cart> cart = new ArrayList<Cart>();
-
+	
 }
-
-

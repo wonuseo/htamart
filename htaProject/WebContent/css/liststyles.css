@@ -549,6 +549,10 @@
 
 a:link {text-decoration: none; color: black;}
 
+a:hover {
+	text-decoration: underline;
+}
+
 .font1 {
 	font : italic 1.3em TmonMonsori;
 	font-weight: bold;
@@ -568,4 +572,3 @@ a:link {text-decoration: none; color: black;}
 	color: black;
 	font-weight: bold;
 }
-

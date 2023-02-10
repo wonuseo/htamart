@@ -43,8 +43,9 @@ public class UserDAO {
 				.getResultList();
 			
 			if(user.size() != 0) result = true;
-			
+		
 		}finally {
+
 			em.close();
 		}
 		return result;

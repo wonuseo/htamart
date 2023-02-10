@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +15,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@RequestMapping
+@NoArgsConstructor
 
 @Getter
 @Setter
@@ -34,12 +31,13 @@ public class Cart {
 	private int cNum;
 
 	@ManyToOne
-	@JoinColumn(name = "u_id")
-	private User userId;
+	@JoinColumn(name = "userId")
+	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name = "p_id" )
-	private Product productId;
+	@JoinColumn(name = "productId" )
+	private Product product;
+
 	
 	@NonNull
 	@Column(name = "p_count")

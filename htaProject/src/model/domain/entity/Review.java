@@ -26,7 +26,7 @@ import lombok.ToString;
 
 @Entity
 public class Review {
-
+	
 	@Id
 	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Review {
 
 	@NonNull
 	@ManyToOne
-	@JoinColumn(name = "purchase_no")
+	@JoinColumn(name = "purchaseNo")
 	private History history;
 	
 	@NonNull
@@ -57,5 +57,4 @@ public class Review {
 	@NonNull
 	@Column(name = "r_date")
 	private Date reviewDate;
-
 }

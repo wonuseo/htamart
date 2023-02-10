@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +29,6 @@ public class UserController {
 	@Autowired
 	public UserDAO userDAO;
 
-
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
 	protected String createUser(User user) throws Exception{
 		
@@ -40,7 +41,6 @@ public class UserController {
 	public ModelAndView login(Model sessionData,@RequestParam String userId,
 			@RequestParam String userPassword, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
-
 		System.out.println(userId + " " + userPassword);
 		response.setContentType("text/html; charset=utf-8");
 
