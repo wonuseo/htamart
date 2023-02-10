@@ -1,47 +1,31 @@
 package model;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
 import org.springframework.stereotype.Repository;
-
 import model.domain.entity.Category;
 import model.domain.entity.Product;
 import util.DBUtil;
-
 @Repository
 public class ProductDAO {
-
 	public List<Product> findElement(String keyword) {
 		EntityManager em = DBUtil.getEntityManager();
-		List<Product> all = em.createQuery("select p from Product p where p.p_name like '%" + keyword + "%' ")
+		List<Product> all = em.createQuery("select p from Product p where p.productName like '%" + keyword + "%' ")
 				.getResultList();
 		return all;
-
 	}
-
 	public List<Product> getAllProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
 		Category c = new Category();
 		c.setCategoryId(c_id);
-
 		String sql = "select p from Product p where p.category = :category";
-
 		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
-
 		em.close();
-
 		return all;
 	}
-
 	public Product getOneProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
-
-		String sql = "select p from Product p where p.p_id = :p_id";
-
+		String sql = "select p from Product p where p.productId = :p_id";
 		Product product = (Product) em.createQuery(sql).setParameter("p_id", c_id).getSingleResult();
-
 		return product;
 	}
 	
@@ -53,7 +37,6 @@ public class ProductDAO {
 		
 		c.setCategoryId(c_id);
 		String sql = "select p from Product p where p.category = :category";
-
 		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
 		
 		for(int i=0; i<all.size(); i++) {
@@ -64,5 +47,4 @@ public class ProductDAO {
 		
 		return all;
 	}
-
 }

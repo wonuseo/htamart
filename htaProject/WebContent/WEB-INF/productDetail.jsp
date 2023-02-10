@@ -34,6 +34,9 @@
 	
 	<!-- 이미지 클릭시 확대 관련 import  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+    
+    <!-- 비동기 axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -187,21 +190,21 @@
 			<div class="row gx-4 gx-lg-5 align-items-center">
 
 				<div class="col-md-66">
-					<img class="card-img-top mb-5 mb-md-0" src="../${product.p_img}" alt="..." width="450px" height="500px" />
+					<img class="card-img-top mb-5 mb-md-0" src="../${product.productImg}" alt="..." width="450px" height="500px" />
 				</div>
 
 				<div class="col-md-66">
-					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryname}</div>
+					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryName}</div>
 
-					<h1 class="display-5 fw-bolder font2" style="font-size:40px">${product.p_name}</h1>
+					<h1 class="display-5 fw-bolder font2" style="font-size:40px">${product.productName}</h1>
 					<br>
 					<br>
 
 					<div class="fs-5 mb-5">
-						<h1 class="display-5 fw-bolder font2" style="font-size:30px">${product.p_price}원</h1>
+						<h1 class="display-5 fw-bolder font2" style="font-size:30px">${product.productPrice}원</h1>
 					</div>
 
-					<p class="lead font2" style="font-size:20px">${product.p_info}</p>
+					<p class="lead font2" style="font-size:20px">${product.productInfo}</p>
 
 					<hr>
 
@@ -210,9 +213,9 @@
                           	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" />
                           </div>
                           <br><br>
-                          <input type="hidden" id="p_id" name="p_id" value="${product.p_id }">
+                          <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
                           <button class="btn btn-outline-dark btn-lg font2" type="submit"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button"><i class="bi-cart-fill me-1"></i>장바구니</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios()"><i class="bi-cart-fill me-1"></i>장바구니</button>
                     </form>
 
 				</div>
@@ -220,6 +223,21 @@
 			</div>
 		</div>
 	</section>
+	
+<script>
+		function cartAxios() {
+			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
+				params : {
+					p_id : document.querySelector(".small").innerHTML,
+					count : document.querySelector("#p_count").value
+				}
+			})
+			 .then(function (resData) {
+				 alert("장바구니에 넣었습니다.")
+			 })
+		}
+</script>	
+	
 
 	<!-- Related product -->
 	<section class="py-5 bg-light">
@@ -238,8 +256,8 @@
 								<div class="card h-100">
 									<!-- Product image-->
 									 <div>
-		                            <a href="${pageContext.request.contextPath}/${pvo.p_img}" data-lightbox="example-set" data-title="${pvo.p_name}">
-		                            	<img src="${pageContext.request.contextPath}/${pvo.p_img}" width="450px" height="300px" />
+		                            <a href="${pageContext.request.contextPath}/${pvo.productImg}" data-lightbox="example-set" data-title="${pvo.productName}">
+		                            	<img src="${pageContext.request.contextPath}/${pvo.productImg}" width="450px" height="300px" />
 		                            </a>
 		                            </div>	   
 									
@@ -249,38 +267,38 @@
 										
 											<!-- Product name-->
 											  <c:choose>
-												<c:when test="${pvo.p_stock == 'y'}">
-													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.p_id}">
-		                                    	 		<h3 class="fw-bolder">${pvo.p_name}</h3> 
+												<c:when test="${pvo.productStock == 'y'}">
+													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.productId}">
+		                                    	 		<h3 class="fw-bolder">${pvo.productName}</h3> 
 		                                    		</a>
 												</c:when>
-												<c:when test="${pvo.p_stock == 'n'}">
+												<c:when test="${pvo.productStock == 'n'}">
 													<a class="a font2" href="javascript:Accesscont()" > 
-		                                    	 		<h3 class="fw-bolder">${pvo.p_name}</h3> 
+		                                    	 		<h3 class="fw-bolder">${pvo.productName}</h3> 
 		                                    		</a>
 												</c:when>
 												<c:otherwise>
 													<a class="a font2" href="javascript:Accesscont2()" > 
-		                                    	 		<h3 class="fw-bolder">${pvo.p_name}</h3> 
+		                                    	 		<h3 class="fw-bolder">${pvo.productName}</h3> 
 		                                    		</a>
 												</c:otherwise>
 											</c:choose> 
 											
 											<!-- Product price-->
 											<div class="font2">
-		                                    	${pvo.p_price}원		  
+		                                    	${pvo.productPirce}원		  
 		                                    </div>
 		                                    <br> <!-- <hr> -->
-		                                   <div class="font2">${pvo.p_info}</div>
+		                                   <div class="font2">${pvo.productId}</div>
 										</div>
 									</div>
 									<!-- Product actions-->
 									<div class="card-footer p-4 pt-0 border-top-0 bg-transparent font1">
 										<c:choose>
-											<c:when test="${pvo.p_stock == 'y'}">
+											<c:when test="${pvo.productStock == 'y'}">
 					 							<div class="text-center" style="color:#4B89DC">구매 가능</div>
 											</c:when>
-											<c:when test="${pvo.p_stock == 'n'}">
+											<c:when test="${pvo.productStock == 'n'}">
 												<div class="text-center" style="color:red">품절</div>
 											</c:when>
 										<c:otherwise>

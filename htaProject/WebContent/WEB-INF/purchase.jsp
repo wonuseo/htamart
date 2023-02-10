@@ -65,7 +65,7 @@
                    		
                    			<div class="p_image">
                    				<div class="image_area form-product-image-with-options">
-                   					<img role="img" aria-label="Cap" alt="Cap Product Image" style="width:100%;height:100%;object-fit:cover" src="../${pvo.p_img }" loading="lazy" />
+                   					<img role="img" aria-label="Cap" alt="Cap Product Image" style="width:100%;height:100%;object-fit:cover" src="../${pvo.productImg }" loading="lazy" />
                    				</div>
                    			</div>
                    			
@@ -73,17 +73,17 @@
                    		
                    		<div for="input_3_1004" class="form-product-container">
                    			<div class="title_description">
-                   				 <span class="form-product-name" id="product-name-input_3_1004">${pvo.p_name }</span>
+                   				 <span class="form-product-name" id="product-name-input_3_1004">${pvo.productName }</span>
 	                            <span class="form-product-description" id="product-name-description-input_3_1004">수량: ${count }</span>
                    			</div>
                    			
                    			<span class="form-product-details">
 	                            <b><span data-wrapper-react="true">
-	                                <span id="input_3_1004_price">${pvo.p_price * count }</span>
+	                                <span id="input_3_1004_price">${pvo.productPrice * count }</span>
 	                                <span class="currency_abr">원</span></span></b>
 	                              </span>
                    		</div>
-                   		<c:set var="total" value="${total + pvo.p_price * count }" />
+                   		<c:set var="total" value="${total + pvo.productPrice * count }" />
                    		<div class="focus_action_button_container"><a class="btn-inline-product-delete"> </a><a class="btn-inline-product-settings"> </a></div>
                    		
                    		<div class="p_item_separator "></div><span class="form-product-item hover-product-item  show_image show_desc new_ui" aria-labelledby="label_3">
