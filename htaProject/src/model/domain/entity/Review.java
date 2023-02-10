@@ -35,7 +35,7 @@ public class Review {
 
 	@NonNull
 	@ManyToOne
-	@JoinColumn(name = "purchase_no")
+	@JoinColumn(name = "purchaseNo")
 	private History history;
 	
 	@NonNull

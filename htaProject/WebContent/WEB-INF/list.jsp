@@ -181,8 +181,8 @@
 		                        
 		                            <!-- Product image-->	
 		                            <div>
-		                            <a href="${pageContext.request.contextPath}/${pvo.p_img}" data-lightbox="example-set" data-title="${pvo.p_name}">
-		                            	<img src="${pageContext.request.contextPath}/${pvo.p_img}" width="450px" height="300px" />
+		                            <a href="${pageContext.request.contextPath}/${pvo.productImg}" data-lightbox="example-set" data-title="${pvo.productName}">
+		                            	<img src="${pageContext.request.contextPath}/${pvo.productImg}" width="450px" height="300px" />
 		                            </a>
 		                            </div>	                
 		                            
@@ -192,38 +192,38 @@
 		                                
 		                                    <!-- Product name-->
 		                                    <c:choose>
-												<c:when test="${pvo.p_stock == 'y'}">
-													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.p_id}" > <!-- 조건문 사용해서 해당 상품이 품절 or준비 중이면 자바스크립트 알림창으로 못넘어가게 제어 | 구매 가능이면 링크타고 넘어가게 제어 -->
-		                                    	 		<h4 class="fw-bolder">${pvo.p_name}</h4> 
+												<c:when test="${pvo.productStock == 'y'}">
+													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.productId}" > <!-- 조건문 사용해서 해당 상품이 품절 or준비 중이면 자바스크립트 알림창으로 못넘어가게 제어 | 구매 가능이면 링크타고 넘어가게 제어 -->
+		                                    	 		<h4 class="fw-bolder">${pvo.productName}</h4> 
 		                                    		</a>
 												</c:when>
-												<c:when test="${pvo.p_stock == 'n'}">
+												<c:when test="${pvo.productStock == 'n'}">
 													<a class="a font2" href="javascript:Accesscont()" > 
-		                                    	 		<h4 class="fw-bolder">${pvo.p_name}</h4> 
+		                                    	 		<h4 class="fw-bolder">${pvo.productName}</h4> 
 		                                    		</a>
 												</c:when>
 												<c:otherwise>
 													<a class="a font2" href="javascript:Accesscont2()" > 
-		                                    	 		<h4 class="fw-bolder">${pvo.p_name}</h4> 
+		                                    	 		<h4 class="fw-bolder">${pvo.productName}</h4> 
 		                                    		</a>
 												</c:otherwise>
 											</c:choose> 
 		                                    
 		                                    <!-- Product price-->
 		                                    <div class="font2">
-		                                    	${pvo.p_price}원		  
+		                                    	${pvo.productPrice}원		  
 		                                    </div>
 		                                    <br> <!-- <hr> -->
-		                                   <div class="font2">${pvo.p_info}</div>
+		                                   <div class="font2">${pvo.productInfo}</div>
 		                                </div>
 		                            </div>
 		                            <!-- Product actions-->
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent font1">
 		                            	<c:choose>
-											<c:when test="${pvo.p_stock == 'y'}">
+											<c:when test="${pvo.productStock == 'y'}">
 					 							<div class="text-center" style="color:#4B89DC">구매 가능</div>
 											</c:when>
-											<c:when test="${pvo.p_stock == 'n'}">
+											<c:when test="${pvo.productStock == 'n'}">
 												<div class="text-center" style="color:red">품절</div>
 											</c:when>
 										<c:otherwise>

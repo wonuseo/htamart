@@ -32,11 +32,11 @@ public class Cart {
 
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private User userId;
+	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name = "productId" )
-	private Product productId;
+	private Product product;
 
 	
 	@NonNull

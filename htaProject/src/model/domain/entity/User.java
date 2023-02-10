@@ -56,7 +56,7 @@ public class User {
 	@Temporal(TemporalType.DATE)
 	private Date userDate;
 	
-	@OneToMany(mappedBy = "userId")
+	@OneToMany(mappedBy = "user")
 	@NonNull
 	private List<Cart> cart = new ArrayList<Cart>();
 	

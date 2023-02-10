@@ -38,7 +38,7 @@ public class Product {
 	private String productName;
 
 	@ManyToOne
-	@JoinColumn(name = "categoryId")
+	@JoinColumn(name = "c_id")
 	@NonNull
 	private Category category;
 	
@@ -58,7 +58,7 @@ public class Product {
 	@Column(name = "p_stock")
 	private String productStock;
 	
-	@OneToMany(mappedBy = "productId")
+	@OneToMany(mappedBy = "product")
 	@NonNull
 	private List<Cart> cart = new ArrayList<Cart>();
 	
