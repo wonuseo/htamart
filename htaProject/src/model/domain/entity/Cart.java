@@ -31,11 +31,11 @@ public class Cart {
 	private int cNum;
 
 	@ManyToOne
-	@JoinColumn(name = "u_id")
+	@JoinColumn(name = "userId")
 	private User userId;
 	
 	@ManyToOne
-	@JoinColumn(name = "p_id" )
+	@JoinColumn(name = "productId" )
 	private Product productId;
 
 	

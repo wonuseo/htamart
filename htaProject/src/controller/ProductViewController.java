@@ -31,7 +31,7 @@ public class ProductViewController {
 		Category category = product.getCategory();
 		
 		//고유한 상품 객체의 id값을 이용해 그에 해당된 상품을 제외한 list 반환하는 메소드 호출
-		List<Product> all = productDao.getProductdistinction(category.getC_id(), product.getP_id());
+		List<Product> all = productDao.getProductdistinction(category.getCategoryId(), product.getProductId());
 	
 		ModelAndView mv = new ModelAndView();
 		

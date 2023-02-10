@@ -24,7 +24,7 @@ public class ProductDAO {
 	public List<Product> getAllProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
 		Category c = new Category();
-		c.setC_id(c_id);
+		c.setCategoryId(c_id);
 
 		String sql = "select p from Product p where p.category = :category";
 
@@ -51,13 +51,13 @@ public class ProductDAO {
 		
 		Category c = new Category();
 		
-		c.setC_id(c_id);
+		c.setCategoryId(c_id);
 		String sql = "select p from Product p where p.category = :category";
 
 		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
 		
 		for(int i=0; i<all.size(); i++) {
-			if(all.get(i).getP_id().equals(p_id)) {
+			if(all.get(i).getProductId().equals(p_id)) {
 				all.remove(i);
 			}
 		}

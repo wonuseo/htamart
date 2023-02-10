@@ -30,7 +30,7 @@ import lombok.Setter;
 public class Product {
 	@Id
 	@NonNull
-	@Column(name = "p_id ")
+	@Column(name = "p_id")
 	private String productId;
 
 	@NonNull
@@ -38,7 +38,7 @@ public class Product {
 	private String productName;
 
 	@ManyToOne
-	@JoinColumn(name = "c_id")
+	@JoinColumn(name = "categoryId")
 	@NonNull
 	private Category category;
 	
@@ -58,7 +58,7 @@ public class Product {
 	@Column(name = "p_stock")
 	private String productStock;
 	
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "productId")
 	@NonNull
 	private List<Cart> cart = new ArrayList<Cart>();
 	
