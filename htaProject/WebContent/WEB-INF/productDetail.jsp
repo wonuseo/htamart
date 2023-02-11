@@ -194,7 +194,7 @@
 				</div>
 
 				<div class="col-md-66">
-					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryName}</div>
+					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryname}</div>
 
 					<h1 class="display-5 fw-bolder font2" style="font-size:40px">${product.productName}</h1>
 					<br>
