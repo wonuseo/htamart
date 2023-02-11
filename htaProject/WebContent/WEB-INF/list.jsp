@@ -71,8 +71,8 @@
             
 
                 <div class="col-md-3 col-sm-4">
-                    <div class="logo">
-                        <a href="../homepage.jsp"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
+                    <div class="logo">              
+                    	<a href="${pageContext.request.contextPath}/homepage.html"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width: 60%;height:auto"></a>
                     </div>
                 </div>
 

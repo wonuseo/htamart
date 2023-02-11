@@ -28,12 +28,12 @@ public class UserController {
 
 	@Autowired
 	public UserDAO userDAO;
-
+	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-	protected String createUser(User user) throws Exception{
+	public void createUser(User user) throws Exception{
 		
 		userDAO.createUser(user);
-		return "회원 가입 성공";
+		
 	}
 	
 
