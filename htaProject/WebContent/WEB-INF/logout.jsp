@@ -8,6 +8,6 @@
 </head>
 <body>
 
-	--현재 세션에서 로그인아웃 아이디:${sessionScope.userId}
+	--현재 세션에서 로그인아웃 아이디: ${suserId}
 </body>
 </html>

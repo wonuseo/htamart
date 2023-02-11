@@ -53,8 +53,10 @@
                     <div class="action pull-right">
 
                         <ul>
-                            <li><a href="login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
+                            <li><a id ="" href="login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
                             <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+                            <li><a href="userinfo/sessionOut"><i class="fa fa-user"></i>&nbsp로그아웃</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -271,15 +273,14 @@
 	
 	<script type="text/javascript">
 
-/* 		function getSession(sessionId) {
-			var loginId 
-			if(doucment.sessionId) {
+ 		function getSession(userId) {
+			var userId = null; 
+			if(doucment.userId) {
 				
 			}
 		}
-		String loginid = (String) session.getAtrribute("loginId");
 		
-		let login_innerHTML = ''; */
+		let login_innerHTML = ''; 
 		
 		const login = '<a href="login.html"><i class="fa fa-user"></i>&nbsp로그인</a>';
 		const logout = '<a href="/userinfo/logout"><i class="fa fa-user"></i>&nbsp로그아웃</a>';
