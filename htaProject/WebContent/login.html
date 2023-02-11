@@ -44,8 +44,8 @@
 							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
 						</div>
 												
-						<button type="button" onclick="loginAxios()">Sign up</button> 
-						 
+						<button type="button" onclick="loginAxios()" onclick="toggle()">Sign up</button> 
+						 <!-- 비동기로 로그인이 된 다음 입력된값을 비워야함, 그리고 토글하면 좋을것 같다  -->
 <script>
 		function loginAxios() {	
 			axios.post('userinfo/createUser', {}, {
@@ -66,9 +66,6 @@
 						
 						<p>
 							<b onclick="toggle()" class="pointer"> 로그인 </b> <br> 
-						</p>
-						<p>
-							<b onclick="toggle()" class="pointer"> 메인 페이지 </b> <br> 
 						</p>
 						
 					</div>
