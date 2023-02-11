@@ -37,7 +37,7 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "c_id")
 	@NonNull
-	private Category category; //category Å×ÀÌºíÀÇ c_id ÄÃ·³µéÀÇ °ªÀ» ÂüÁ¶ÇÏ´Â ÄÃ·³ÀÌ´Ù º¸´Ï categoryº¯¼ö´Â productÀÇ id°ªÀÌ ¸ÅÇÎµÇ¼­ ÀúÀåµÊ. Ä«Å×°í¸® °´Ã¼ÀÎµ¥ Ä«Å×°í¸® °´Ã¼ÀÇ id°ª¸¸ÀÌ ¸ÅÇÎµÇ¼­ ÀúÀå.
+	private Category category; //category í…Œì´ë¸”ì˜ c_id ì»¬ëŸ¼ë“¤ì˜ ê°’ì„ ì°¸ì¡°í•˜ëŠ” ì»¬ëŸ¼ì´ë‹¤ ë³´ë‹ˆ categoryë³€ìˆ˜ëŠ” productì˜ idê°’ì´ ë§¤í•‘ë˜ì„œ ì €ì¥ë¨. ì¹´í…Œê³ ë¦¬ ê°ì²´ì¸ë° ì¹´í…Œê³ ë¦¬ ê°ì²´ì˜ idê°’ë§Œì´ ë§¤í•‘ë˜ì„œ ì €ì¥.
 	
 	@NonNull
 	private Integer p_price;

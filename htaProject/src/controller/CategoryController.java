@@ -40,7 +40,7 @@ public class CategoryController {
 		}
 		
 		ModelAndView mv= new ModelAndView();
-			mv.addObject("allData", all);
+			mv.addObject("productallData", all);
 			mv.setViewName("list");
 			return mv;
 	}

@@ -20,9 +20,14 @@ public class SearchController {
 	
 	@GetMapping(value="/productsearch")
 	public ModelAndView getProductSearch(@RequestParam(value = "keyword") String keyword) throws SQLException {
-		System.out.println("»óÇ°¼­Ä¡ ¸Þ¼Òµå ½ÇÇà " + keyword);
+		System.out.println("ë©”ì†Œë“œ ì‹¤í–‰ " + keyword);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("productallData", productdao.findElement(keyword));
+		
+		if(keyword != null && keyword.length() != 0) {
+			mv.addObject("productallData", productdao.findElement(keyword));
+		} else {
+			mv.addObject("productallData");
+		}
 		mv.setViewName("list");
 		return mv;  
 	}
