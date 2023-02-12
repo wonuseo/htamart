@@ -45,7 +45,7 @@
 						</div>
 												
 						<button type="button" onclick="loginAxios()">회원가입</button> 
-						 <!-- 비동기로 로그인이 된 다음 입력된값을 비워야함, 그리고 토글하면 좋을것 같다  -->
+					
 <script>
 		function loginAxios() {	
 			axios.post('userinfo/createUser', {}, {
@@ -63,7 +63,7 @@
 				 window.location.href = "login.html";
 			 })
 			 .catch(function(error){
-				 alert("모든 항목을 넣어주세요");
+				 alert("모든 항목을 입력하세요");
 			 });
 		}
 </script>						
