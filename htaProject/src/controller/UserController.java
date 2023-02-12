@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.PrintWriter;
-import java.net.HttpCookie;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,11 +30,12 @@ public class UserController<user> {
 
 	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-	public void createUser(User user, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
-		userDAO.createUser(user);
-		
-//		return "redirect:/login.html";
+	public void createUser(User user) throws Exception{
+		if(user.getUserId() == null || user.getUserPassword() == null || user.getUserName() == null || user.getUserPhone() == null || user.getAddress() == null) {
+			throw new Exception("입력값이 올바르지 않습니다.");
+		}
+		System.out.println(user);		
+		userDAO.createUser(user);	
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
