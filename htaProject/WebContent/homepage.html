@@ -53,9 +53,9 @@
                     <div class="action pull-right">
 
                         <ul>
-                            <li><a id ="" href="login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
+                            <li><a id ="login" href="login.html"><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>
+                            <li><a id ="logout" href="userinfo/sessionOut"><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>
                             <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
-                            <li><a href="userinfo/sessionOut"><i class="fa fa-user"></i>&nbsp로그아웃</a></li>
                             
                         </ul>
                     </div>
@@ -257,46 +257,18 @@
         </div>
     </div>
 
-	<!-- jQuery Library -->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
-	<!-- Latest compiled and minified JavaScript -->
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 	<!-- Script -->
-
 	<script src="js/script.js"></script>
-	
-	
-	
+
 	<script type="text/javascript">
-
- 		function getSession(userId) {
-			var userId = null; 
-			if(doucment.userId) {
-				
-			}
-		}
-		
-		let login_innerHTML = ''; 
-		
-		const login = '<a href="login.html"><i class="fa fa-user"></i>&nbsp로그인</a>';
-		const logout = '<a href="/userinfo/logout"><i class="fa fa-user"></i>&nbsp로그아웃</a>';
-		if(isLogin) {
-			// 로그인 상태
-			// 로그인 버튼 감추고
-			// 로그아웃 버튼 보이게
-			login_btn.innerHTML = logout;
-		} else {
-			// 로그아웃 상태
-			// 로그아웃 버튼 감추고
-			// 로그인 버튼 보이게
-			login_btn.innerHTML = login;
-		}
-
-
+	function session(){
+	var value = "${usedId.usedId}";
+	
+	}
+	
+	
+	
+	
 	</script>
 	
 

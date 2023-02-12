@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class PurchaseController {
 	private ProductDAO productDAO;
 	
 	@PostMapping(value="/final")
-	public ModelAndView purchaseOne(@RequestParam(value = "p_id") String p_id, @RequestParam(value = "p_count") int p_count, HttpServletRequest request) {
+	public ModelAndView purchaseOne(@RequestParam(value = "p_id") String p_id, @RequestParam(value = "p_count") int p_count, HttpServletRequest request, HttpSession session) {
 		Product product = productDAO.getOneProduct(p_id);
 		ModelAndView mv = new ModelAndView();
 		List<Product> productList = new ArrayList<Product>();
@@ -32,7 +33,17 @@ public class PurchaseController {
 		mv.addObject("count", p_count);
 		mv.setViewName("purchase");
 		
-		return mv;	
+		
+		System.out.println(session.getAttribute("userId"));
+		
+		if(session.getAttribute("userId") != null) {
+			mv.setViewName("purchase");
+			return mv;
+		}else {
+			
+			return mv;
+		}
+		
 	}
 	
 	
