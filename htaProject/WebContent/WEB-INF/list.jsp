@@ -52,8 +52,7 @@
                     <div class="action pull-right">
 
                         <ul>
-                            <li><a href="???"><i class="fa fa-user"></i>&nbsp로그인</a></li>
-                            <li><a href="???"><i class="fa fa-lock"></i>&nbsp회원가입</a></li>
+                            <li><a href="${pageContext.request.contextPath}/login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
                             <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
                         </ul>
                     </div>
@@ -72,7 +71,7 @@
 
                 <div class="col-md-3 col-sm-4">
                     <div class="logo">
-                        <a href="../homepage.jsp"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
+                        <a href="${pageContext.request.contextPath}/homepage.html"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
                     </div>
                 </div>
 
