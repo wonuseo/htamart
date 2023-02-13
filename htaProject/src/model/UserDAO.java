@@ -18,6 +18,9 @@ public class UserDAO {
 	public void createUser(User user) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		
+		//로그인 검증 로직 추가해야함
+		
 		try {
 			tx.begin();
 			

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class PurchaseController {
 
 	@Autowired
 	private ProductDAO productDAO;
+
 	@Autowired
 	private UserDAO userDAO;
 
@@ -32,6 +34,7 @@ public class PurchaseController {
 		
 		Product product = productDAO.getOneProduct(productId);
 		User user = userDAO.selectOneUser(userId);
+
 		ModelAndView mv = new ModelAndView();
 		List<Product> productList = new ArrayList<Product>();
 		List<Integer> productCount = new ArrayList<Integer>();
@@ -73,5 +76,6 @@ public class PurchaseController {
 		//delete
 		mv.setViewName("receipt");
 		return mv;
+
 	}
 }
