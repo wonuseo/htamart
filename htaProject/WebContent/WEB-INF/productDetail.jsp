@@ -262,7 +262,7 @@
 	<!-- Related product -->
 	<section class="py-5 bg-light">
 		<div class="container px-4 px-lg-5 mt-5">
-			<h2 class="fw-bolder mb-4">관련 상품</h2>
+			<h2 class="fw-bolder mb-4 font2" style="font-size:25px">관련 상품</h2>
 
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
@@ -289,17 +289,17 @@
 											  <c:choose>
 												<c:when test="${pvo.productStock == 'y'}">
 													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.productId}">
-		                                    	 		<h3 class="fw-bolder">${pvo.productName}</h3> 
+		                                    	 		<h3 class="fw-bolder font2">${pvo.productName}</h3> 
 		                                    		</a>
 												</c:when>
 												<c:when test="${pvo.productStock == 'n'}">
 													<a class="a font2" href="javascript:Accesscont()" > 
-		                                    	 		<h3 class="fw-bolder">${pvo.productName}</h3> 
+		                                    	 		<h3 class="fw-bolder font2">${pvo.productName}</h3> 
 		                                    		</a>
 												</c:when>
 												<c:otherwise>
 													<a class="a font2" href="javascript:Accesscont2()" > 
-		                                    	 		<h3 class="fw-bolder">${pvo.productName}</h3> 
+		                                    	 		<h3 class="fw-bolder font2">${pvo.productName}</h3> 
 		                                    		</a>
 												</c:otherwise>
 											</c:choose> 
