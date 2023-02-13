@@ -86,4 +86,19 @@ public class UserDAO {
 		return user;
 	}
 	
+	
+	public boolean checkId(String userId) throws Exception {
+        EntityManager em = DBUtil.getEntityManager();
+        try {
+            String sql = "SELECT COUNT(u) FROM User u WHERE u.userId = :userId";
+            Long count = em.createQuery(sql, Long.class)
+                    .setParameter("userId", userId)
+                    .getSingleResult();
+            return count == 0;
+        } finally {
+            em.close();
+        }
+    }
+
+	
 }

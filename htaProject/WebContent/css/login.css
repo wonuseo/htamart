@@ -342,4 +342,16 @@ body {
         margin: .5rem;
         font-size: 2rem;
     }
+    /*중복 아이디 없는 경우*/
+    .id_input_re_1{
+    	color : green;
+    	display : none;
+    }
+    
+    /*중복 아이디 있는 경우*/
+    .id_input_re_2{
+    	color : red;
+    	display : none;
+    }
+    
 }
