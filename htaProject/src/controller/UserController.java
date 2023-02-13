@@ -35,11 +35,9 @@ public class UserController {
 		userDAO.createUser(user);
 		return "회원 가입 성공";
 	}
-	
 
 	@PostMapping(value = "/login")
-	public ModelAndView login(Model sessionData,@RequestParam String userId,
-			@RequestParam String userPassword, HttpServletResponse response, HttpServletRequest request)
+	public ModelAndView login(Model sessionData, @RequestParam String userId, @RequestParam String userPassword, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
 		System.out.println(userId + " " + userPassword);
 		response.setContentType("text/html; charset=utf-8");
@@ -53,7 +51,7 @@ public class UserController {
 			sessionData.addAttribute("userId", userId);
 			mv.addObject("loginId_model", "model data");
 //			response.sendRedirect("/htaProject/sessionId.jsp");
-			mv.setViewName("sessionId");
+			mv.setViewName("redirect:/homepage.html");
 		} else {
 			System.out.println("로그인 실패");
 			PrintWriter out = response.getWriter();

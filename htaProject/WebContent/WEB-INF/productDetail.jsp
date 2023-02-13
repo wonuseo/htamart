@@ -5,31 +5,24 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <title>product View</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Bootstrap icons-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
-<!-- Core theme CSS (includes Bootstrap)-->
-
-<!-- ------------------------------- -->
-
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	
+	<!-- Bootstrap icons-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	
+	<!-- Core theme CSS (includes Bootstrap)-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 	<!-- Google Font -->
-	
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
-	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
 	
-	<link rel="stylesheet" href="../css/style.css">
-
+	<!-- 템플릿 css -->
+	<link href="../css/style.css" rel="stylesheet">
 	<link href="../css/productViewstyles.css" rel="stylesheet" />
-	
 	<link href="../css/liststyles.css" rel="stylesheet" />
 	
 	<!-- 이미지 클릭시 확대 관련 import  -->
@@ -37,6 +30,15 @@
     
     <!-- 비동기 axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <!-- 장바구니 modal -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+#cartModal {
+	display: none;
+}
+</style>
 
 </head>
 
@@ -68,7 +70,7 @@
 						<ul>
 							<li><a href="???"><i class="fa fa-user"></i>&nbsp로그인</a></li>
 							<li><a href="???"><i class="fa fa-lock"></i>&nbsp회원가입</a></li>
-							<li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=id02"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
 						</ul>
 					</div>
 				</div>
@@ -83,7 +85,6 @@
 		<div class="container">
 			<div class="row">
 
-
 				<div class="col-md-3 col-sm-4">
 					<div class="logo">
 						<a href="${pageContext.request.contextPath}/homepage.html"><img
@@ -91,7 +92,6 @@
 							style="width: 60%; height: auto;"></a>
 					</div>
 				</div>
-
 
 				<div class="col-md-7 col-sm-5">
 					<div class="search-form">
@@ -110,7 +110,6 @@
 					</div>
 				</div>
 
-
 				<div class="col-md-2 col-sm-3">
 					<div class="cart">
 						<div class="cart-icon">
@@ -125,7 +124,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<!-- 네비게이션 바 -->
 	<div class="navigation">
@@ -149,7 +147,6 @@
 							전체 카테고리 <span class="caret"></span>
 						</button>
 
-
 						<ul class="dropdown-menu">
 
 							<li><a
@@ -169,7 +166,6 @@
 				</div>
 
 				<!-- 네비게이션 바 오른쪽 클릭 + 하이퍼링크 -->
-
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="???">신상품</a></li>
@@ -194,7 +190,7 @@
 				</div>
 
 				<div class="col-md-66">
-					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryName}</div>
+					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryname}</div>
 
 					<h1 class="display-5 fw-bolder font2" style="font-size:40px">${product.productName}</h1>
 					<br>
@@ -214,8 +210,9 @@
                           </div>
                           <br><br>
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
+                          <input type="hidden" id="u_id" name="u_id" value="id02">
                           <button class="btn btn-outline-dark btn-lg font2" type="submit"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios()"><i class="bi-cart-fill me-1"></i>장바구니</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button"  onclick="cartAxios(${product.productId})"><i class="bi-cart-fill me-1"></i>장바구니</button>
                     </form>
 
 				</div>
@@ -223,26 +220,48 @@
 			</div>
 		</div>
 	</section>
-	
+
+<!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
 <script>
-		function cartAxios() {
+		function cartAxios(productId) {
 			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
 				params : {
-					p_id : document.querySelector(".small").innerHTML,
-					count : document.querySelector("#p_count").value
+					p_id : productId,
+					productCount : document.querySelector("#p_count").value,
+					userId : 'id02'
 				}
 			})
 			 .then(function (resData) {
-				 alert("장바구니에 넣었습니다.")
+				 document.getElementById('cartModal').style.display='block';
 			 })
 		}
 </script>	
 	
-
+	  <!-- 장바구니 알림창 -->
+	  <div id="cartModal" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+	      <header class="w3-container w3-teal"> 
+	        <span onclick="document.getElementById('cartModal').style.display='none'" 
+	        class="w3-button w3-display-topright">&times;</span>
+	        <h2 class="font2" style="font-size:40px"><i class="fa fa-shopping-cart fa-2x"></i>&nbsp장바구니 담기 성공!</h2>
+	      </header>
+	      <div class="w3-container w3-center">
+	        <p class="font2" style="font-size:20px">장바구니로 이동하시겠습니까?</p>
+	        <span>
+	        <button class="w3-btn w3-white w3-border w3-border-teal w3-round-large" onclick="document.getElementById('cartModal').style.display='none'">쇼핑 계속하기</button>
+	        <button class="w3-button w3-teal w3-round-large" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/showCart?userId=id02'">장바구니 보기</button><br><br>
+	        </span>
+	      </div>
+	      <footer class="w3-container w3-teal">
+	        <p>HTA Mall ~ 언제나 즐거운 쇼핑</p>
+	      </footer>
+	    </div>
+	  </div>
+	
 	<!-- Related product -->
 	<section class="py-5 bg-light">
 		<div class="container px-4 px-lg-5 mt-5">
-			<h2 class="fw-bolder mb-4" style="font-size:25px">관련 상품</h2>
+			<h2 class="fw-bolder mb-4">관련 상품</h2>
 
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
@@ -286,10 +305,10 @@
 											
 											<!-- Product price-->
 											<div class="font2">
-		                                    	${pvo.productPirce}원		  
+		                                    	${pvo.productPrice}원		  
 		                                    </div>
 		                                    <br> <!-- <hr> -->
-		                                   <div class="font2">${pvo.productId}</div>
+		                                   <div class="font2">${pvo.productInfo}</div>
 										</div>
 									</div>
 									<!-- Product actions-->
