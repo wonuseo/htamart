@@ -1,19 +1,13 @@
 package controller;
 
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -32,13 +26,25 @@ public class UserController<user> {
 
 	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
-	public void createUser(User user) throws Exception{
-		if(user.getUserId() == null || user.getUserPassword() == null || user.getUserName() == null || user.getUserPhone() == null || user.getAddress() == null) {
-			throw new Exception("입력값이 올바르지 않습니다.");
+	public ModelAndView createUser(User user) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		boolean check = userDAO.checkId(user.getUserId());
+		
+		if(check == true) {
+			userDAO.createUser(user);
+			mv.setViewName("redirect:/login.html");
+			System.out.println("check true");
+		}else {
+			mv.addObject("errorMessage", "이미 존재하는 아이디입니다.");
+			mv.setViewName("redirect:/login.html");
+			System.out.println("check false");
 		}
-		System.out.println(user);		
-		userDAO.createUser(user);	
+		
+		return mv;
 	}
+
+
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
