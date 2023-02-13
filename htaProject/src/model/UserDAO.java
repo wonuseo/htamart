@@ -18,6 +18,9 @@ public class UserDAO {
 	public void createUser(User user) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		
+		//로그인 검증 로직 추가해야함
+		
 		try {
 			tx.begin();
 			
@@ -71,6 +74,16 @@ public class UserDAO {
 			em.close();
 		}
 	
-	
+	public User selectOneUser(String userId) {
+		EntityManager em = DBUtil.getEntityManager();
+		
+		String sql = "select u from User u where u_id = :u_id";
+		
+		User user = (User) em.createQuery(sql)
+				.setParameter("u_id", userId)
+				.getSingleResult();
+		
+		return user;
+	}
 	
 }

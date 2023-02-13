@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.PrintWriter;
-import java.net.HttpCookie;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,17 +30,22 @@ public class UserController<user> {
 	@Autowired
 	public UserDAO userDAO;
 
-	@PostMapping(value = "/createUser", produces = "application/json;charset=utf-8")
-	protected String createUser(User user) throws Exception {
-
-		userDAO.createUser(user);
-		return "회원 가입 성공";
+	
+	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
+	public void createUser(User user) throws Exception{
+		if(user.getUserId() == null || user.getUserPassword() == null || user.getUserName() == null || user.getUserPhone() == null || user.getAddress() == null) {
+			throw new Exception("입력값이 올바르지 않습니다.");
+		}
+		System.out.println(user);		
+		userDAO.createUser(user);	
 	}
+
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(Model model, @RequestParam String userId, @RequestParam String userPassword) throws Exception {
 
 		System.out.println("userId " + userId);
+
 
 		boolean valid = userDAO.validateUser(userId, userPassword);
 
@@ -56,6 +60,7 @@ public class UserController<user> {
 
 			mv.setViewName("redirect:/homepage.html");
 			return mv;
+
 		} else {
 			return mv;
 		}

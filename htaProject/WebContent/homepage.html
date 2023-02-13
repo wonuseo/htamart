@@ -1,45 +1,33 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>test homepage hta market</title>
 
+	<script src ="js/jquery.js"></script>
+
 	<link rel="icon" href="./images/favicon.png" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<!-- Google Font -->
-
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
-
-
-
+	
+	<!-- 기본 홈페이지 템플릿 css -->
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="stylesheet" href="css/responsive.css">
-
 
 </head>
 
 <body>
 
+	<!-- 최상단  -->
     <div class="top-bar">
-
-
-    
-
-    <div class="top-bar">
-
         <div class="container">
             <div class="row">
             
                 <div class="col-md-6">
                     <div class="social pull-left">
-
-
-
                         <ul>
                             <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -53,17 +41,20 @@
                     <div class="action pull-right">
 
                         <ul>
+
                             <li><a id ="login" href="login.html" ><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>
                             <li><a id ="logout" href="userinfo/sessionOut" ><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>
                             <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
                             
                         </ul>
+
                     </div>
                 </div>
-                
+              
             </div>
         </div>
     </div>
+
     </div>
 
 <!-- Script -->
@@ -108,7 +99,6 @@
 	</script>
 
 
-
 	<!-- 헤더 -->
     <div class="header">
         <div class="container">
@@ -147,13 +137,11 @@
         </div>
     </div>
 
-
 	<!-- 네비게이션 바 -->
      <div class="navigation">
         <nav class="navbar navbar-theme">
           <div class="container">
           
-
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
                 <span class="sr-only">Menu</span>
@@ -166,15 +154,11 @@
             <div class="shop-category nav navbar-nav navbar-left">
                 <div class="btn-group">
 
-
                   <button type="button" class="btn btn-shop-category dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    	 전체 카테고리 <span class="caret"></span>
                   </button>
 
-
                   <ul class="dropdown-menu">
-                    
-                    
                     
                    	<li><a href="category/list?cat=fruit">과일</a></li>
                     <li><a href="category/list?cat=vegetable">채소</a></li>
@@ -188,12 +172,7 @@
                 </div>
             </div>
 
-
-
-
 			<!-- 네비게이션 바 오른쪽 클릭 + 하이퍼링크 -->
-
-
             <div class="collapse navbar-collapse" id="navbar">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="???">신상품</a></li>
@@ -210,39 +189,40 @@
     <!--중단 슬라이드쇼-->
        <section id="slider">
 
+			<!-- 슬라이드쇼 선언 + 한 슬라이드당 출력하는 시간 (2000 = 2초) -->
             <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel" data-interval="2000">
 
-
-            <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel" data-interval="2000">
-
-        		<!-- 슬라이드쇼 선언 + 한 슬라이드당 출력하는 시간 (2000 = 2초) -->
-            <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel" data-interval="2000">
                 <!--  슬라이드쇼 인디케이터. 슬라이드가 3개이면 인디케이터(조그마한 동그라미)도 3개 -->
-
-
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                 </ol>
 
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
                         <div class="slider_overlay">
-                            <a href="???"><img src="images/slide1.jpg" alt="..." style="height:500px;"></a>
+                            <a href="category/list?cat=fruit"><img src="images/slide11.jpg" alt="..." style="height:500px;"></a>
                         </div>
                     </div>
 
                     <div class="item">
                         <div class="slider_overlay">
-                            <a href="???"><img src="images/slide2.jpg" alt="..." style="height:500px;"></a>
+                            <a href="productView/details?p_id=2001"><img src="images/slide22.jpg" alt="..." style="height:500px;"></a>
                         </div>
                     </div>
 
                     <div class="item">
                         <div class="slider_overlay">
-                            <a href="???"><img src="images/slide3.jpg" alt="..." style="height:500px;"></a>
+                            <a href="category/list?cat=meat"><img src="images/slide33.jpg" alt="..." style="height:500px;"></a>
+                        </div>
+                    </div>
+                    
+                    <div class="item">
+                        <div class="slider_overlay">
+                            <a href="SearchController/productsearch?keyword=고등어"><img src="images/slide44.jpg" alt="..." style="height:500px;"></a>
                         </div>
                     </div>
                     
@@ -250,9 +230,7 @@
             </div>
         </section>
 
-
-    
-
+	<!-- 최하단 푸터 -->
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -299,8 +277,14 @@
         </div>
     </div>
 
-	
-	
+	<!-- jQuery Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<!-- Script -->
+	<script src="js/script.js"></script>
 
 </body>
 </html>
