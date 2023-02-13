@@ -116,7 +116,7 @@
                         					</span>
                         				</span>
 	                        				<div class="w3-right-align">
-	                        					<button type="button" class="w3-button w3-red w3-round-xlarge" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/delete?cNum=${cart[3] }&&userId=id02'">삭제</button>
+	                        					<button type="button" class="w3-button w3-red w3-round-xlarge" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/delete?cNum=${cart[3] }&&userId=${sessionScope.userId }'">삭제</button>
 	                            			</div>
                             			</div>
                             			
@@ -183,7 +183,7 @@
         <li class="form-line" data-type="control_button" id="id_54">
           <div id="cid_54" class="form-input-wide" data-layout="full">
             <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
-              <input type="hidden" id="u_id" name="u_id" value="id02">
+              <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">
               <button id="input_55" class="w3-button w3-green w3-round-large" style="width:15%" onclick="purchase(this.form)">상품 주문</button>&nbsp&nbsp
               <button id="input_54" type="button" class="w3-btn w3-white w3-border w3-border-green w3-round-large" style="width:15%" onclick="location.href='${pageContext.request.contextPath}/homepage.html'">쇼핑 계속하기</button>
             </div>
