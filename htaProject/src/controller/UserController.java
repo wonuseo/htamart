@@ -1,19 +1,13 @@
 package controller;
 
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -42,7 +36,7 @@ public class UserController<user> {
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(Model model, @RequestParam String userId, @RequestParam String userPassword) throws Exception {
+	public ModelAndView login(@RequestParam String userId, @RequestParam String userPassword) throws Exception {
 
 		System.out.println("userId " + userId);
 
@@ -56,7 +50,6 @@ public class UserController<user> {
 //			model.addAttribute("userId", userId);
 
 			System.out.println("로그인 성공");
-			System.out.println("모델에 저장된 데이터" + model);
 
 			mv.setViewName("redirect:/homepage.html");
 			return mv;
@@ -83,10 +76,17 @@ public class UserController<user> {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
-//	@ResponseBody
-	public String isLogin(HttpSession session) throws Exception {
+	@RequestMapping(value = "/isLogin1", method = RequestMethod.POST)
+	public String isLogin1(HttpSession session) throws Exception {
+		System.out.println("******* islogin");
 		return (String) session.getAttribute("userId");
+	}
+	
+	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
+	public String isLogin(Model model) throws Exception {
+		String userId = (String) model.getAttribute("userId");
+		
+		return userId;
 	}
 	
 	@RequestMapping(value = "/inSession", method = RequestMethod.POST)

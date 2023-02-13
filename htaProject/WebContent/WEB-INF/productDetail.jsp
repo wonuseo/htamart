@@ -30,6 +30,8 @@
     
     <!-- 비동기 axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     
     <!-- 장바구니 modal -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -38,11 +40,15 @@
 #cartModal {
 	display: none;
 }
+
+#logout_btn {
+	display: none;
+}
 </style>
 
 </head>
 
-<body>
+<body onload="validLogin()">
 	<div class="top-bar">
 
 		<div class="container">
@@ -68,9 +74,9 @@
 					<div class="action pull-right">
 
 						<ul>
-							<li><a href="???"><i class="fa fa-user"></i>&nbsp로그인</a></li>
-							<li><a href="???"><i class="fa fa-lock"></i>&nbsp회원가입</a></li>
-							<li><a href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=id02"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+							<li><a id="login_btn" href="login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
+							<li><a id="logout_btn" href="${pageContext.request.contextPath}/userinfo/sessionOut"><i class="fa fa-user"></i>&nbsp로그아웃</a></li>
+							<li><a id="shoppingCart" href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
 						</ul>
 					</div>
 				</div>
@@ -78,6 +84,24 @@
 			</div>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+	function validLogin(){
+		axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
+		})
+		 .then(function (resData) {
+			 valid(resData['data']);
+		 })
+	}
+	
+	function valid(userId) {
+		if(userId == '' || userId.length == 0) {
+		}else{
+			document.getElementById("logout_btn").style.display="block";
+			document.getElementById("login_btn").style.display="none";
+		}
+	}
+</script>
 
 
 	<!-- 헤더 -->
@@ -212,7 +236,7 @@
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
 						  <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">	
                           <button class="btn btn-outline-dark btn-lg font2" type="submit" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios(${product.productId})"><i class="bi-cart-fill me-1"></i>장바구니</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios('${product.productId }', '${sessionScope.userId }')"><i class="bi-cart-fill me-1"></i>장바구니</button>
 
                     </form>
 
@@ -224,12 +248,12 @@
 
 <!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
 <script>
-		function cartAxios(productId) {
+		function cartAxios(productId, userId) {
 			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
 				params : {
 					p_id : productId,
 					productCount : document.querySelector("#p_count").value,
-					userId : ${sessionScope.userId }
+					userId : userId
 				}
 			})
 			 .then(function (resData) {

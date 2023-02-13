@@ -30,6 +30,7 @@ public class axiosController {
 	
 	@PostMapping(value="/cart")
 	public void cart(@RequestParam(value="p_id") String productId, @RequestParam(value="userId") String userId, Cart cart) throws Exception {
+		System.out.println("*****" + userId);
 		User user = userDAO.selectOneUser(userId);
 		Product product = productDAO.getOneProduct(productId);
 		
