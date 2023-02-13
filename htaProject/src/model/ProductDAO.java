@@ -1,6 +1,8 @@
 package model;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 import org.springframework.stereotype.Repository;
 import model.domain.entity.Category;
 import model.domain.entity.Product;
@@ -13,6 +15,7 @@ public class ProductDAO {
 				.getResultList();
 		return all;
 	}
+	
 	public List<Product> getAllProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
 		Category c = new Category();
@@ -22,10 +25,11 @@ public class ProductDAO {
 		em.close();
 		return all;
 	}
-	public Product getOneProduct(String c_id) {
+	
+	public Product getOneProduct(String p_id) {
 		EntityManager em = DBUtil.getEntityManager();
 		String sql = "select p from Product p where p.productId = :p_id";
-		Product product = (Product) em.createQuery(sql).setParameter("p_id", c_id).getSingleResult();
+		Product product = (Product) em.createQuery(sql).setParameter("p_id", p_id).getSingleResult();
 		return product;
 	}
 	
@@ -44,7 +48,19 @@ public class ProductDAO {
 				all.remove(i);
 			}
 		}
-		
 		return all;
+	}
+	
+	public void insertCart(String p_id, int count) {
+		EntityManager em = DBUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		try {
+			tx.begin();
+			
+			
+		} finally {
+			em.close();
+		}
 	}
 }

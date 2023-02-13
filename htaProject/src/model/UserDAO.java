@@ -71,6 +71,16 @@ public class UserDAO {
 			em.close();
 		}
 	
-	
+	public User selectOneUser(String userId) {
+		EntityManager em = DBUtil.getEntityManager();
+		
+		String sql = "select u from User u where u_id = :u_id";
+		
+		User user = (User) em.createQuery(sql)
+				.setParameter("u_id", userId)
+				.getSingleResult();
+		
+		return user;
+	}
 	
 }
