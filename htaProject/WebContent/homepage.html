@@ -54,9 +54,7 @@
             </div>
         </div>
     </div>
-
-    </div>
-
+    
 <!-- Script -->
 	<script src="js/script.js"></script>
 
@@ -71,13 +69,13 @@
 	    type: 'POST', // GET, PUT
 	    success: function(res) {
 	    	
-	    alert(res)
+	    //alert(res)
 
 	    const login_btn = document.getElementById('login_btn');
 		login_btn.innerHTML = '';
 	
-		const login = '<li><a id ="login" href="login.html" ><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>';
-		const logout = '<li><a id ="logout" href="userinfo/sessionOut" ><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>';
+		const login = '<li><a id ="login_btn" href="login.html" ><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>';
+		const logout = '<li><a id ="logout_btn" href="userinfo/sessionOut" ><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>';
 	    	
 			alert(login)
 			alert(logout)

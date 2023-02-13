@@ -49,7 +49,7 @@
 
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
-                            <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+                            <li><a href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
                         </ul>
                     </div>
                 </div>

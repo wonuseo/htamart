@@ -17,11 +17,13 @@
 				<div class="form-wrapper align-items-center">
 					
 					<div class="form sign-up">
-					
+
+					<form action="userinfo/createUser" method="post">
 						<div class="input-group">
 							<i class='bx bxs-user'></i>
 							 <input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required >
 						</div>
+						
 						
 						<div class="input-group">
 							<i class='bx bxs-password'></i>
@@ -43,30 +45,8 @@
 							<i class='bx bx-address'></i>
 							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
 						</div>
-												
-						<button type="button" onclick="loginAxios()">회원가입</button> 
-					
-<script>
-		function loginAxios() {	
-			axios.post('userinfo/createUser', {}, {
-				params : {
-					userId : document.querySelector("#userId").value,
-					userPassword : document.querySelector("#userPassword").value,
-					userName : document.querySelector("#userName").value,
-					userPhone : document.querySelector("#userPhone").value,
-					address : document.querySelector("#address").value					
-				}	
-			})
-			 .then(function(resData) {
-				 console.log(resData);
-				 alert("회원가입 되셨습니다. 감사합니다.")
-				 window.location.href = "login.html";
-			 })
-			 .catch(function(error){
-				 alert("모든 항목을 입력하세요");
-			 });
-		}
-</script>						
+							 <button type="submit" onclick="loginAxios()">회원가입</button> 
+					</form>
 						
 						<p>
 							<b onclick="toggle()" class="pointer"> 로그인 </b> <br> 
