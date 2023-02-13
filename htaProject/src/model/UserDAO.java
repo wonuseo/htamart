@@ -18,9 +18,7 @@ public class UserDAO {
 	public void createUser(User user) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		
-		//로그인 검증 로직 추가해야함
-		
+
 		try {
 			tx.begin();
 			
@@ -32,6 +30,21 @@ public class UserDAO {
 			em.close();
 		}
 	}
+	
+	public boolean checkId(String userId) throws Exception {
+        EntityManager em = DBUtil.getEntityManager();
+
+        try {
+            String query = "SELECT COUNT(u) FROM User u WHERE u.userId = :userId";
+            Long count = em.createQuery(query, Long.class)
+                    .setParameter("userId", userId)
+                    .getSingleResult();
+
+            return count == 0;
+        } finally {
+            em.close();
+        }
+    }
 
 	public boolean validateUser(String userId, String userPassword) throws Exception{
 		EntityManager em = DBUtil.getEntityManager();
