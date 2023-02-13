@@ -190,7 +190,7 @@
 				</div>
 
 				<div class="col-md-66">
-					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryname}</div>
+					<div class="small mb-1 font2 font1" style="font-size:20px">#${categoryname} </div>
 
 					<h1 class="display-5 fw-bolder font2" style="font-size:40px">${product.productName}</h1>
 					<br>
@@ -210,9 +210,9 @@
                           </div>
                           <br><br>
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
-
-                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios()"><i class="bi-cart-fill me-1"></i>장바구니</button>
+						  <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">	
+                          <button class="btn btn-outline-dark btn-lg font2" type="submit" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios(${product.productId})"><i class="bi-cart-fill me-1"></i>장바구니</button>
 
                     </form>
 
@@ -229,7 +229,7 @@
 				params : {
 					p_id : productId,
 					productCount : document.querySelector("#p_count").value,
-					userId : 'id02'
+					userId : ${sessionScope.userId }
 				}
 			})
 			 .then(function (resData) {
@@ -250,7 +250,7 @@
 	        <p class="font2" style="font-size:20px">장바구니로 이동하시겠습니까?</p>
 	        <span>
 	        <button class="w3-btn w3-white w3-border w3-border-teal w3-round-large" onclick="document.getElementById('cartModal').style.display='none'">쇼핑 계속하기</button>
-	        <button class="w3-button w3-teal w3-round-large" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/showCart?userId=id02'">장바구니 보기</button><br><br>
+	        <button class="w3-button w3-teal w3-round-large" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }'">장바구니 보기</button><br><br>
 	        </span>
 	      </div>
 	      <footer class="w3-container w3-teal">
@@ -409,9 +409,9 @@
 	
 	<script>
 
-	const direct_purchase = function(){
+/* 	const direct_purchase = function(){
 		const conm = confirm('회원전용입니다.');
-		console.log(conm); }
+		console.log(conm); } */
 /*			
 		if() {
 			//바로구매
