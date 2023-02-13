@@ -70,7 +70,7 @@
 						<ul>
 							<li><a href="???"><i class="fa fa-user"></i>&nbsp로그인</a></li>
 							<li><a href="???"><i class="fa fa-lock"></i>&nbsp회원가입</a></li>
-							<li><a href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=id02"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
 						</ul>
 					</div>
 				</div>
@@ -212,7 +212,7 @@
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
 						  <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">	
                           <button class="btn btn-outline-dark btn-lg font2" type="submit" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios(${product.productId})"><i class="bi-cart-fill me-1"></i>장바구니</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios('${product.productId }', '${sessionScope.userId }')"><i class="bi-cart-fill me-1"></i>장바구니</button>
 
                     </form>
 
@@ -224,12 +224,12 @@
 
 <!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
 <script>
-		function cartAxios(productId) {
+		function cartAxios(productId, userId) {
 			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
 				params : {
 					p_id : productId,
 					productCount : document.querySelector("#p_count").value,
-					userId : ${sessionScope.userId }
+					userId : userId
 				}
 			})
 			 .then(function (resData) {
