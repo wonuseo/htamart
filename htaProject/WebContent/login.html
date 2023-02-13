@@ -17,12 +17,13 @@
 				<div class="form-wrapper align-items-center">
 					
 					<div class="form sign-up">
-					
-					<form action="userinfo/createUser" method="post"> 
+
+					<form action="userinfo/createUser" method="post">
 						<div class="input-group">
 							<i class='bx bxs-user'></i>
 							 <input type="text" id="userId" name="userId" placeholder="Username"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required >
 						</div>
+						
 						
 						<div class="input-group">
 							<i class='bx bxs-password'></i>
@@ -45,16 +46,7 @@
 							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
 						</div>
 												
-						<button type="submit" >회원가입</button> 
-												
 					</form>
-					
-					<script>
-						var errorMessage = "${errorMessage}";
-						if(errorMessage != "") {
-							alert(errorMessage);
-						}
-					</script>
 						
 						<p>
 							<b onclick="toggle()" class="pointer"> 로그인 </b> <br> 

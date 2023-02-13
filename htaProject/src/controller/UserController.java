@@ -3,7 +3,6 @@ package controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,25 +29,20 @@ public class UserController<user> {
 		ModelAndView mv = new ModelAndView();
 		
 		boolean check = userDAO.checkId(user.getUserId());
-		
+	
 		if(check == true) {
 			userDAO.createUser(user);
 			mv.setViewName("redirect:/login.html");
-			System.out.println("check true");
 		}else {
 			mv.addObject("errorMessage", "이미 존재하는 아이디입니다.");
-			mv.setViewName("redirect:/login.html");
-			System.out.println("check false");
+			//mv.setViewName("redirect:/login.html");
+			mv.setViewName("error");
 		}
-		
 		return mv;
 	}
 
-
-
-
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(Model model, @RequestParam String userId, @RequestParam String userPassword) throws Exception {
+	public ModelAndView login(@RequestParam String userId, @RequestParam String userPassword) throws Exception {
 
 		System.out.println("userId " + userId);
 
@@ -62,7 +56,7 @@ public class UserController<user> {
 //			model.addAttribute("userId", userId);
 
 			System.out.println("로그인 성공");
-			System.out.println("모델에 저장된 데이터" + model);
+			System.out.println("모델에 저장된 데이터" + userId);
 
 			mv.setViewName("redirect:/homepage.html");
 			return mv;
