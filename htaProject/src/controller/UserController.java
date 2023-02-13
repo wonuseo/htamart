@@ -2,6 +2,7 @@ package controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,19 +24,17 @@ public class UserController<user> {
 	@Autowired
 	public UserDAO userDAO;
 
-	
 	@PostMapping(value="/createUser", produces = "application/json;charset=utf-8")	
 	public ModelAndView createUser(User user) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
+  
+		ModelAndView mv = new ModelAndView();		
 		boolean check = userDAO.checkId(user.getUserId());
 	
 		if(check == true) {
 			userDAO.createUser(user);
 			mv.setViewName("redirect:/login.html");
 		}else {
-			mv.addObject("errorMessage", "이미 존재하는 아이디입니다.");
-			//mv.setViewName("redirect:/login.html");
+			mv.addObject("errorMessage", "이미 존재하는 아이디입니다.");		
 			mv.setViewName("error");
 		}
 		return mv;
@@ -46,18 +45,12 @@ public class UserController<user> {
 
 		System.out.println("userId " + userId);
 
-
 		boolean valid = userDAO.validateUser(userId, userPassword);
 
 		ModelAndView mv = new ModelAndView();
 		if (valid == true) {
 
 			mv.addObject("userId", userId);
-//			model.addAttribute("userId", userId);
-
-			System.out.println("로그인 성공");
-			System.out.println("모델에 저장된 데이터" + userId);
-
 			mv.setViewName("redirect:/homepage.html");
 			return mv;
 
@@ -83,22 +76,18 @@ public class UserController<user> {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
-//	@ResponseBody
-	public String isLogin(HttpSession session) throws Exception {
+	@RequestMapping(value = "/isLogin1", method = RequestMethod.POST)
+	public String isLogin1(HttpSession session) throws Exception {
+		System.out.println("******* islogin");
 		return (String) session.getAttribute("userId");
 	}
 	
-	@RequestMapping(value = "/inSession", method = RequestMethod.POST)
-	public String insession(HttpSession session) throws Exception {
+	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
+	public String isLogin(Model model) throws Exception {
+		String userId = (String) model.getAttribute("userId");
 		
-		
-		if((String)session.getAttribute("userId")!= null) {
-			
-		}else {
-			
-		}
-		return null;
+		return userId;
 	}
+	
 	
 }
