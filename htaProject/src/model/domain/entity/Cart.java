@@ -31,15 +31,14 @@ public class Cart {
 	private int cNum;
 
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "u_id")
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name = "productId" )
+	@JoinColumn(name = "p_id" )
 	private Product product;
-
 	
 	@NonNull
 	@Column(name = "p_count")
-	private Integer  productCount;
+	private Integer productCount;
 }

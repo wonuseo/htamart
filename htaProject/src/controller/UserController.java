@@ -38,11 +38,13 @@ public class UserController<user> {
 		userDAO.createUser(user);	
 	}
 
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(Model model, @RequestParam String userId, @RequestParam String userPassword,
 			HttpServletResponse response, HttpServletRequest reques) throws Exception {
 
 		System.out.println("userId " + userId);
+
 
 		boolean valid = userDAO.validateUser(userId, userPassword);
 
@@ -57,6 +59,7 @@ public class UserController<user> {
 			
 			mv.setViewName("redirect:/homepage.html");
 			return mv;
+
 		} else {
 			PrintWriter out = response.getWriter();
 			out.print("<script> alert('로그인 실패'); location.href='" + "/htaProject/login.jsp" + "'; </script>");

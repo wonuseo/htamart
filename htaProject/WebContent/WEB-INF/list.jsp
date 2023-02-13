@@ -11,18 +11,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 	<!-- Google Font -->
-
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
-
-
+	
+	<!-- 기본 홈페이지 템플릿 css -->
     <link rel="stylesheet" href="../css/style.css">
-
     <link rel="stylesheet" href="../css/responsive.css">
     
-	<!-- --------------------------------------------------- -->
-	 <!-- Core theme CSS (includes Bootstrap)-->
+	<!-- 리스트 템플릿 css-->
     <link href="../css/liststyles.css" rel="stylesheet" />
     
     <!-- 이미지 클릭시 확대 관련 import  -->
@@ -52,8 +48,7 @@
                     <div class="action pull-right">
 
                         <ul>
-                            <li><a href="???"><i class="fa fa-user"></i>&nbsp로그인</a></li>
-                            <li><a href="???"><i class="fa fa-lock"></i>&nbsp회원가입</a></li>
+                            <li><a href="${pageContext.request.contextPath}/login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
                             <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
                         </ul>
                     </div>
@@ -63,19 +58,18 @@
         </div>
     </div>
 
-
 	<!-- 헤더 -->
     <div class="header">
         <div class="container">
             <div class="row">
             
-
                 <div class="col-md-3 col-sm-4">
-                    <div class="logo">              
-                    	<a href="${pageContext.request.contextPath}/homepage.html"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width: 60%;height:auto"></a>
+
+                    <div class="logo">
+                        <a href="${pageContext.request.contextPath}/homepage.html"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
+
                     </div>
                 </div>
-
 
                 <div class="col-md-7 col-sm-5">
                     <div class="search-form">
@@ -88,7 +82,6 @@
                         </form>
                     </div>
                 </div>
-
 
                 <div class="col-md-2 col-sm-3">
                     <div class="cart">
@@ -105,7 +98,6 @@
             </div>
         </div>
     </div>
-
 
 	<!-- 네비게이션 바 -->
      <div class="navigation">
@@ -128,7 +120,6 @@
                    	 전체 카테고리 <span class="caret"></span>
                   </button>
 
-
                   <ul class="dropdown-menu">
                     
                    	<li><a href="${pageContext.request.contextPath }/category/list?cat=fruit">과일</a></li>
@@ -143,12 +134,7 @@
                 </div>
             </div>
 
-
-
-
 			<!-- 네비게이션 바 오른쪽 클릭 + 하이퍼링크 -->
-
-
             <div class="collapse navbar-collapse" id="navbar">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="???">신상품</a></li>
@@ -162,8 +148,8 @@
         </nav>
     </div>
     
-    <div class="List">
     
+    <div class="List">
 		<!-- Section-->
         <section class="py-5">
         		<c:choose>
@@ -172,13 +158,10 @@
 		         		
 		                <div class="row1 gx-4 gx-lg-5 row1-cols-2 row1-cols-md-3 row1-cols-xl-4 justify-content-center">
 		                
-		                
 		                	<c:forEach items="${requestScope.productallData}" var="pvo">
 		                		
 								<div class="col mb-5">
-								
-		                        <div class="card h-100">
-		                        
+		                         <div class="card h-100">
 		                            <!-- Product image-->	
 		                            <div>
 		                            <a href="${pageContext.request.contextPath}/${pvo.productImg}" data-lightbox="example-set" data-title="${pvo.productName}">
@@ -247,8 +230,8 @@
 						</c:choose>
                  </section>   
                 </div>
-            
 	
+	<!-- 최하단 푸터 -->	
 	<div class="footer">
         <div class="container">
             <div class="row">
@@ -296,24 +279,18 @@
     </div>
 	
 	<!-- jQuery Library -->
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 	<!-- Script -->
-
 	<script src="../js/script.js"></script>
-	
 	<script src="../js/scripts.js"></script> 
 	
 	<!-- 이미지 클릭시 확대 관련 import  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-	
-	<!-- javascript:test()--------------------------------- -->
 	
 </body>
 
