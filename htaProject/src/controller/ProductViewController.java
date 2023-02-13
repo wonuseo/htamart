@@ -38,6 +38,6 @@ public class ProductViewController {
 		mv.addObject("categoryname", category.getCategoryName());
 		mv.setViewName("productDetail");
 		
-		return mv;		
+		return mv;
 	}
 }

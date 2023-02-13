@@ -8,7 +8,7 @@
 
 	<link rel="icon" href="./images/favicon.png" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
@@ -41,17 +41,63 @@
                     <div class="action pull-right">
 
                         <ul>
-                            <li><a id ="login" href="login.html"><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>
-                            <li><a id ="logout" href="userinfo/sessionOut"><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>
-                            <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>                                             
-                        </ul>   
-                                                               
+
+                            <li><a id ="login" href="login.html" ><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>
+                            <li><a id ="logout" href="userinfo/sessionOut" ><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>
+                            <li><a href="???"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+                            
+                        </ul>
+
                     </div>
                 </div>
               
             </div>
         </div>
     </div>
+
+    </div>
+
+<!-- Script -->
+	<script src="js/script.js"></script>
+
+	<script type="text/javascript">
+	
+	/*
+	 *	로그인 여부 체크
+	 */
+	$.ajax({
+	    url: 'userinfo/isLogin', // 요청 할 주소
+	    async: true, // false 일 경우 동기 요청으로 변경
+	    type: 'POST', // GET, PUT
+	    success: function(res) {
+	    	
+	    alert(res)
+
+	    const login_btn = document.getElementById('login_btn');
+		login_btn.innerHTML = '';
+	
+		const login = '<li><a id ="login" href="login.html" ><i class="fa fa-user" ></i>&nbsp로그인/회원가입</a></li>';
+		const logout = '<li><a id ="logout" href="userinfo/sessionOut" ><i class="fa fa-user" ></i>&nbsp로그아웃</a></li>';
+	    	
+			alert(login)
+			alert(logout)
+	    	if(res =! null) {	// 세션에 로그인 정보가 있을 경우
+    		// 로그아웃 버튼
+	    		login_btn.innerHTML = logout;
+	    		alert('로그인중');
+	    	} else {	// 없을 경우
+	    		// 로그인 버튼
+	    		login_btn.innerHTML = login;
+	    		alert('로그아웃 중');
+	    	}
+	    }, // 요청 완료 시
+	    error: function(err) {
+	    	console.log(err);
+	    } // 요청 실패.
+	});
+
+	</script>
+
 
 	<!-- 헤더 -->
     <div class="header">
@@ -231,7 +277,6 @@
         </div>
     </div>
 
-
 	<!-- jQuery Library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
@@ -241,12 +286,5 @@
 	<!-- Script -->
 	<script src="js/script.js"></script>
 
-	<script type="text/javascript">
-	function session(){
-	var value = "${usedId.usedId}";
-	
-	}
-	</script>
-	
 </body>
 </html>

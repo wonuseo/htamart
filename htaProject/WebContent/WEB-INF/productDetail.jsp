@@ -204,15 +204,16 @@
 
 					<hr>
 
-					<form action="${pageContext.request.contextPath}/purchase/final" method="post"> 
+					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="post"> 
                           <div class="font2">수량
                           	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" />
                           </div>
                           <br><br>
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
-                          <input type="hidden" id="u_id" name="u_id" value="id02">
-                          <button class="btn btn-outline-dark btn-lg font2" type="submit"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button"  onclick="cartAxios(${product.productId})"><i class="bi-cart-fill me-1"></i>장바구니</button>
+
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios()"><i class="bi-cart-fill me-1"></i>장바구니</button>
+
                     </form>
 
 				</div>
@@ -405,5 +406,25 @@
 	<!-- 이미지 클릭시 확대 관련 import  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+	
+	<script>
+
+	const direct_purchase = function(){
+		const conm = confirm('회원전용입니다.');
+		console.log(conm); }
+/*			
+		if() {
+			//바로구매
+			const f = document.getElementById('direct_purchase_form');
+			f.submit();	
+		} else {
+			//로그인페이지로 이동
+		location.href = 'home.html';
+		}	
+	}
+*/	
+
+	</script>
+	
 </body>
 </html>
