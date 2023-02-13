@@ -24,7 +24,7 @@ public class PurchaseController {
 	private ProductDAO productDAO;
 	
 	@PostMapping(value="/final")
-	public ModelAndView purchaseOne(@RequestParam(value = "p_id") String p_id, @RequestParam(value = "p_count") int p_count, HttpServletRequest request, HttpSession session) {
+	public ModelAndView purchaseOne(@RequestParam(value = "p_id") String p_id, @RequestParam(value = "p_count") int p_count, HttpServletRequest request,HttpSession session) {
 		Product product = productDAO.getOneProduct(p_id);
 		ModelAndView mv = new ModelAndView();
 		List<Product> productList = new ArrayList<Product>();
@@ -33,18 +33,7 @@ public class PurchaseController {
 		mv.addObject("count", p_count);
 		mv.setViewName("purchase");
 		
-		
-		System.out.println(session.getAttribute("userId"));
-		
-		if(session.getAttribute("userId") != null) {
-			mv.setViewName("purchase");
-			return mv;
-		}else {
-			
-			return mv;
-		}
-		
+		return mv;
 	}
-	
-	
 }
+	
