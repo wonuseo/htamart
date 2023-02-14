@@ -356,7 +356,6 @@
 								</div>
 							</div>
 							
-						
 					</c:forEach>
 					</c:when>
 					<c:otherwise>
@@ -367,7 +366,6 @@
 			</div>
 		</div>
 	</section>
-
 
 
 	<div class="footer">
@@ -432,25 +430,6 @@
 	<!-- 이미지 클릭시 확대 관련 import  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-	
-	<script>
-
-/* 	const direct_purchase = function(){
-		const conm = confirm('회원전용입니다.');
-		console.log(conm); } */
-/*			
-		if() {
-			//바로구매
-			const f = document.getElementById('direct_purchase_form');
-			f.submit();	
-		} else {
-			//로그인페이지로 이동
-		location.href = 'home.html';
-		}	
-	}
-*/	
-
-	</script>
-	
+		
 </body>
 </html>
