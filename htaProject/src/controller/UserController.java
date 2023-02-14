@@ -102,9 +102,16 @@ public class UserController<user> {
 	}
 	
 	
+//	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
+//	public String isLogin(Model model) throws Exception {
+//		String userId = (String) model.getAttribute("userId");
+//		
+//		return userId;
+//	}
+	
 	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
-	public String isLogin(Model model) throws Exception {
-		String userId = (String) model.getAttribute("userId");
+	public String isLogin(HttpSession session) throws Exception {
+		String userId = (String) session.getAttribute("userId");
 		
 		return userId;
 	}
