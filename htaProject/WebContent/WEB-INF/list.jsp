@@ -59,7 +59,7 @@
 
                         <ul>
 
-                            <li><a id="login_btn" href="login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
+                            <li><a id="login_btn" href="${pageContext.request.contextPath}/login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
 							<li><a id="logout_btn" href="${pageContext.request.contextPath}/userinfo/sessionOut"><i class="fa fa-user"></i>&nbsp로그아웃</a></li>
 							<li><a id="shoppingCart" href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
 

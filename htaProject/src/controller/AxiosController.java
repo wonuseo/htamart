@@ -15,7 +15,7 @@ import model.domain.entity.User;
 
 @RestController
 @RequestMapping("axios")
-public class axiosController {
+public class AxiosController {
 	
 	@Autowired
 	private ProductDAO productDAO;

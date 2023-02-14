@@ -13,6 +13,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="jquery-3.3.1.js"></script>
+	
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700%7CRaleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
@@ -20,14 +25,23 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	
+	<script>
+		$(document).ready(function(){
+		  var currentPosition = parseInt($(".quickmenu").css("top"));
+		  $(window).scroll(function() {
+		    var position = $(window).scrollTop(); 
+		    $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+		  });
+		});
+	</script>
+	
 <style>
 #logout_btn {
 	display: none;
 }
 </style>
-	
-</head>
 
+</head>
 
 <body onload="validLogin()">
 
@@ -218,6 +232,14 @@
                 </div>
             </div>
         </section>
+        
+        <div class="quickmenu">
+  			<ul>
+			    <li><a href="#">등급별혜택</a></li>
+			    <li><a href="#">1:1문의</a></li>
+			    <li><a href="#">후기</a></li>
+  			</ul>
+		</div>
         
                 <div class="shopping-process text-center">
 
