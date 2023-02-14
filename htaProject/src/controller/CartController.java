@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,8 +25,8 @@ public class CartController {
 	
 	@GetMapping(value="/showCart")
 	public ModelAndView getCartView(@RequestParam(value="userId") String userId) throws Exception {
-		List<Object[]> cartList = cartDAO.selectCart(userDAO.selectOneUser(userId));
 		ModelAndView mv = new ModelAndView();
+		List<Object[]> cartList = cartDAO.selectCart(userDAO.selectOneUser(userId));
 		
 		mv.addObject("cartList", cartList);
 		
@@ -35,11 +36,23 @@ public class CartController {
 	}
 	
 	@GetMapping(value="/delete")
-	public String deleteCart(@RequestParam(value="cNum") String cNum, @RequestParam(value="userId") String userId, RedirectAttributes ra) {
+	public String deleteCart(@RequestParam(value="cNum") String cNum, 
+							 @RequestParam(value="userId") String userId, RedirectAttributes ra) throws Exception {
 		cartDAO.deleteCart(cNum);
 		
 		ra.addAttribute("userId", userId);
 		
 		return "redirect:/shoppingCart/showCart";
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("errorMessage", e.getMessage());
+		mv.setViewName("error");
+		
+		return mv;	
+	}
+	
 }

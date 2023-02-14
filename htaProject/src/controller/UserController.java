@@ -1,9 +1,8 @@
 package controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,15 +26,10 @@ public class UserController<user> {
 	@PostMapping(value = "/createUser", produces = "application/json;charset=utf-8")
 	public ModelAndView createUser(User user) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		boolean check = userDAO.checkId(user.getUserId());
-
-		if (check == true) {
-			userDAO.createUser(user);
-			mv.setViewName("redirect:/login.html");
-		} else {
-			mv.addObject("errorMessage", "이미 존재하는 아이디입니다.");
-			mv.setViewName("error");
-		}
+	
+		userDAO.createUser(user);
+		mv.setViewName("redirect:/login.html");
+			
 		return mv;
 	}
 	
@@ -56,8 +50,7 @@ public class UserController<user> {
 	
 
 //	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public ModelAndView login(@RequestParam String userId1, @RequestParam String userPassword1, HttpSession session)
-//			throws Exception {
+//	public ModelAndView login(@RequestParam String userId1, @RequestParam String userPassword1, HttpSession session) throws Exception {
 //
 //		ModelAndView mv = new ModelAndView();
 //		session.setAttribute("userId", userId1);
@@ -67,27 +60,21 @@ public class UserController<user> {
 //	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam String userId1, @RequestParam String userPassword1, Model model)
-			throws Exception {
-		
-		
+	public ModelAndView login(@RequestParam String userId1, @RequestParam String userPassword1) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		model.addAttribute("userId", userId1);
+		
+		mv.addObject("userId", userId1);
 		mv.setViewName("redirect:/homepage.html");
-
+		
 		return mv;
 	}
 
 	@RequestMapping(value = "/sessionOut", method = RequestMethod.GET)
-	public ModelAndView sessionOut(SessionStatus status, HttpSession session) throws Exception {
-
+	public ModelAndView sessionOut(SessionStatus status) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		status.setComplete();
 		status = null;
-		
-		session.removeAttribute("userId");
 
-		ModelAndView mv = new ModelAndView();
-		
 		mv.setViewName("redirect:/userinfo/refresh");
 
 		return mv;
@@ -96,24 +83,38 @@ public class UserController<user> {
 	@RequestMapping(value = "/refresh", method = RequestMethod.GET)
 	public ModelAndView refresh() throws Exception { 
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("redirect:/homepage.html");
 		
 		return mv;
 	}
 	
 	
-//	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
-//	public String isLogin(Model model) throws Exception {
-//		String userId = (String) model.getAttribute("userId");
-//		
-//		return userId;
-//	}
-	
 	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
-	public String isLogin(HttpSession session) throws Exception {
-		String userId = (String) session.getAttribute("userId");
+	public String isLogin(Model model) throws Exception {
+		
+		String userId = (String) model.getAttribute("userId");
 		
 		return userId;
 	}
+	
+//	@RequestMapping(value = "/isLogin", method = RequestMethod.POST)
+//	public String isLogin(HttpSession session) throws Exception {
+//		String userId = (String) session.getAttribute("userId");
+//		
+//		return userId;
+//	}
 
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("errorMessage", e.getMessage());
+		mv.setViewName("error");
+		
+		return mv;	
+	}
+	
+	
 }
+
