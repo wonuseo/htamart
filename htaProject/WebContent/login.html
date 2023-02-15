@@ -3,20 +3,18 @@
 <head>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <meta charset="UTF-8">
-<title>login.html</title>
+
+<title>로그인</title>
+
 	<link rel="stylesheet" href="css/login.css">
+	<link rel="icon" href="assets/favicon.png"/>
 	
 	<!-- w3 버튼 -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
-	<!-- 비동기 -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-	
 </head>
 
 <body>
-
 
 	<div id="container" class="container">
 		<!-- FORM SECTION -->
@@ -30,7 +28,7 @@
 						<div class="input-group">
 							<i class='bx bxs-user'></i>
 							 <input type="text" id="userId" name="userId" placeholder="아이디"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
-							 <p><button class="w3-button w3-black w3-round-small" onclick="dedupId()">아이디 중복 확인</button></p>
+							 <p ><button class="w3-button w3-black w3-round-small" onclick="dedupId()">아이디 중복 확인</button></p>
 						</div>
 						
 						<div class="input-group">
@@ -52,7 +50,7 @@
 							<i class='bx bx-address'></i>
 							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
 						</div>
-							 <button type="submit" id="submit" class="w3-button w3-gredn w3-round-small" disabled>회원가입</button>
+							 <button type="submit" id="submit" class="w3-button w3-gredn w3-round-small" disabled onclick="alert('회원가입 되셨습니다')">회원가입</button>
 					</form>
 						
 						<p>
@@ -63,45 +61,7 @@
 				</div>
 			</div>
 			<!-- END SIGN UP -->
-<script>
-	function dedupId() {
-		axios.post('userinfo/dedupId', {}, {
-			params : {
-				u_id : document.getElementById("userId").value
-			}
-		})
-		 .then(function (resData) {
-			 validate(resData['data']);
-		 })
-	}
-	
-	function validate(val) {
-		if(val == true) {
-			alert('사용가능한 아이디 입니다.')
-			document.getElementById("submit").disabled=false;
-			document.getElementById("userId").readOnly=true;
-		}else {
-			alert('이미 존재하는 아이디 입니다.');
-		}
-	}
-	
-	function login(obj) {
-		axios.post('userinfo/validateUser', {}, {
-			params : {
-				userId : document.getElementById("userId1").value,
-				userPassword : document.getElementById("userPassword1").value
-			}
-		})
-		 .then(function (resData) {
-			 if(resData['data'] == true) {
-				 obj.submit();
-			 }else{
-				 alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
-			 }
-		 })
-	}
-	
-</script>
+
 			<!-- SIGN IN -->
 			<div class="col align-items-center flex-col sign-in">
 				<div class="form-wrapper align-items-center">
@@ -155,6 +115,56 @@
 		<!-- END CONTENT SECTION -->
 	</div>
 
-<script src="js/login.js"></script>
+	<script src="js/login.js"></script>
+
+	<!-- 비동기 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	
+	<script>
+	function dedupId() {
+		axios.post('userinfo/dedupId', {}, {
+			params : {
+				u_id : document.getElementById("userId").value
+			}
+		})
+		 .then(function (resData) {
+			 validate(resData['data']);
+		 })
+	}
+	
+	function validate(val) {
+		const userId = document.getElementById("userId").value;
+		
+		if(userId == ""){
+			alert('아이디를 입력하세요');
+			return;
+		}else if(val == true) {
+			alert('사용가능한 아이디 입니다.')
+			document.getElementById("submit").disabled=false;
+			document.getElementById("userId").readOnly=true;
+			
+		}else {
+			alert('이미 존재하는 아이디 입니다.');
+		}
+	}
+	
+	function login(obj) {
+		axios.post('userinfo/validateUser', {}, {
+			params : {
+				userId : document.getElementById("userId1").value,
+				userPassword : document.getElementById("userPassword1").value
+			}
+		})
+		 .then(function (resData) {
+			 if(resData['data'] == true) {
+				 obj.submit();
+			 }else{
+				 alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
+			 }
+		 })
+	}
+	
+</script>
 </body>
 </html>

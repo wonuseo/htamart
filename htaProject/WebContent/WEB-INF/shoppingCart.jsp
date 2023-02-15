@@ -13,7 +13,6 @@
 	<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.39215" />
 	<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.39215" />
 	
-	
 	<script src="https://cdn01.jotfor.ms/static/prototype.forms.js?3.3.39215" type="text/javascript"></script>
 	<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.39215" type="text/javascript"></script>
 	<script src="https://cdn03.jotfor.ms/js/vendor/math-processor.js?v=3.3.39215" type="text/javascript"></script>

@@ -7,9 +7,11 @@
 <title>오류 발생</title>
 </head>
 <body>
+
 <script type="text/javascript">
 	alert('${errorMessage}');
 	history.back();
 </script>
+
 </body>
 </html>
