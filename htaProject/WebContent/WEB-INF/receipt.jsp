@@ -64,9 +64,9 @@
 		<li id="cid_1" class="form-input-wide" data-type="control_head">
           <div class="form-header-group  header-large">
             <div class="header-text httal htvam">
-                  주문자 : --${name}--<br>
-		전화번호 : --${tel}--<br>
-		주소 : --${address}--<br></h1>
+                  주문자 : ${name}<br>
+		전화번호 : ${tel}<br>
+		주소 : ${address}<br></h1>
             </div>
           </div>
         </li>

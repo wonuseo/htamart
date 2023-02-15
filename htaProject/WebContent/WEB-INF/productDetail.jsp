@@ -178,10 +178,9 @@ a {text-decoration:none;}
 				<!-- 네비게이션 바 오른쪽 클릭 + 하이퍼링크 -->
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="???">신상품</a></li>
-						<li><a href="???">이벤트</a></li>
-						<li><a href="???">회사 소개</a></li>
-						<li><a href="???">문의 하기</a></li>
+					
+						<li><a href="https://www.jhta.co.kr/main">회사 소개</a></li>
+						
 					</ul>
 				</div>
 
@@ -333,10 +332,22 @@ a {text-decoration:none;}
 		</div>
 	</section>
 
+	<!-- 최하단 푸터 -->
 	<div class="footer">
 		<div class="container">
 			<div class="row">
-
+				<div class="col-md-3 col-sm-3">
+					<div class="single-widget">
+						<h2 class="widget-title">About Us</h2>
+						<div class="widget-inner">
+							<p>서울특별시 종로구 율곡로10길 105 디아망 4F(봉익동 10-1 디아망 4F)</p>
+							<p>TEL : 070-8240-3211~3</p>
+							<p>FAX : 02-777-5407</p>
+							<p>Email: htamall@google.com</p>
+							<img src="images/payment.png" alt="we accept">
+						</div>
+					</div>
+				</div>
 				<div class="col-md-3 col-sm-3">
 					<div class="single-widget">
 						<h2 class="widget-title">Team Member</h2>
@@ -347,7 +358,7 @@ a {text-decoration:none;}
 							<p>Junsu Lee </p>
 							<p>Sung hwan Cho </p>
 							<p>Sung min Cho </p>
-							<p>Won jun Jung </p>										
+							<p>Won jun Jung </p>											
 						</div>
 					</div>
 				</div>

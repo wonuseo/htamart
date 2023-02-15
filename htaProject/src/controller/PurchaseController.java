@@ -40,7 +40,7 @@ public class PurchaseController {
 
 		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("userId") == null) {
-			model.addAttribute("errorMessage", "회원 전용 입니다.");
+			mv.addObject("errorMessage", "회원 전용 입니다.");
 			mv.setViewName("error");
 		} else {
 			Product product = productDAO.getOneProduct(productId);
