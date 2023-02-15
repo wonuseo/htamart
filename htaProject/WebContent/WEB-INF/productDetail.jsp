@@ -339,42 +339,29 @@ a {text-decoration:none;}
 
 				<div class="col-md-3 col-sm-3">
 					<div class="single-widget">
-						<h2 class="widget-title">About Us</h2>
+						<h2 class="widget-title">Team Member</h2>
 						<div class="widget-inner">
-							<p>서울특별시 종로구 율곡로10길 105 디아망 4F(봉익동 10-1 디아망 4F)</p>
-							<p>TEL : 070-8240-3211~3</p>
-							<p>FAX : 02-777-5407</p>
-							<p>Email: htamall@google.com</p>
-							<img src="../images/payment.png" alt="we accept">
+							<p>Joo young Kim</p>
+							<p>Han byeol Kim </p>
+							<p>Won woo Seo </p>
+							<p>Junsu Lee </p>
+							<p>Sung hwan Cho </p>
+							<p>Sung min Cho </p>
+							<p>Won jun Jung </p>										
 						</div>
 					</div>
 				</div>
-
 				<div class="col-md-3 col-sm-3">
 					<div class="single-widget">
-						<h2 class="widget-title">Information</h2>
-						<div class="widget-inner">
-							<ul>
-								<li><a href="???">Frequently Asked Question</a></li>
-							</ul>
+						<h2 class="widget-title">Introduction</h2>
+						<div class="widget-inner">						
+							<p>The purpose of our team is to improve individual abilities. 
+							It's ironic that we teamed up to improve our individual abilities,
+							but this was definitely a great opportunity for us and we did our best. 
+							Thank you for visiting.</p>							
 						</div>
 					</div>
 				</div>
-
-				<div class="col-md-3 col-sm-3">
-					<div class="single-widget">
-						<h2 class="widget-title">Customer Care</h2>
-						<div class="widget-inner">
-							<ul>
-								<li><a href="???">Contact Us</a></li>
-								<li><a href="???">Sitemap</a></li>
-								<li><a href="???">Gift Vouchers</a></li>
-								<li><a href="???">Live Chat 24x7</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>
