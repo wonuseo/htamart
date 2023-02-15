@@ -10,10 +10,6 @@
 	<link rel="icon" href="../assets/favicon.png"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	
-	<!-- 비동기 -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
@@ -24,9 +20,6 @@
     
 	<!-- 리스트 템플릿 css-->
     <link href="../css/liststyles.css" rel="stylesheet" />
-    
-    <!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     
     <!-- 이미지 클릭시 확대 관련 import  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
@@ -76,7 +69,7 @@ a {text-decoration:none;}
 
                             <li><a id="login_btn" href="${pageContext.request.contextPath}/login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
 							<li><a id="logout_btn" href="${pageContext.request.contextPath}/userinfo/sessionOut"><i class="fa fa-user"></i>&nbsp로그아웃</a></li>
-							<li><a id="shoppingCart" href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+							<li><a id="shoppingCart" href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId}"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
 
                         </ul>
                     </div>
@@ -86,25 +79,6 @@ a {text-decoration:none;}
         </div>
     </div>
     
-    
-<script type="text/javascript">
-    function validLogin(){
-		axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
-		})
-		 .then(function (resData) {
-			 valid(resData['data']);
-		 })
-	}
-	
-	function valid(userId) {
-		if(userId == '' || userId.length == 0) {
-		}else{
-			document.getElementById("logout_btn").style.display="block";
-			document.getElementById("login_btn").style.display="none";
-		}
-	}
-</script>
-
 	<!-- 헤더 -->
     <div class="header">
         <div class="container">
@@ -121,7 +95,6 @@ a {text-decoration:none;}
                 <div class="col-md-7 col-sm-5">
                     <div class="search-form">
                         <form action="${pageContext.request.contextPath}/SearchController/productsearch" class="navbar-form" role="search">
-                        		<!-- action="${pageContext.request.contextPath}/SearchController/productsearch" or action="../SearchController/productsearch" -->
                             <div class="form-group">
                               <input type="text" name="keyword" class="form-control" placeholder="상품 검색">
                             </div>
@@ -195,7 +168,6 @@ a {text-decoration:none;}
         </nav>
     </div>
     
-    
     <div class="List">
 		<!-- Section-->
         <section class="py-5">
@@ -221,9 +193,10 @@ a {text-decoration:none;}
 		                                <div class="text-center">
 		                                
 		                                    <!-- Product name-->
+		                                    <!-- 조건문 사용해서 해당 상품이 품절 or준비 중이면 자바스크립트 알림창으로 못넘어가게 제어 | 구매 가능이면 링크타고 넘어가게 제어 -->
 		                                    <c:choose>
 												<c:when test="${pvo.productStock == 'y'}">
-													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.productId}" > <!-- 조건문 사용해서 해당 상품이 품절 or준비 중이면 자바스크립트 알림창으로 못넘어가게 제어 | 구매 가능이면 링크타고 넘어가게 제어 -->
+													<a class="a font2" href="${pageContext.request.contextPath}/productView/details?p_id=${pvo.productId}" > 
 		                                    	 		<h4 class="fw-bolder">${pvo.productName}</h4> 
 		                                    		</a>
 												</c:when>
@@ -357,6 +330,31 @@ a {text-decoration:none;}
 		  });
 		});
 	</script>
+	
+	<script type="text/javascript">
+	    function validLogin(){
+			axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
+			})
+			 .then(function (resData) {
+				 valid(resData['data']);
+			 })
+		}
+		
+		function valid(userId) {
+			if(userId == '' || userId.length == 0) {
+			}else{
+				document.getElementById("logout_btn").style.display="block";
+				document.getElementById("login_btn").style.display="none";
+			}
+		}
+	</script>
+	
+	<!-- 비동기 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	
+    <!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	
 </body>
 

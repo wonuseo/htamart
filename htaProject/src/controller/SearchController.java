@@ -23,12 +23,11 @@ public class SearchController {
 		
 		if(keyword != null && keyword.length() != 0) {
 			mv.addObject("productallData", productdao.findElement(keyword));
-			
 		} else {
 			mv.addObject("productallData");
 		}
-		
 		mv.setViewName("list");
+		
 		return mv;  
 	}
 		

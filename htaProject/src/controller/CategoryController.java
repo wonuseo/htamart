@@ -23,8 +23,8 @@ public class CategoryController {
 	@GetMapping(value = "/list")
 	public ModelAndView getCategory(@RequestParam("cat") String cat) throws Exception{
 		ModelAndView mv= new ModelAndView();
-		String c_id = "";
 		
+		String c_id = null;
 		if(cat.equals("fruit")) {
 			c_id = "1";
 		}else if (cat.equals("vegetable")){
@@ -37,10 +37,6 @@ public class CategoryController {
 		
 		List<Product> all = dao.getAllProduct(c_id);
 		
-		for(Product p : all) {
-			System.out.println(p.getProductId());
-		}
-
 		mv.addObject("productallData", all);
 		mv.setViewName("list");
 		

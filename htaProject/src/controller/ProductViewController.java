@@ -24,6 +24,7 @@ public class ProductViewController {
 	@GetMapping(value="/details")
 	public ModelAndView productView(@RequestParam(value = "p_id") String p_id) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
 		Product product = productDao.getOneProduct(p_id);
 		Category category = product.getCategory();
 		

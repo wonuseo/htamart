@@ -32,7 +32,7 @@ public class AxiosController {
 
 		boolean result = false;
 		if (userId == null || userId.length() == 0) {
-
+			result = false;
 		} else {
 			User user = userDAO.selectOneUser(userId);
 			Product product = productDAO.getOneProduct(productId);
@@ -45,15 +45,15 @@ public class AxiosController {
 		}
 		return result;
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleException(Exception e) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		mv.addObject("errorMessage", e.getMessage());
 		mv.setViewName("error");
-		
-		return mv;	
+
+		return mv;
 	}
-	
+
 }

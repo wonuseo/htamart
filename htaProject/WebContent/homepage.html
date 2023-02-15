@@ -3,22 +3,15 @@
 <head>
 <meta charset="UTF-8">
 
-<title>test homepage hta market</title>
+<title>Hta Mall</title>
 
-	<script src="js/jquery.js"></script>
 	<link rel="icon" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
-	<!-- 비동기 -->
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-	
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	
 	<!-- Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700%7CRaleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
+	
 	<!-- 기본 홈페이지 템플릿 css -->
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
@@ -52,14 +45,10 @@ a {text-decoration:none;}
 				<div class="col-md-6">
 					<div class="social pull-left">
 						<ul>
-							<li><a href="https://www.facebook.com" target="_blank"><i
-									class="fa fa-facebook"></i></a></li>
-							<li><a href="https://www.twitter.com" target="_blank"><i
-									class="fa fa-twitter"></i></a></li>
-							<li><a href="https://www.google.com" target="_blank"><i
-									class="fa fa-google-plus"></i></a></li>
-							<li><a href="https://www.naver.com" target="_blank"><i
-									class="fa fa-linkedin"></i></a></li>
+							<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://www.google.com" target="_blank"><i	class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.naver.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -75,36 +64,6 @@ a {text-decoration:none;}
 			</div>
 		</div>
 	</div>
-	
-	<script type="text/javascript">
-		function validLogin(){
-			axios.post('userinfo/isLogin', {}, {
-			})
-			 .then(function (resData) {
-				 valid(resData['data']);
-			 })
-		}
-		
-		function valid(userId) {
-			if(userId == '' || userId.length == 0) {
-			}else{
-				document.getElementById("logout_btn").style.display="block";
-				document.getElementById("login_btn").style.display="none";
-			}
-		}
-		
-		function shoppingCart() {
-			axios.post('userinfo/isLogin', {}, {
-			})
-			 .then(function (resData) {
-				 if(resData['data'] == null || resData['data'].length == 0) {
-					 alert('회원 전용입니다');
-				 }else{
-					 window.location = "shoppingCart/showCart?userId=" + resData['data'];
-				 }
-			 })
-		}
-	</script>
 	
 	<!-- 헤더 -->
 	<div class="header">
@@ -306,7 +265,8 @@ a {text-decoration:none;}
         </div>
 
     </div>
-        
+    
+        <!-- sticky -->
          <div class="quickmenu">
   			<ul>
 			    <li><a href="#">등급별혜택</a></li>
@@ -327,8 +287,6 @@ a {text-decoration:none;}
 
                     <li><a href="#best-seller" data-toggle="tab">hta마트 BEST</a></li>
                    
-                    <!-- <li class="pull-right collection-url"><a href="">View All <i class="fa fa-long-arrow-right"></i></a></li> -->
-					
                 </ul>
 
                 <div class="tab-content">
@@ -361,10 +319,6 @@ a {text-decoration:none;}
                                         <ul>
 
                                             <li><a href="productView/details?p_id=3005"><i class="fa fa-cart-arrow-down"></i></a></li>
-
-                                           <!--  <li><a href=""><i class="fa fa-arrows-h"></i></a></li>
-
-                                            <li><a href=""><i class="fa fa-heart-o"></i></a></li> -->
 
                                         </ul>
 
@@ -664,7 +618,7 @@ a {text-decoration:none;}
 						<h2 class="widget-title">Information</h2>
 						<div class="widget-inner">
 							<ul>
-								<li><a href="???">Frequently Asked Question</a></li>
+								<li>Frequently Asked Question</li>
 							</ul>
 						</div>
 					</div>
@@ -674,10 +628,10 @@ a {text-decoration:none;}
 						<h2 class="widget-title">Customer Care</h2>
 						<div class="widget-inner">
 							<ul>
-								<li><a href="???">Contact Us</a></li>
-								<li><a href="???">Sitemap</a></li>
-								<li><a href="???">Gift Vouchers</a></li>
-								<li><a href="???">Live Chat 24x7</a></li>
+								<li>Contact Us</li>
+								<li>Sitemap</li>
+								<li>Gift Vouchers</li>
+								<li>Live Chat 24x7</li>
 							</ul>
 						</div>
 					</div>
@@ -696,13 +650,20 @@ a {text-decoration:none;}
 	</div>
 		
 	<!-- jQuery Library -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		
 	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		
 	<!-- Script -->
 	<script src="js/script.js"></script>
+	
+	<!-- 비동기 -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	
 	<script>
 		$(document).ready(function(){
@@ -714,6 +675,35 @@ a {text-decoration:none;}
 		});
 	</script>
 	
+	<script type="text/javascript">
+		function validLogin(){
+			axios.post('userinfo/isLogin', {}, {
+			})
+			 .then(function (resData) {
+				 valid(resData['data']);
+			 })
+		}
+		
+		function valid(userId) {
+			if(userId == '' || userId.length == 0) {
+			}else{
+				document.getElementById("logout_btn").style.display="block";
+				document.getElementById("login_btn").style.display="none";
+			}
+		}
+		
+		function shoppingCart() {
+			axios.post('userinfo/isLogin', {}, {
+			})
+			 .then(function (resData) {
+				 if(resData['data'] == null || resData['data'].length == 0) {
+					 alert('회원 전용입니다');
+				 }else{
+					 window.location = "shoppingCart/showCart?userId=" + resData['data'];
+				 }
+			 })
+		}
+	</script>
 </body>
 
 </html>

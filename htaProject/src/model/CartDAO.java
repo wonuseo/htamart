@@ -8,7 +8,6 @@ import javax.persistence.EntityTransaction;
 import org.springframework.stereotype.Repository;
 
 import model.domain.entity.Cart;
-import model.domain.entity.Product;
 import model.domain.entity.User;
 import util.DBUtil;
 
@@ -25,23 +24,23 @@ public class CartDAO {
 			em.persist(cart);
 
 			tx.commit();
-			
 		} finally {
 			em.close();
 		}
 	}
 
 	public List<Object[]> selectCart(User user) throws Exception {
-		EntityManager em = DBUtil.getEntityManager();		
-		String sql = "select p, c.productCount, c.user, c.cNum from Cart c, Product p where c.product = p.productId and c.user = :user";
-		List<Object[]> all = null;
+		EntityManager em = DBUtil.getEntityManager();
 		
+		List<Object[]> all = null;
 		try {
-			all = em.createQuery(sql).setParameter("user", user).getResultList();
-			
+			all = em.createQuery("select p, c.productCount, c.user, c.cNum from Cart c, Product p where c.product = p.productId and c.user = :user")
+					.setParameter("user", user)
+					.getResultList();
 		} finally {
 			em.close();
 		}
+		
 		return all;
 	}
 	
@@ -49,9 +48,7 @@ public class CartDAO {
 	public Cart selectCartNum(int cNum) {
 		EntityManager em = DBUtil.getEntityManager();
 		
-		String sql = "select c from Cart c where c.cNum = :cNum";
-		
-		Cart cart = (Cart) em.createQuery(sql)
+		Cart cart = (Cart) em.createQuery("select c from Cart c where c.cNum = :cNum")
 				.setParameter("cNum", cNum)
 				.getSingleResult();
 		
@@ -60,18 +57,17 @@ public class CartDAO {
 	
 	
 	public void deleteCart(String cNum) throws Exception {
-
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();		
-		String sql = "delete from Cart c where c.cNum = :cNum";
 		
 		try {
 			tx.begin();
 
-			em.createQuery(sql).setParameter("cNum", Integer.parseInt(cNum)).executeUpdate();
+			em.createQuery("delete from Cart c where c.cNum = :cNum")
+			.setParameter("cNum", Integer.parseInt(cNum))
+			.executeUpdate();
 
 			tx.commit();
-			
 		} finally {
 			em.close();
 		}

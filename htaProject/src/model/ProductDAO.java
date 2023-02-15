@@ -9,27 +9,52 @@ import model.domain.entity.Product;
 import util.DBUtil;
 @Repository
 public class ProductDAO {
+	
 	public List<Product> findElement(String keyword) {
 		EntityManager em = DBUtil.getEntityManager();
-		List<Product> all = em.createQuery("select p from Product p where p.productName like '%" + keyword + "%' ")
-				.getResultList();
+		
+		List<Product> all = null;
+		
+		try {
+			all = em.createQuery("select p from Product p where p.productName like '%" + keyword + "%' ")
+					.getResultList();
+		} finally {
+			em.close();
+		}
+		
 		return all;
 	}
 	
 	public List<Product> getAllProduct(String c_id) {
 		EntityManager em = DBUtil.getEntityManager();
+		
 		Category c = new Category();
 		c.setCategoryId(c_id);
-		String sql = "select p from Product p where p.category = :category";
-		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
-		em.close();
+		
+		List<Product> all = null;
+		try {
+			all = em.createQuery("select p from Product p where p.category = :category")
+					.setParameter("category", c)
+					.getResultList();
+		}finally {
+			em.close();
+		}
+		
 		return all;
 	}
 	
 	public Product getOneProduct(String p_id) {
 		EntityManager em = DBUtil.getEntityManager();
-		String sql = "select p from Product p where p.productId = :p_id";
-		Product product = (Product) em.createQuery(sql).setParameter("p_id", p_id).getSingleResult();
+		
+		Product product = null;
+		try {
+			product = (Product) em.createQuery("select p from Product p where p.productId = :p_id")
+					.setParameter("p_id", p_id)
+					.getSingleResult();
+		}finally {
+			em.close();
+		}
+		
 		return product;
 	}
 	
@@ -37,30 +62,24 @@ public class ProductDAO {
 		EntityManager em = DBUtil.getEntityManager();
 		
 		Category c = new Category();
-		
 		c.setCategoryId(c_id);
-		String sql = "select p from Product p where p.category = :category";
-		List<Product> all = em.createQuery(sql).setParameter("category", c).getResultList();
 		
-		for(int i=0; i<all.size(); i++) {
-			if(all.get(i).getProductId().equals(p_id)) {
-				all.remove(i);
-			}
-		}
-		return all;
-	}
-	
-	public void insertCart(String p_id, int count) {
-		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		
+		List<Product> all = null;
 		try {
-			tx.begin();
+			all = em.createQuery("select p from Product p where p.category = :category")
+					.setParameter("category", c)
+					.getResultList();
 			
+			for(int i=0; i<all.size(); i++) {
+				if(all.get(i).getProductId().equals(p_id)) {
+					all.remove(i);
+				}
+			}
 			
-		} finally {
+		}finally {
 			em.close();
 		}
+		
+		return all;
 	}
-	
 }
