@@ -216,7 +216,7 @@ a {text-decoration:none;}
 
 					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="get"> 
                           <div class="font2">수량
-                          	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" />
+                          	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" onchange="checkValue()" />
                           </div>
                           <br><br>
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId}">
@@ -464,6 +464,18 @@ a {text-decoration:none;}
 			 })
 		}
 	</script>	
+	
+	<script>
+		function checkValue() {
+		  var input = document.getElementById("p_count");
+		  var value = parseInt(input.value);
+	
+		  if (value < 1 || value > 5) {
+		    alert("수량은 1에서 5 사이어야 합니다.");
+		    input.value = 1;
+		  }
+		}
+	</script>
 	
 	<!-- 비동기 axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
