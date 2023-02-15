@@ -59,58 +59,66 @@ public class PurchaseController {
 		return mv;
 	}
 
-		@PostMapping(value = "/final2")
-		public ModelAndView purchaseCart(@RequestParam(value = "p_id") List<String> productId,
-				@RequestParam(value = "p_count") List<String> productCount, @RequestParam(value = "cNum") List<String> cNum,
-				@RequestParam(value = "u_id") String userId) throws Exception {
+	@PostMapping(value = "/final2")
+	public ModelAndView purchaseCart(@RequestParam(value = "p_id") List<String> productId,
+			@RequestParam(value = "p_count") List<String> productCount, @RequestParam(value = "cNum") List<String> cNum,
+			@RequestParam(value = "u_id") String userId) throws Exception {
 
-			ModelAndView mv = new ModelAndView();
-			User user = userDAO.selectOneUser(userId);
-			List<Product> productList = new ArrayList<Product>();
+		ModelAndView mv = new ModelAndView();
+		User user = userDAO.selectOneUser(userId);
+		List<Product> productList = new ArrayList<Product>();
 
-			for (int i = 0; i < productId.size(); i++) {
-				Product product = productDAO.getOneProduct(productId.get(i));
-				productList.add(product);
-			}
-			mv.addObject("product", productList);
-			mv.addObject("count", productCount);
-			mv.addObject("cNum", cNum);
-			mv.addObject("user", user);
-
-			mv.setViewName("purchase");
-
-			return mv;
+		for (int i = 0; i < productId.size(); i++) {
+			Product product = productDAO.getOneProduct(productId.get(i));
+			productList.add(product);
 		}
+		mv.addObject("product", productList);
+		mv.addObject("count", productCount);
+		mv.addObject("cNum", cNum);
+		mv.addObject("user", user);
 
-		@PostMapping(value = "/receipt")
-		public ModelAndView receipt(@RequestParam(value = "name") String name, @RequestParam(value = "tel") String tel,
-				@RequestParam(value = "address") String address, @RequestParam(value = "cNum") List<String> cartNum) throws Exception {
-			ModelAndView mv = new ModelAndView();
-			
-			mv.addObject("name", name);
-			mv.addObject("tel", tel);
-			mv.addObject("address", address);
-			
+		mv.setViewName("purchase");
+
+		return mv;
+	}
+
+	@PostMapping(value = "/receipt")
+	public ModelAndView receipt(@RequestParam(value = "name") String name, @RequestParam(value = "tel") String tel,
+			@RequestParam(value = "address") String address, @RequestParam(value = "cNum") List<String> cartNum,
+			@RequestParam(value = "p_id") String productNum, @RequestParam(value = "count") String count) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("name", name);
+		mv.addObject("tel", tel);
+		mv.addObject("address", address);
+		
+		if(cartNum.size() == 0) {
+			mv.addObject("product", productDAO.getOneProduct(productNum));
+			mv.addObject("count", count);
+			mv.addObject("type", "one");
+		} else {
 			List<Cart> cartList = new ArrayList<Cart>();
-			for(String s : cartNum) {
+			for (String s : cartNum) {
 				cartList.add(cartDAO.selectCartNum(Integer.parseInt(s)));
 				cartDAO.deleteCart(s);
 			}
-			mv.addObject("cartList", cartList);
-			
-			mv.setViewName("receipt");
-			
-			return mv;
+			mv.addObject("receipt", cartList);
+			mv.addObject("type", "cart");
 		}
 
-		@ExceptionHandler(Exception.class)
-		public ModelAndView handleException(Exception e) {
-			ModelAndView mv = new ModelAndView();
-			
-			mv.addObject("errorMessage", e.getMessage());
-			mv.setViewName("error");
-			
-			return mv;	
-		}
+		mv.setViewName("receipt");
+
+		return mv;
+	}
+
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("errorMessage", e.getMessage());
+		mv.setViewName("error");
+
+		return mv;
+	}
 
 }

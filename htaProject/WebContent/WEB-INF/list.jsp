@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <title>list</title>
 
-	<link rel="icon" href="../assets/favicon.png"/>
+	<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.png"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	
 	<!-- Google Font -->
@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
 	
 	<!-- 기본 홈페이지 템플릿 css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css">
     
 	<!-- 리스트 템플릿 css-->
-    <link href="../css/liststyles.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/css/liststyles.css" rel="stylesheet" />
     
     <!-- 이미지 클릭시 확대 관련 import  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
@@ -87,7 +87,7 @@ a {text-decoration:none;}
                 <div class="col-md-3 col-sm-4">
 
                     <div class="logo">
-                        <a href="${pageContext.request.contextPath}/homepage.html"><img src="../images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
+                        <a href="${pageContext.request.contextPath}/homepage.html"><img src="${pageContext.request.contextPath}/images/HTAlogo.png" alt="Orani E-shop" style="width:60%;height:auto;"></a>
 
                     </div>
                 </div>
@@ -264,7 +264,7 @@ a {text-decoration:none;}
                             <p>TEL : 070-8240-3211~3</p>
                             <p>FAX : 02-777-5407</p>
                             <p>Email: htamall@google.com</p>
-                            <img src="../images/payment.png" alt="we accept">
+                            <img src="${pageContext.request.contextPath}/images/payment.png" alt="we accept">
                         </div>
                     </div>
                 </div>
@@ -314,8 +314,8 @@ a {text-decoration:none;}
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 	<!-- Script -->
-	<script src="../js/script.js"></script>
-	<script src="../js/scripts.js"></script> 
+	<script src="${pageContext.request.contextPath}/js/script.js"></script>
+	<script src="${pageContext.request.contextPath}/js/scripts.js"></script> 
 	
 	<!-- 이미지 클릭시 확대 관련 import  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

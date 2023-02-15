@@ -431,10 +431,10 @@ a {text-decoration:none;}
 				document.getElementById("login_btn").style.display="none";
 			}
 		}
-</script>
+	</script>
 
-<!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
-<script>
+	<!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
+	<script>
 		function cartAxios(productId, userId) {
 			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
 				params : {
@@ -463,8 +463,7 @@ a {text-decoration:none;}
 				 }
 			 })
 		}
-		
-</script>	
+	</script>	
 	
 	<!-- 비동기 axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

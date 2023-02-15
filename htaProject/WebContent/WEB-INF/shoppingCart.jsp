@@ -9,15 +9,16 @@
 <title>장바구니</title>
 
 	<style type="text/css">@media print{.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
-	
 	<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251"/>
 	<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.39215" />
 	<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.39215" />
 	
-	<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.png"/>
+	<script src="https://cdn01.jotfor.ms/static/prototype.forms.js?3.3.39215" type="text/javascript"></script>
+	<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.39215" type="text/javascript"></script>
+	<script src="https://cdn03.jotfor.ms/js/vendor/math-processor.js?v=3.3.39215" type="text/javascript"></script>
 	
 	<!-- 기본 템플릿 css -->
-	<link href="${pageContext.request.contextPath}/css/cartstyle.css" rel="stylesheet" />
+	<link href="../css/cartstyle.css" rel="stylesheet" />
 	
 	<!-- 비동기 axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -47,7 +48,7 @@
 </head>
 <body onload="cartSize()">
 
-  <!--form 태그 시작-->
+	<!--form 태그 시작-->
   <form class="jotform-form" action="${pageContext.request.contextPath}/purchase/final2" method="post" name="???" id="???" accept-charset="utf-8" autocomplete="on">
   
   	<input type="hidden" name="formID" value="230399113274455" />
@@ -104,18 +105,18 @@
                       				<div for="input_23_1000" class="form-product-container">
                         				<span data-wrapper-react="true">
                           				<div class="title_description">
-				                            <span class="form-product-name" id="product-name-input_23_1000">${cart[0].productName}</span>
+				                            <span class="form-product-name" id="product-name-input_23_1000">${cart[0].productName }</span>
 				                            <span class="form-product-description" id="product-name-description-input_23_1000"></span>
                           				</div>
-                          				<span class="form-product-details"><b><span data-wrapper-react="true"><span id="input_23_1000_price1">${cart[0].productPrice * cart[1]}</span><span class="currency_abr">원</span></span></b></span></span>
+                          				<span class="form-product-details"><b><span data-wrapper-react="true"><span id="input_23_1000_price1">${cart[0].productPrice * cart[1] }</span><span class="currency_abr">원</span></span></b></span></span>
                         				<span class="form-sub-label-container" style="vertical-align:top">
                         					<label class="form-sub-label" for="input_23_quantity_1000_0" style="min-height:13px" aria-hidden="false">수량</label>
                         					<span class="select_cont">
-                        					${cart[1]}
+                        					${cart[1] }
                         					</span>
                         				</span>
 	                        				<div class="w3-right-align">
-	                        					<button type="button" class="w3-button w3-red w3-round-xlarge" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/delete?cNum=${cart[3]}&&userId=${sessionScope.userId}'">삭제</button>
+	                        					<button type="button" class="w3-button w3-red w3-round-xlarge" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/delete?cNum=${cart[3] }&&userId=${sessionScope.userId }'">삭제</button>
 	                            			</div>
                             			</div>
                             			
@@ -124,11 +125,11 @@
                       				</div>
                     			</div>
                   			</span>
-								<input type="hidden" id="p_id" name="p_id" value="${cart[0].productId}" />
-								<input type="hidden" id="p_count" name="p_count" value="${cart[1]}" />
-								<input type="hidden" id="cNum" name="cNum" value="${cart[3]}" />
+								<input type="hidden" id="p_id" name="p_id" value="${cart[0].productId }" />
+								<input type="hidden" id="p_count" name="p_count" value="${cart[1] }" />
+								<input type="hidden" id="cNum" name="cNum" value="${cart[3] }" />
                   				<div class="p_item_separator "></div><span class="form-product-item hover-product-item  show_image show_option new_ui" categories="non-categorized" pid="1001" aria-labelledby="label_23"></span>
-                    		<c:set var="total" value="${total + cart[0].productPrice * cart[1]}" />
+                    		<c:set var="total" value="${total + cart[0].productPrice * cart[1] }" />
                 		
                 			</div>
                 		</c:forEach>
@@ -146,7 +147,7 @@
                     <div class="total_area">
                       <div class="form-payment-total">
                         <div id="total-text">총</div>
-                        <div class="form-payment-price"><span data-wrapper-react="true"><span id="payment_total1">${total}</span><span class="currency_abr">원</span></span></div>
+                        <div class="form-payment-price"><span data-wrapper-react="true"><span id="payment_total1">${total }</span><span class="currency_abr">원</span></span></div>
                       </div>
                     </div>
                   </div>
@@ -191,7 +192,7 @@
         <li class="form-line" data-type="control_button" id="id_54">
           <div id="cid_54" class="form-input-wide" data-layout="full">
             <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
-              <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId}">
+              <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">
               <button id="input_55" class="w3-button w3-green w3-round-large" style="width:15%" onclick="purchase(this.form)">상품 주문</button>&nbsp&nbsp
               <button id="input_54" type="button" class="w3-btn w3-white w3-border w3-border-green w3-round-large" style="width:15%" onclick="location.href='${pageContext.request.contextPath}/homepage.html'">쇼핑 계속하기</button>
             </div>
@@ -202,10 +203,5 @@
     </div>
    
   </form>
-  
-    <script src="https://cdn01.jotfor.ms/static/prototype.forms.js?3.3.39215" type="text/javascript"></script>
-	<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.39215" type="text/javascript"></script>
-	<script src="https://cdn03.jotfor.ms/js/vendor/math-processor.js?v=3.3.39215" type="text/javascript"></script>
-	
 </body>
 </html>

@@ -84,7 +84,9 @@
                               <span class="form-product-name" id="product-name-input_3_1004">${pvo.productName}</span>
                                 <span class="form-product-description" id="product-name-description-input_3_1004">수량: ${count[status.index]}</span>
                             </div>
-                              <input type="hidden" name="cNum" value= ${cNum[status.index]} />         
+                              <input type="hidden" name="cNum" value="${cNum[status.index]}" />         
+                              <input type="hidden" name="count" value="${count[status.index]}" />         
+                              <input type="hidden" name="p_id" value="${pvo.productId}" />         
                               <span class="form-product-details">
                               <b><span data-wrapper-react="true">
                               <span id="input_3_1004_price">${pvo.productPrice * count[status.index]}</span>
