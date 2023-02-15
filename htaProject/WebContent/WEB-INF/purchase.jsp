@@ -13,6 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.39213" />
 	<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.39213" />
 	
+	<link rel="icon" href="../assets/favicon.png"/>
 	<!-- w3 버튼 디자인 -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 

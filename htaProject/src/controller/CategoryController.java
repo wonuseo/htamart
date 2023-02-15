@@ -1,10 +1,10 @@
 package controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +21,10 @@ public class CategoryController {
 	private ProductDAO dao;
 	
 	@GetMapping(value = "/list")
-	public ModelAndView getCategory(@RequestParam("cat") String cat) throws SQLException{
+	public ModelAndView getCategory(@RequestParam("cat") String cat) throws Exception{
+		ModelAndView mv= new ModelAndView();
 		String c_id = "";
+		
 		if(cat.equals("fruit")) {
 			c_id = "1";
 		}else if (cat.equals("vegetable")){
@@ -38,11 +40,21 @@ public class CategoryController {
 		for(Product p : all) {
 			System.out.println(p.getProductId());
 		}
+
+		mv.addObject("productallData", all);
+		mv.setViewName("list");
 		
-		ModelAndView mv= new ModelAndView();
-			mv.addObject("productallData", all);
-			mv.setViewName("list");
-			return mv;
+		return mv;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("errorMessage", e.getMessage());
+		mv.setViewName("error");
+		
+		return mv;	
 	}
 	
 }

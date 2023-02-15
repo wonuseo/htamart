@@ -25,23 +25,27 @@ public class CartDAO {
 			em.persist(cart);
 
 			tx.commit();
+			
 		} finally {
 			em.close();
 		}
 	}
 
 	public List<Object[]> selectCart(User user) throws Exception {
-		EntityManager em = DBUtil.getEntityManager();
-		
+		EntityManager em = DBUtil.getEntityManager();		
 		String sql = "select p, c.productCount, c.user, c.cNum from Cart c, Product p where c.product = p.productId and c.user = :user";
-				
-		List<Object[]> all = em.createQuery(sql)
-				.setParameter("user", user)
-				.getResultList();
+		List<Object[]> all = null;
 		
+		try {
+			all = em.createQuery(sql).setParameter("user", user).getResultList();
+			
+		} finally {
+			em.close();
+		}
 		return all;
 	}
 	
+
 	public Cart selectCartNum(int cNum) {
 		EntityManager em = DBUtil.getEntityManager();
 		
@@ -54,19 +58,23 @@ public class CartDAO {
 		return cart;
 	}
 	
-	public void deleteCart(String cNum) {
+	
+	public void deleteCart(String cNum) throws Exception {
+
 		EntityManager em = DBUtil.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		
+		EntityTransaction tx = em.getTransaction();		
 		String sql = "delete from Cart c where c.cNum = :cNum";
+		
 		try {
 			tx.begin();
 
 			em.createQuery(sql).setParameter("cNum", Integer.parseInt(cNum)).executeUpdate();
 
 			tx.commit();
+			
 		} finally {
 			em.close();
 		}
 	}
+	
 }
