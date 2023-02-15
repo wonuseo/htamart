@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>login.html</title>
 	<link rel="stylesheet" href="css/login.css">
-	
+	<link rel="icon" href="assets/favicon.png"/>
 	<!-- w3 버튼 -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
@@ -30,7 +30,7 @@
 						<div class="input-group">
 							<i class='bx bxs-user'></i>
 							 <input type="text" id="userId" name="userId" placeholder="아이디"  maxlength="10" pattern="^[a-zA-Z0-9]+$" required>
-							 <p><button class="w3-button w3-black w3-round-small" onclick="dedupId()">아이디 중복 확인</button></p>
+							 <p ><button class="w3-button w3-black w3-round-small" onclick="dedupId()">아이디 중복 확인</button></p>
 						</div>
 						
 						<div class="input-group">
@@ -52,7 +52,7 @@
 							<i class='bx bx-address'></i>
 							 <input type="text" id="address" name="address" placeholder="Address" maxlength="20" pattern="^[a-zA-Z가-힣0-9]+$" required>
 						</div>
-							 <button type="submit" id="submit" class="w3-button w3-gredn w3-round-small" disabled>회원가입</button>
+							 <button type="submit" id="submit" class="w3-button w3-gredn w3-round-small" disabled onclick="alert('회원가입 되셨습니다')">회원가입</button>
 					</form>
 						
 						<p>
@@ -76,10 +76,16 @@
 	}
 	
 	function validate(val) {
-		if(val == true) {
+		const userId = document.getElementById("userId").value;
+		
+		if(userId == ""){
+			alert('아이디를 입력하세요');
+			return;
+		}else if(val == true) {
 			alert('사용가능한 아이디 입니다.')
 			document.getElementById("submit").disabled=false;
 			document.getElementById("userId").readOnly=true;
+			
 		}else {
 			alert('이미 존재하는 아이디 입니다.');
 		}

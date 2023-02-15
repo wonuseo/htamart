@@ -17,6 +17,7 @@
 	<script src="https://cdn01.jotfor.ms/static/prototype.forms.js?3.3.39215" type="text/javascript"></script>
 	<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.39215" type="text/javascript"></script>
 	<script src="https://cdn03.jotfor.ms/js/vendor/math-processor.js?v=3.3.39215" type="text/javascript"></script>
+	<link rel="icon" href="../assets/favicon.png"/>
 	
 	<!-- 기본 템플릿 css -->
 	<link href="../css/cartstyle.css" rel="stylesheet" />

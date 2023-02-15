@@ -1,10 +1,12 @@
 package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import model.CartDAO;
 import model.ProductDAO;
@@ -26,7 +28,7 @@ public class AxiosController {
 	
 	@PostMapping(value="/cart")
 	public void cart(@RequestParam(value="p_id") String productId, @RequestParam(value="userId") String userId, Cart cart) throws Exception {
-		System.out.println("*****" + userId);
+		
 		User user = userDAO.selectOneUser(userId);
 		Product product = productDAO.getOneProduct(productId);
 		
@@ -35,4 +37,15 @@ public class AxiosController {
 		
 		cartDAO.insertCart(cart);
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("errorMessage", e.getMessage());
+		mv.setViewName("error");
+		
+		return mv;	
+	}
+	
 }

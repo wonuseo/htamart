@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <title>list</title>
 
-	<link rel="icon" href="./images/favicon.png" />
+	<link rel="icon" href="../assets/favicon.png"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	
 	<!-- 비동기 -->
@@ -154,13 +154,13 @@
 
                   <ul class="dropdown-menu">
                     
-                   	<li><a href="${pageContext.request.contextPath }/category/list?cat=fruit">과일</a></li>
-                    <li><a href="${pageContext.request.contextPath }/category/list?cat=vegetable">채소</a></li>
+                   	<li><a href="${pageContext.request.contextPath}/category/list?cat=fruit">과일</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category/list?cat=vegetable">채소</a></li>
                     
                     <li role="separator" class="divider"></li>
                     
-                    <li><a href="${pageContext.request.contextPath }/category/list?cat=meat">정육</a></li>
-                    <li><a href="${pageContext.request.contextPath }/category/list?cat=seafood">수산물/건해산</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category/list?cat=meat">정육</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category/list?cat=seafood">수산물/건해산</a></li>
 
                   </ul>
                 </div>

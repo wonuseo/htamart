@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,28 +27,34 @@ public class PurchaseController {
 	private UserDAO userDAO;
 
 	@PostMapping(value = "/final")
-	public ModelAndView purchaseOne(@RequestParam(value = "p_id") String productId,
-			@RequestParam(value = "p_count") int count, @RequestParam(value = "u_id") String userId) {
+	public ModelAndView purchaseOne(@RequestParam(value = "p_id") String productId, 
+									@RequestParam(value = "p_count") int count, 
+									@RequestParam(value = "u_id") String userId) throws Exception {	
 		
+		ModelAndView mv = new ModelAndView();
 		Product product = productDAO.getOneProduct(productId);
 		User user = userDAO.selectOneUser(userId);
-
-		ModelAndView mv = new ModelAndView();
+		
 		List<Product> productList = new ArrayList<Product>();
 		List<Integer> productCount = new ArrayList<Integer>();
+		
 		productList.add(product);
 		productCount.add(count);
+		
 		mv.addObject("product", productList);
 		mv.addObject("count", productCount);
 		mv.addObject("user", user);
 
 		mv.setViewName("purchase");
+		
 		return mv;
 	}
 
 	@PostMapping(value = "/final2")
 	public ModelAndView purchaseCart(@RequestParam(value = "p_id") List<String> productId,
-			@RequestParam(value = "p_count") List<String> productCount, @RequestParam(value = "cNum") List<String> cNum, @RequestParam(value = "u_id") String userId) {
+									@RequestParam(value = "p_count") List<String> productCount,
+									@RequestParam(value = "cNum") List<String> cNum, 
+									@RequestParam(value = "u_id") String userId) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
 		User user = userDAO.selectOneUser(userId);
@@ -57,6 +64,7 @@ public class PurchaseController {
 			Product product = productDAO.getOneProduct(productId.get(i));
 			productList.add(product);
 		}
+		
 		mv.addObject("product", productList);
 		mv.addObject("count", productCount);
 		mv.addObject("cNum", cNum);
@@ -68,12 +76,23 @@ public class PurchaseController {
 	}
 
 	@PostMapping(value = "/receipt")
-	public ModelAndView receipt(@RequestParam(value = "cNum") List<String> cartNum) {
+	public ModelAndView receipt(@RequestParam(value = "cNum") List<String> cartNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		//delete
+		
 		mv.setViewName("receipt");
+		
 		return mv;
-
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception e) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("errorMessage", e.getMessage());
+		mv.setViewName("error");
+		
+		return mv;	
+	}
+
 }
 	
