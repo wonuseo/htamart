@@ -84,8 +84,6 @@ public class UserController<user> {
 		status.setComplete();
 		status = null;
 		
-		session.removeAttribute("userId");
-
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("redirect:/userinfo/refresh");

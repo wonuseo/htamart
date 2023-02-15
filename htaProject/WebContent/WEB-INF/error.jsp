@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오류 발생</title>
 </head>
 <body>
 <script type="text/javascript">
 	alert('${errorMessage}');
-	window.location.href = "${pageContext.request.contextPath}/login.html";
+	history.back();
 </script>
 </body>
 </html>

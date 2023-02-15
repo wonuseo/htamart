@@ -42,6 +42,18 @@ public class CartDAO {
 		return all;
 	}
 	
+	public Cart selectCartNum(int cNum) {
+		EntityManager em = DBUtil.getEntityManager();
+		
+		String sql = "select c from Cart c where c.cNum = :cNum";
+		
+		Cart cart = (Cart) em.createQuery(sql)
+				.setParameter("cNum", cNum)
+				.getSingleResult();
+		
+		return cart;
+	}
+	
 	public void deleteCart(String cNum) {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
