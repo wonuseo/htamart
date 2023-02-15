@@ -13,7 +13,6 @@
 	<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.39215" />
 	<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.39215" />
 	
-	
 	<script src="https://cdn01.jotfor.ms/static/prototype.forms.js?3.3.39215" type="text/javascript"></script>
 	<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.39215" type="text/javascript"></script>
 	<script src="https://cdn03.jotfor.ms/js/vendor/math-processor.js?v=3.3.39215" type="text/javascript"></script>
@@ -23,7 +22,7 @@
 	
 	<!-- 비동기 axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	
+    
 	<!-- w3 버튼 디자인 -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
@@ -48,6 +47,7 @@
 
 </head>
 <body onload="cartSize()">
+
 	<!--form 태그 시작-->
   <form class="jotform-form" action="${pageContext.request.contextPath}/purchase/final2" method="post" name="???" id="???" accept-charset="utf-8" autocomplete="on">
   
@@ -89,7 +89,7 @@
                 			    <div data-wrapper-react="true" class="form-product-item-detail new_ui">
                   				    <div class="p_col">
 	                    			    <div class="p_checkbox">
-	                      			    <input type="checkbox" class="form-checkbox  form-product-input" id="input_23_1000" name="q23_input23[][id]" value="1000" checked="" aria-label="Selected Product: 제품 이름" />
+	                      			    <input type="checkbox" class="form-checkbox  form-product-input" id="input_23_1000" name="q23_input23[][id]" onclick="checkBox()" value="1000" checked="" aria-label="Selected Product: 제품 이름" />
                              				<div class="checked"></div>
                           					<div class="select_border"></div>
                         				</div>
@@ -176,6 +176,15 @@
 			//document.getElementById("input_55").style.display="none";
 			document.getElementById("input_55").disabled=true;
 		}
+	}
+//체크가 된 checkbox의 개수에 따른 상품 주문 버튼 disabled
+	function checkBox() {
+		 var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+		 if(checkboxes.length == 0 ) {
+			 document.getElementById("input_55").disabled=true;
+		 }else{
+			 document.getElementById("input_55").disabled=false;
+		 }
 	}
 </script>        
         

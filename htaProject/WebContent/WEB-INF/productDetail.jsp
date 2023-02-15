@@ -3,12 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>product View</title>
+<title>상세 페이지</title>
 	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.png"/>
 	
 	<!-- Bootstrap icons-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -21,17 +22,12 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
 	
 	<!-- 템플릿 css -->
-	<link href="../css/style.css" rel="stylesheet">
-	<link href="../css/productViewstyles.css" rel="stylesheet" />
-	<link href="../css/liststyles.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/productViewstyles.css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/css/liststyles.css" rel="stylesheet" />
 	
 	<!-- 이미지 클릭시 확대 관련 import  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
-    
-    <!-- 비동기 axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     
     <!-- 장바구니 modal -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -44,6 +40,18 @@
 #logout_btn {
 	display: none;
 }
+
+div, ul, li {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding:0;margin:0}
+a {text-decoration:none;}
+
+.quickmenu {position:absolute;width:90px;top:50%;margin-top:-50px;right:10px;background:#fff;}
+.quickmenu ul {position:relative;float:left;width:100%;display:inline-block;*display:inline;border:1px solid #ddd;}
+.quickmenu ul li {float:left;width:100%;border-bottom:1px solid #ddd;text-align:center;display:inline-block;*display:inline;}
+.quickmenu ul li a {position:relative;float:left;width:100%;height:30px;line-height:30px;text-align:center;color:#999;font-size:9.5pt;}
+.quickmenu ul li a:hover {color:#000;}
+.quickmenu ul li:last-child {border-bottom:0;}
+
+.content {position:relative;min-height:1000px;}
 </style>
 
 </head>
@@ -58,14 +66,10 @@
 					<div class="social pull-left">
 
 						<ul>
-							<li><a href="https://www.facebook.com" target="_blank"><i
-									class="fa fa-facebook"></i></a></li>
-							<li><a href="https://www.twitter.com" target="_blank"><i
-									class="fa fa-twitter"></i></a></li>
-							<li><a href="https://www.google.com" target="_blank"><i
-									class="fa fa-google-plus"></i></a></li>
-							<li><a href="https://www.naver.com" target="_blank"><i
-									class="fa fa-linkedin"></i></a></li>
+							<li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.google.com" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="https://www.naver.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -77,7 +81,7 @@
 
 							<li><a id="login_btn" href="${pageContext.request.contextPath}/login.html"><i class="fa fa-user"></i>&nbsp로그인/회원가입</a></li>
 							<li><a id="logout_btn" href="${pageContext.request.contextPath}/userinfo/sessionOut"><i class="fa fa-user"></i>&nbsp로그아웃</a></li>
-							<li><a id="shoppingCart" href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
+							<li><a id="shoppingCart" href="${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId}"><i class="fa fa-shopping-bag"></i>&nbsp장바구니</a></li>
 
 						</ul>
 					</div>
@@ -87,25 +91,6 @@
 		</div>
 	</div>
 	
-<script type="text/javascript">
-	function validLogin(){
-		axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
-		})
-		 .then(function (resData) {
-			 valid(resData['data']);
-		 })
-	}
-	
-	function valid(userId) {
-		if(userId == '' || userId.length == 0) {
-		}else{
-			document.getElementById("logout_btn").style.display="block";
-			document.getElementById("login_btn").style.display="none";
-		}
-	}
-</script>
-
-
 	<!-- 헤더 -->
 	<div class="header">
 		<div class="container">
@@ -124,7 +109,6 @@
 						<form
 							action="${pageContext.request.contextPath}/SearchController/productsearch"
 							class="navbar-form" role="search">
-							<!-- action="${pageContext.request.contextPath}/SearchController/productsearch" or action="../SearchController/productsearch" -->
 							<div class="form-group">
 								<input type="text" name="keyword" class="form-control"
 									placeholder="상품 검색">
@@ -176,16 +160,16 @@
 						<ul class="dropdown-menu">
 
 							<li><a
-								href="${pageContext.request.contextPath }/category/list?cat=fruit">과일</a></li>
+								href="${pageContext.request.contextPath}/category/list?cat=fruit">과일</a></li>
 							<li><a
-								href="${pageContext.request.contextPath }/category/list?cat=vegetable">채소</a></li>
+								href="${pageContext.request.contextPath}/category/list?cat=vegetable">채소</a></li>
 
 							<li role="separator" class="divider"></li>
 
 							<li><a
-								href="${pageContext.request.contextPath }/category/list?cat=meat">정육</a></li>
+								href="${pageContext.request.contextPath}/category/list?cat=meat">정육</a></li>
 							<li><a
-								href="${pageContext.request.contextPath }/category/list?cat=seafood">수산물/건해산</a></li>
+								href="${pageContext.request.contextPath}/category/list?cat=seafood">수산물/건해산</a></li>
 
 						</ul>
 					</div>
@@ -230,15 +214,15 @@
 
 					<hr>
 
-					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="post"> 
+					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="get"> 
                           <div class="font2">수량
                           	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" />
                           </div>
                           <br><br>
-                          <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
-						  <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">	
-                          <button class="btn btn-outline-dark btn-lg font2" type="submit" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
-                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios('${product.productId }', '${sessionScope.userId }')"><i class="bi-cart-fill me-1"></i>장바구니</button>
+                          <input type="hidden" id="p_id" name="p_id" value="${product.productId}">
+						  <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId}">	
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="direct_purchase(this.form)"><i class="bi-upc-scan me-1"></i>바로 구매</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios('${product.productId}', '${sessionScope.userId}')"><i class="bi-cart-fill me-1"></i>장바구니</button>
 
                     </form>
 
@@ -248,22 +232,6 @@
 		</div>
 	</section>
 
-<!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
-<script>
-		function cartAxios(productId, userId) {
-			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
-				params : {
-					p_id : productId,
-					productCount : document.querySelector("#p_count").value,
-					userId : userId
-				}
-			})
-			 .then(function (resData) {
-				 document.getElementById('cartModal').style.display='block';
-			 })
-		}
-</script>	
-	
 	  <!-- 장바구니 알림창 -->
 	  <div id="cartModal" class="w3-modal">
 	    <div class="w3-modal-content w3-animate-top w3-card-4">
@@ -276,7 +244,7 @@
 	        <p class="font2" style="font-size:20px">장바구니로 이동하시겠습니까?</p>
 	        <span>
 	        <button class="w3-btn w3-white w3-border w3-border-teal w3-round-large" onclick="document.getElementById('cartModal').style.display='none'">쇼핑 계속하기</button>
-	        <button class="w3-button w3-teal w3-round-large" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId }'">장바구니 보기</button><br><br>
+	        <button class="w3-button w3-teal w3-round-large" onclick="location.href='${pageContext.request.contextPath}/shoppingCart/showCart?userId=${sessionScope.userId}'">장바구니 보기</button><br><br>
 	        </span>
 	      </div>
 	      <footer class="w3-container w3-teal">
@@ -295,9 +263,7 @@
 				<c:choose>
 					<c:when test="${not empty requestScope.productallData}">	
 						<c:forEach var="pvo" items="${requestScope.productallData}" begin = "1" end = "4">
-							<%-- <c:set var="pvo" value="${requestScope.productallData}"/>	 --%>
-						<!-- 1.관련상품 출력할 때 위에 상품상세보기에서 해당 상품 제외시킨 목록을 유동적으로 출력을 해야함.. 조건문 써서.. 2. 출력 부분 손대기-->
-						  
+						
 							<div class="col mb-5">
 								<div class="card h-100">
 									<!-- Product image-->
@@ -356,7 +322,6 @@
 								</div>
 							</div>
 							
-						
 					</c:forEach>
 					</c:when>
 					<c:otherwise>
@@ -367,8 +332,6 @@
 			</div>
 		</div>
 	</section>
-
-
 
 	<div class="footer">
 		<div class="container">
@@ -415,7 +378,16 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- 스크롤 따라다니는 창 -->
+	 <div class="quickmenu">
+  			<ul>
+			    <li><a href="${pageContext.request.contextPath}/homepage.html">홈페이지</a></li>
+			    <li><a href="#">1:1문의</a></li>
+			    <li><a href="#">후기</a></li>
+  			</ul>
+	</div>
+	
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -434,23 +406,72 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 	
 	<script>
-
-/* 	const direct_purchase = function(){
-		const conm = confirm('회원전용입니다.');
-		console.log(conm); } */
-/*			
-		if() {
-			//바로구매
-			const f = document.getElementById('direct_purchase_form');
-			f.submit();	
-		} else {
-			//로그인페이지로 이동
-		location.href = 'home.html';
-		}	
-	}
-*/	
-
+		$(document).ready(function(){
+		  var currentPosition = parseInt($(".quickmenu").css("top"));
+		  $(window).scroll(function() {
+		    var position = $(window).scrollTop(); 
+		    $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+		  });
+		});
 	</script>
 	
+	<script type="text/javascript">
+		function validLogin(){
+			axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
+			})
+			 .then(function (resData) {
+				 valid(resData['data']);
+			 })
+		}
+		
+		function valid(userId) {
+			if(userId == '' || userId.length == 0) {
+			}else{
+				document.getElementById("logout_btn").style.display="block";
+				document.getElementById("login_btn").style.display="none";
+			}
+		}
+	</script>
+
+	<!-- 장바구니 비동기 처리 , 장바구니 알림창 -->	
+	<script>
+		function cartAxios(productId, userId) {
+			axios.post('${pageContext.request.contextPath}/axios/cart', {}, {
+				params : {
+					p_id : productId,
+					productCount : document.querySelector("#p_count").value,
+					userId : userId
+				}
+			})
+			 .then(function (resData) {
+				 if(resData['data'] == false) {
+					 alert('로그인이 필요한 작업입니다.');
+				 }else{
+				 document.getElementById('cartModal').style.display='block';
+				 }
+			 })
+		}
+		
+		function direct_purchase(obj){
+			axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
+			})
+			 .then(function (resData) {
+				 if(resData['data'] == null || resData['data'].length == 0) {
+					 alert("로그인이 필요한 작업입니다.");
+				 }else{
+					 obj.submit();
+				 }
+			 })
+		}
+	</script>	
+	
+	<!-- 비동기 axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
 </body>
 </html>
