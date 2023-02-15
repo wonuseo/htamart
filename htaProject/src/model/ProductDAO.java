@@ -34,7 +34,6 @@ public class ProductDAO {
 	}
 	
 	public List<Product> getProductdistinction(String c_id, String p_id) {
-		System.out.println("getProductdistinction 메소드 호출 ----- " + c_id + p_id);
 		EntityManager em = DBUtil.getEntityManager();
 		
 		Category c = new Category();

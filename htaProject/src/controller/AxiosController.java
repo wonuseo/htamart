@@ -1,5 +1,9 @@
 package controller;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,24 +19,32 @@ import model.domain.entity.User;
 
 @RestController
 @RequestMapping("axios")
-public class axiosController {
-	
+public class AxiosController {
+
 	@Autowired
 	private ProductDAO productDAO;
 	@Autowired
 	private UserDAO userDAO;
 	@Autowired
 	private CartDAO cartDAO;
-	
-	@PostMapping(value="/cart")
-	public void cart(@RequestParam(value="p_id") String productId, @RequestParam(value="userId") String userId, Cart cart) throws Exception {
-		System.out.println("*****" + userId);
-		User user = userDAO.selectOneUser(userId);
-		Product product = productDAO.getOneProduct(productId);
-		
-		cart.setUser(user);
-		cart.setProduct(product);
-		
-		cartDAO.insertCart(cart);
+
+	@PostMapping(value = "/cart")
+	public boolean cart(@RequestParam(value = "p_id") String productId, @RequestParam(value = "userId") String userId,
+			@RequestParam(value = "productCount") String productCount, Cart cart) throws Exception {
+
+		boolean result = false;
+		if (userId == null || userId.length() == 0) {
+
+		} else {
+			User user = userDAO.selectOneUser(userId);
+			Product product = productDAO.getOneProduct(productId);
+
+			cart.setUser(user);
+			cart.setProduct(product);
+
+			cartDAO.insertCart(cart);
+			result = true;
+		}
+		return result;
 	}
 }

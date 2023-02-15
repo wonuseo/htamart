@@ -32,6 +32,9 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     
     <!-- 장바구니 modal -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -44,6 +47,18 @@
 #logout_btn {
 	display: none;
 }
+
+div, ul, li {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding:0;margin:0}
+a {text-decoration:none;}
+
+.quickmenu {position:absolute;width:90px;top:50%;margin-top:-50px;right:10px;background:#fff;}
+.quickmenu ul {position:relative;float:left;width:100%;display:inline-block;*display:inline;border:1px solid #ddd;}
+.quickmenu ul li {float:left;width:100%;border-bottom:1px solid #ddd;text-align:center;display:inline-block;*display:inline;}
+.quickmenu ul li a {position:relative;float:left;width:100%;height:30px;line-height:30px;text-align:center;color:#999;font-size:9.5pt;}
+.quickmenu ul li a:hover {color:#000;}
+.quickmenu ul li:last-child {border-bottom:0;}
+
+.content {position:relative;min-height:1000px;}
 </style>
 
 </head>
@@ -230,14 +245,14 @@
 
 					<hr>
 
-					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="post"> 
+					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="get"> 
                           <div class="font2">수량
                           	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" />
                           </div>
                           <br><br>
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId }">
 						  <input type="hidden" id="u_id" name="u_id" value="${sessionScope.userId }">	
-                          <button class="btn btn-outline-dark btn-lg font2" type="submit" onclick="direct_purchase()"><i class="bi-upc-scan me-1"></i>바로 구매</button>
+                          <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="direct_purchase(this.form)"><i class="bi-upc-scan me-1"></i>바로 구매</button>
                           <button class="btn btn-outline-dark btn-lg font2" type="button" onclick="cartAxios('${product.productId }', '${sessionScope.userId }')"><i class="bi-cart-fill me-1"></i>장바구니</button>
 
                     </form>
@@ -259,9 +274,26 @@
 				}
 			})
 			 .then(function (resData) {
+				 if(resData['data'] == false) {
+					 alert('로그인이 필요한 작업입니다.');
+				 }else{
 				 document.getElementById('cartModal').style.display='block';
+				 }
 			 })
 		}
+		
+		function direct_purchase(obj){
+			axios.post('${pageContext.request.contextPath}/userinfo/isLogin', {}, {
+			})
+			 .then(function (resData) {
+				 if(resData['data'] == null || resData['data'].length == 0) {
+					 alert("로그인이 필요한 작업입니다.");
+				 }else{
+					 obj.submit();
+				 }
+			 })
+		}
+		
 </script>	
 	
 	  <!-- 장바구니 알림창 -->
@@ -415,7 +447,16 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- 스크롤 따라다니는 창 -->
+	 <div class="quickmenu">
+  			<ul>
+			    <li><a href="${pageContext.request.contextPath}/homepage.html">홈페이지</a></li>
+			    <li><a href="#">1:1문의</a></li>
+			    <li><a href="#">후기</a></li>
+  			</ul>
+	</div>
+	
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -434,23 +475,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 	
 	<script>
-
-/* 	const direct_purchase = function(){
-		const conm = confirm('회원전용입니다.');
-		console.log(conm); } */
-/*			
-		if() {
-			//바로구매
-			const f = document.getElementById('direct_purchase_form');
-			f.submit();	
-		} else {
-			//로그인페이지로 이동
-		location.href = 'home.html';
-		}	
-	}
-*/	
-
+		$(document).ready(function(){
+		  var currentPosition = parseInt($(".quickmenu").css("top"));
+		  $(window).scroll(function() {
+		    var position = $(window).scrollTop(); 
+		    $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+		  });
+		});
 	</script>
-	
+		
 </body>
 </html>
