@@ -45,7 +45,19 @@ public class CartDAO {
 		return all;
 	}
 	
-	public void deleteCart(String cNum) throws Exception {
+	public Cart selectCartNum(int cNum) {
+		EntityManager em = DBUtil.getEntityManager();
+		
+		String sql = "select c from Cart c where c.cNum = :cNum";
+		
+		Cart cart = (Cart) em.createQuery(sql)
+				.setParameter("cNum", cNum)
+				.getSingleResult();
+		
+		return cart;
+	}
+	
+	public void deleteCart(String cNum) {
 		EntityManager em = DBUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();		
 		String sql = "delete from Cart c where c.cNum = :cNum";

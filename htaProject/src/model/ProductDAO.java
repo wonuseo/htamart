@@ -53,6 +53,7 @@ public class ProductDAO {
 		return product;
 	}
 	
+
 	public List<Product> getProductdistinction(String c_id, String p_id) throws Exception {
 		EntityManager em = DBUtil.getEntityManager();
 		String sql = "select p from Product p where p.category = :category";	

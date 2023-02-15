@@ -25,6 +25,9 @@
 	<!-- 리스트 템플릿 css-->
     <link href="../css/liststyles.css" rel="stylesheet" />
     
+    <!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
     <!-- 이미지 클릭시 확대 관련 import  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
 
@@ -32,6 +35,18 @@
 #logout_btn {
 	display: none;
 }
+
+div, ul, li {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding:0;margin:0}
+a {text-decoration:none;}
+
+.quickmenu {position:absolute;width:90px;top:50%;margin-top:-50px;right:10px;background:#fff;}
+.quickmenu ul {position:relative;float:left;width:100%;display:inline-block;*display:inline;border:1px solid #ddd;}
+.quickmenu ul li {float:left;width:100%;border-bottom:1px solid #ddd;text-align:center;display:inline-block;*display:inline;}
+.quickmenu ul li a {position:relative;float:left;width:100%;height:30px;line-height:30px;text-align:center;color:#999;font-size:9.5pt;}
+.quickmenu ul li a:hover {color:#000;}
+.quickmenu ul li:last-child {border-bottom:0;}
+
+.content {position:relative;min-height:1000px;}
 </style>
 
 </head>
@@ -88,7 +103,7 @@
 			document.getElementById("login_btn").style.display="none";
 		}
 	}
-	</script>
+</script>
 
 	<!-- 헤더 -->
     <div class="header">
@@ -309,6 +324,15 @@
             </div>
         </div>
     </div>
+    
+    <!-- 스크롤 따라다니는 창 -->
+	 <div class="quickmenu">
+  			<ul>
+			    <li><a href="${pageContext.request.contextPath}/homepage.html">홈페이지</a></li>
+			    <li><a href="#">1:1문의</a></li>
+			    <li><a href="#">후기</a></li>
+  			</ul>
+	</div>
 	
 	<!-- jQuery Library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -323,6 +347,16 @@
 	<!-- 이미지 클릭시 확대 관련 import  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+		  var currentPosition = parseInt($(".quickmenu").css("top"));
+		  $(window).scroll(function() {
+		    var position = $(window).scrollTop(); 
+		    $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+		  });
+		});
+	</script>
 	
 </body>
 

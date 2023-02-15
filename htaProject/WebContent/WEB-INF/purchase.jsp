@@ -116,7 +116,7 @@
 <!-- 주문자 이름 -->	
         <li class="form-line" data-type="control_textbox" id="id_29"><label class="form-label form-label-left form-label-auto" id="label_29" for="input_29"> 이름 </label>
           <div id="cid_29" class="form-input" data-layout="half"> 
-            <input type="text" id="input_29" name="q29_input29" data-type="input-textbox" class="form-textbox" data-defaultvalue="" style="width:310px" size="310" value=${user.userName } data-component="textbox" aria-labelledby="label_29" /> 
+            <input type="text" id="input_29" name="name" data-type="input-textbox" class="form-textbox" data-defaultvalue="" style="width:310px" size="310" value=${user.userName } data-component="textbox" aria-labelledby="label_29" /> 
           </div>
         </li>
 
@@ -126,7 +126,7 @@
             <div summary="" class="form-address-table jsTest-addressField">
               <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                 <span class="form-address-line form-address-street-line jsTest-address-lineField"><span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_6_addr_line1" name="q6_shippingAddress[addr_line1]" class="form-textbox form-address-line" data-defaultvalue="" autoComplete="section-input_6 address-line1" value=${user.address } data-component="address_line_1" aria-labelledby="label_6" required="" /></span></span>
+                  <input type="text" id="input_6_addr_line1" name="address" class="form-textbox form-address-line" data-defaultvalue="" autoComplete="section-input_6 address-line1" value=${user.address } data-component="address_line_1" aria-labelledby="label_6" required="" /></span></span>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@
 <!-- 전화번호 -->
         <li class="form-line" data-type="control_phone" id="id_20"><label class="form-label form-label-left form-label-auto" id="label_20" for="input_20_full"> 전화번호 </label>
           <div id="cid_20" class="form-input" data-layout="half"> <span class="form-sub-label-container" style="vertical-align:top">
-            <input type="tel" id="input_20_full" name="q20_input20[full]" data-type="mask-number" class="mask-phone-number form-textbox validate[Fill Mask]" data-defaultvalue="" autoComplete="section-input_20 on" style="width:310px" data-masked="true" value=${user.userPhone } data-component="phone" aria-labelledby="label_20" /><label class="form-sub-label is-empty" for="input_20_full" id="sublabel_20_masked" style="min-height:13px" aria-hidden="false"></label></span> 
+            <input type="tel" id="input_20_full" name="tel" data-type="mask-number" class="mask-phone-number form-textbox validate[Fill Mask]" data-defaultvalue="" autoComplete="section-input_20 on" style="width:310px" data-masked="true" value=${user.userPhone } data-component="phone" aria-labelledby="label_20" /><label class="form-sub-label is-empty" for="input_20_full" id="sublabel_20_masked" style="min-height:13px" aria-hidden="false"></label></span> 
           </div>
         </li>
 
