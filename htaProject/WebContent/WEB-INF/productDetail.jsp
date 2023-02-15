@@ -216,7 +216,7 @@ a {text-decoration:none;}
 
 					<form id="direct_purchase_form" action="${pageContext.request.contextPath}/purchase/final" method="get"> 
                           <div class="font2">수량
-                          	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" style="max-width: 8rem" />
+                          	<input class="form-control text-center me-3" id="p_count" name="p_count" type="number" value="1" min="1" max="5" onchange="if(this.value >5)this.value=5;" style="max-width: 8rem" />
                           </div>
                           <br><br>
                           <input type="hidden" id="p_id" name="p_id" value="${product.productId}">
