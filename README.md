@@ -22,7 +22,7 @@
 - Won woo Seo
 - Jun soo Lee
 - Sung hwan Cho
-- S min Cho
+- Seong min Cho
 - Won jun Jung
 
 ## :open_book: Summary 
