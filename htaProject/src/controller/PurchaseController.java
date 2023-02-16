@@ -93,9 +93,12 @@ public class PurchaseController {
 		mv.addObject("address", address);
 		
 		if(cartNum.size() == 0) {
+			Product product = productDAO.getOneProduct(productNum);
+		    int productPrice = product.getProductPrice();
 			mv.addObject("product", productDAO.getOneProduct(productNum));
 			mv.addObject("count", count);
 			mv.addObject("type", "one");
+			mv.addObject("productPrice", productPrice);
 		} else {
 			List<Cart> cartList = new ArrayList<Cart>();
 			for (String s : cartNum) {
