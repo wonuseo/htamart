@@ -141,50 +141,52 @@
 > 됩니다.
 > 
 <br/><br/>
-### :mag: 검색 기능
-<img src="https://user-images.githubusercontent.com/122413012/219260768-fbf78ae7-aea5-4f14-b7d9-c23979c8e08b.PNG" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><img src="https://user-images.githubusercontent.com/122413012/219260797-bf23aa27-a0a5-4673-b05c-eef0affda1f9.PNG" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
-```java
-@Controller
-@RequestMapping("SearchController")
-public class SearchController {
-	
-	@Autowired
-	private ProductDAO productdao;
-	
-	@GetMapping(value="/productsearch")
-	public ModelAndView getProductSearch(@RequestParam(value = "keyword") String keyword) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		if(keyword != null && keyword.length() != 0) {
-			mv.addObject("productallData", productdao.findElement(keyword));
-		} else {
-			mv.addObject("productallData");
-		}
-		mv.setViewName("list");
-		
-		return mv;  
-	}
-
-@Repository
-public class ProductDAO {
-	
-	public List<Product> findElement(String keyword) {
-		EntityManager em = DBUtil.getEntityManager();
-		
-		List<Product> all = null;
-		
-		try {
-			all = em.createQuery("select p from Product p where p.productName like '%" + keyword + "%' ")
-					.getResultList();
-		} finally {
-			em.close();
-		}
-		
-		return all;
-	}
-
-
-
+> ### :mag: 검색 기능
+> <img src="https://user-images.githubusercontent.com/122413012/219260768-fbf78ae7-aea5-4f14-b7d9-c23979c8e08b.PNG" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><img src="https://user-images.githubusercontent.com/122413012/219260797-bf23aa27-a0a5-4673-b05c-eef0affda1f9.PNG" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
+> ```java
+> @Controller
+> @RequestMapping("SearchController")
+> public class SearchController {
+>	
+>	@Autowired
+>	private ProductDAO productdao;
+>	
+>	@GetMapping(value="/productsearch")
+>	public ModelAndView getProductSearch(@RequestParam(value = "keyword") String keyword) throws Exception {
+>		ModelAndView mv = new ModelAndView();
+>		
+>		if(keyword != null && keyword.length() != 0) {
+>			mv.addObject("productallData", productdao.findElement(keyword));
+>		} else {
+>			mv.addObject("productallData");
+>		}
+>		mv.setViewName("list");
+>		
+>		return mv;  
+>	}
+>
+> @Repository
+> public class ProductDAO {
+>	
+>	public List<Product> findElement(String keyword) {
+>		EntityManager em = DBUtil.getEntityManager();
+>		
+>		List<Product> all = null;
+>		
+>		try {
+>			all = em.createQuery("select p from Product p where p.productName like '%" + keyword + "%' ")
+>					.getResultList();
+>		} finally {
+>			em.close();
+>		}
+>		
+>		return all;
+>	}
+>
+>
+>
+>
+>
 ## :open_book: Summary 
 > * 아이디 중복체크를 하지 않으면 회원가입을 할 수 없습니다.
 > * 로그인이 성공적으로 진행되면 세션을 유지 시키고, 로그아웃으로 세션을 해제합니다.
