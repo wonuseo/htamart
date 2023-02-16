@@ -2,11 +2,11 @@
 스프링을 이용한 쇼핑몰 사이트 입니다.
 
 
-## Develop Period
+## :hourglass: Develop Period
 23.02.01 (09:00) ~ 23.02.16 (16:00)
 
 
-:hourglass: ## Tech Stack
+## Tech Stack
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
