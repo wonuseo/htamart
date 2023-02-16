@@ -31,6 +31,7 @@
 EntityManagerFactory : [EntityManagerFactory.txt](https://github.com/wonuseo/htamart/files/10752455/EntityManagerFactory.txt)<br/>
 persistence.xml : [persistence.txt](https://github.com/wonuseo/htamart/files/10752469/persistence.txt)<br/>
 Build Tool (Maven) : [pom.txt](https://github.com/wonuseo/htamart/files/10751738/pom.txt)
+schema : [Htamll_schema.txt](https://github.com/wonuseo/htamart/files/10752561/Htamll_schema.txt)
 <br/><br/>
 
 ## :open_book: Summary 
