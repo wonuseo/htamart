@@ -25,6 +25,7 @@
 - Seong min Cho
 - Won jun Jung
 
+
 ## :open_book: Summary 
 >
 > * 아이디 중복체크를 하지 않으면 회원가입을 할 수 없습니다.
