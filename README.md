@@ -32,7 +32,7 @@
 
 ***
 ## :open_book: Main Functions
-> ### :memo: 검색 기능
+> ### :mag: 검색 기능
 > 
 > 이미지
 > 
