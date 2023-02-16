@@ -141,6 +141,7 @@
 > 됩니다.
 > 
 <br/><br/>
+### :mag: 검색 기능
 
 
 ## :open_book: Summary 
