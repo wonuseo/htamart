@@ -31,8 +31,8 @@
 >
 > 이러한걸 사용하여 검색 기능을 구현했습니다.
 
-🧾 영수증
-
+🧾 영수증 <p>
+<img src="https://user-images.githubusercontent.com/122374054/219255479-7cdc5a76-a4a7-4b9b-af99-dbf480f2e355.png" width="500" height="500">
 
 
 <br/><br/>
