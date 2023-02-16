@@ -260,5 +260,7 @@ public List<Product> getAllProduct(String c_id) {
 
 ## :compass: Setting
 이 프로젝트에는 소스코드만 포함되어 있습니다. <br/>
+EntityManagerFactory : [EntityManagerFactory.txt](https://github.com/wonuseo/htamart/files/10752455/EntityManagerFactory.txt)<br/>
+persistence.xml : [persistence.txt](https://github.com/wonuseo/htamart/files/10752469/persistence.txt)<br/>
 Build Tool (Maven) : [pom.txt](https://github.com/wonuseo/htamart/files/10751738/pom.txt)
 <br/><br/>
