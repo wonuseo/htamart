@@ -38,12 +38,9 @@
 
 </head>
 <body>
-		<!-- form태그 시작 -->
-	<form class="jotform-form" action="${pageContext.request.contextPath}/purchase/receipt" method="post" name="???" id="???" accept-charset="utf-8" autocomplete="on">
- 	 <input type="hidden" name="formID" value="230398949435470" />
-   <div role="main" class="form-all">
+    <div role="main" class="form-all">
     <style>
-      .form-all:before
+    
       {
         background: none;
       }
@@ -79,6 +76,8 @@
                   <div data-wrapper-react="true">
                     <span class="form-product-item hover-product-item1  show_image show_desc new_ui" categories="non-categorized" pid="1004" aria-labelledby="label_3">
 		
+		
+		
 		<c:choose>
 			<c:when test="${type == 'one'}">
 				
@@ -96,8 +95,22 @@
                           <div class="title_description">
                               <span class="form-product-name" id="product-name-input_3_1004">${product.productName}</span>
                                 <span class="form-product-description" id="product-name-description-input_3_1004">수량: ${count}</span>
+                                
                             </div>
+                            <span class="form-product-details">
+                              <b><span data-wrapper-react="true">
+                              <span id="input_3_1004_price">${productPrice * count}</span>
+                              <span class="currency_abr">원</span></span></b></span>
+                           
 						 </div>
+						 
+						 <c:set var="total" value="${total + productPrice * count}" />
+                          <div class="focus_action_button_container">
+                            <a class="btn-inline-product-delete"> </a><a class="btn-inline-product-settings"> </a>
+                          </div>
+				
+					<div class="p_item_separator "></div><span class="form-product-item hover-product-item1  show_image show_desc new_ui" aria-labelledby="label_3">
+				
 				
 			</c:when>
 			<c:otherwise>
@@ -119,24 +132,41 @@
                               <span class="form-product-name" id="product-name-input_3_1004">${obj.product.productName}</span>
                                 <span class="form-product-description" id="product-name-description-input_3_1004">수량: ${obj.productCount}</span>
                             </div>
+                             <span class="form-product-details">
+                              <b><span data-wrapper-react="true">
+                              <span id="input_3_1004_price">${obj.product.productPrice * obj.productCount}</span>
+                              <span class="currency_abr">원</span></span></b></span>
+                            
 						 </div>
+					 <c:set var="total" value="${total + obj.product.productPrice * obj.productCount}" />
+                          <div class="focus_action_button_container">
+                            <a class="btn-inline-product-delete"> </a><a class="btn-inline-product-settings"> </a>
+                          </div>
+				
 					
 					
 					
 					
-					
+					<div class="p_item_separator "></div><span class="form-product-item hover-product-item1  show_image show_desc new_ui" aria-labelledby="label_3">
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	
-	 
+	 <div class="payment_footer new_ui ">
+                          <div class="total_area">
+                            <div class="form-payment-total">
+                              <div id="total-text">총</div>
+                              <div class="form-payment-price"><span data-wrapper-react="true"><span id="payment_total">${total}</span><span class="currency_abr">원</span></span></div>
+                            </div>
+                          </div>
+                        </div>
 	
 	
 	
-	</div>
-	</div>
-	</div>
-	</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</li>
 	
 	<li class="form-line" data-type="control_button" id="id_26">
@@ -149,6 +179,6 @@
 	
 	</ul>
 	</div>
-	</form>
+	
 </body>
 </html>

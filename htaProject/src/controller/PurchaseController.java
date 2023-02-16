@@ -40,7 +40,7 @@ public class PurchaseController {
 
 		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("userId") == null) {
-			model.addAttribute("errorMessage", "회원 전용 입니다.");
+			mv.addObject("errorMessage", "회원 전용 입니다.");
 			mv.setViewName("error");
 		} else {
 			Product product = productDAO.getOneProduct(productId);
@@ -93,9 +93,12 @@ public class PurchaseController {
 		mv.addObject("address", address);
 		
 		if(cartNum.size() == 0) {
+			Product product = productDAO.getOneProduct(productNum);
+		    int productPrice = product.getProductPrice();
 			mv.addObject("product", productDAO.getOneProduct(productNum));
 			mv.addObject("count", count);
 			mv.addObject("type", "one");
+			mv.addObject("productPrice", productPrice);
 		} else {
 			List<Cart> cartList = new ArrayList<Cart>();
 			for (String s : cartNum) {
