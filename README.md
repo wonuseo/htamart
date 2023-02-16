@@ -26,14 +26,52 @@
 - Won jun Jung
 <br/><br/>
 
-## :open_book: Main Functions
-> ### :memo: 검색 기능
-> 
-> 이미지
-> 
-> 이러한걸 사용하여 검색 기능을 구현했습니다.
+## :gear: Main Functions
+> ### :memo: 회원가입/로그인
+>
+> <img src="https://user-images.githubusercontent.com/87034370/219252111-33d2229b-5933-45fa-8503-1f176f040132.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><img src="https://user-images.githubusercontent.com/87034370/219252141-48091c15-7e04-4248-a7d2-675e67baf24e.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>
+> ```java
+> public void createUser(User user) throws Exception {
+>		EntityManager em = DBUtil.getEntityManager();
+>		EntityTransaction tx = em.getTransaction();
+>		try {
+>			tx.begin();
+>			user.setUserDate(new Date());
+>			em.persist(user);
+>			tx.commit();
+>		} finally {
+>			em.close();
+>		}
+> } 
+> public boolean checkId(String userId) throws Exception {
+>		EntityManager em = DBUtil.getEntityManager();
+>		Long count = null;
+>		try {
+>			count = em.createQuery("select count(u) from User u where u.userId = :userId", Long.class)
+>					.setParameter("userId", userId)
+>					.getSingleResult();
+>		} finally {
+>			em.close();
+>		}	
+>		return count == 0;
+>	}
+>
+> public boolean validateUser(String userId, String userPassword) throws Exception{
+>		EntityManager em = DBUtil.getEntityManager();		
+>		Long count = null;
+>		try {
+>			count = em.createQuery("select count(u) from User u where u_id = :u_id and u_password = :u_password", Long.class)
+>					.setParameter("u_id", userId)
+>					.setParameter("u_password", userPassword)
+>					.getSingleResult();		
+>		} finally {
+>			em.close();			
+>		}		
+>		return count == 1;
+>	}
+> ```
+> 회원가입/로그인의 중복체크와 검증의 주요 로직입니다
 <br/><br/>
-
 > ### :shopping_cart: 장바구니
 >
 > <img src="https://user-images.githubusercontent.com/116073413/219250849-db93e494-f60a-4baf-aba4-6d2ee5aa3f87.jpg" width="40%" height="40%"/> <img src="https://user-images.githubusercontent.com/116073413/219251506-7acc3f6e-8ad8-4c1d-8539-5c7d2e866da0.jpg" width="40%" height="40%"/>
