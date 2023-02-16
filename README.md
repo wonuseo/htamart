@@ -34,6 +34,40 @@
 > ### :page_with_curl:결제 <p>
 <img src="https://user-images.githubusercontent.com/122374054/219255479-7cdc5a76-a4a7-4b9b-af99-dbf480f2e355.png" width="500" height="500"/> <img src="https://user-images.githubusercontent.com/122374054/219257489-c18f827e-4316-4f66-be23-fdcd84b47b0a.png" width="400" heigth="400"/>
 
+```js
+<li id="cid_1" class="form-input-wide" data-type="control_head">
+     <div class="form-header-group  header-large">
+        <div class="header-text httal htvam">
+    주문자 : ${name}<br>
+		전화번호 : ${tel}<br>
+		주소 : ${address}<br></h1>
+      </div>
+     </div>
+   </li>
+<div data-wrapper-react="true" class="form-product-item-detail new_ui">
+                                      
+                            <div class="p_image">
+                              <div class="image_area form-product-image-with-options">
+                                <img role="img" aria-label="Cap" alt="Cap Product Image" style="width:100%;height:100%;object-fit:cover" src="${pageContext.request.contextPath}/${obj.product.productImg}" loading="lazy" />
+          </div>
+        </div>
+      </div>
+					
+ <div for="input_3_1004" class="form-product-container">
+    <div class="title_description">
+       <span class="form-product-name" id="product-name-input_3_1004">${obj.product.productName}</span>
+           <span class="form-product-description" id="product-name-description-input_3_1004">수량: ${obj.productCount}</span>
+              </div>
+           <span class="form-product-details">
+             <b><span data-wrapper-react="true">
+                <span id="input_3_1004_price">${obj.product.productPrice * obj.productCount}</span>
+                <span class="currency_abr">원</span></span></b></span>
+						 </div>
+	<c:set var="total" value="${total + obj.product.productPrice * obj.productCount}" />
+      <div class="focus_action_button_container">
+         <a class="btn-inline-product-delete"> </a><a class="btn-inline-product-settings"> </a>
+      </div>
+```  
 장바구니 및 바로 구매 에서 받아온 정보를 출력하고, 주문자의 정보를 보여주며 결제를 진행하면 영수증 페이지로 넘어가고 영수증 페이지에서 결제를 끝마침으로서 버튼을 눌러 메인 홈페이지로 돌아갈수 있습니다.
 
 <br/><br/>
