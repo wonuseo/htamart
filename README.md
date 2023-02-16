@@ -182,10 +182,32 @@ public class ProductDAO {
 		
 		return all;
 	}
-```
-사용자가 검색을 할 시 검색한 키워드를 SQL에서 Like 연산자를 사용해 검색된 단어의 관련된 상품이 나오게끔 로직을 구현했습니다. <br>
-존재하지 않는 상품이나 잘못된 입력을 통해서 검색을 할 시 사용자에게 "검색하신 상품이 없습니다"라고 응답을 보냅니다.
-<br/><br/>
+
+### :full_moon_with_face: 리스트
+![list](https://user-images.githubusercontent.com/113893324/219263966-f9ef9db4-6580-46a7-b83d-fbd0c1a2cb3f.png)
+```js
+            <div class="shop-category nav navbar-nav navbar-left">
+                <div class="btn-group">
+
+                  <button type="button" class="btn btn-shop-category dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   	 전체 카테고리 <span class="caret"></span>
+                  </button>
+
+                  <ul class="dropdown-menu">
+                    
+                   	<li><a href="category/list?cat=fruit">과일</a></li>
+                    <li><a href="category/list?cat=vegetable">채소</a></li>
+                    
+                    <li role="separator" class="divider"></li>
+                    
+                    <li><a href="category/list?cat=meat">정육/계란류</a></li>
+                    <li><a href="category/list?cat=seafood">수산물/건해산</a></li>
+
+                  </ul>
+                </div>
+            </div>
+
+
 
 ## :open_book: Summary 
 > * 아이디 중복체크를 하지 않으면 회원가입을 할 수 없습니다.
