@@ -187,8 +187,65 @@
 > 존재하지 않는 상품이나 잘못된 입력을 통해서 검색을 할 시 사용자에게 "검색하신 상품이 없습니다"라고 응답을 보냅니다.
  <br/><br/>
 >
->### :mag: 리스트 기능
-><img scr = https://user-images.githubusercontent.com/113893324/219274470-9c71c17b-47e6-467e-a41c-9fc0f23e7be2.png, width="40%" height="30%"/>
+### :bread: 리스트 기능
+![list](https://user-images.githubusercontent.com/113893324/219275831-456eb3eb-e202-4488-bdb1-990724c1c1cd.png)
+
+```java
+@Controller
+@RequestMapping("category")
+public class CategoryController {
+	
+	@Autowired
+	private ProductDAO dao;
+	
+	@GetMapping(value = "/list")
+	public ModelAndView getCategory(@RequestParam("cat") String cat) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		
+		String c_id = null;
+		if(cat.equals("fruit")) {
+			c_id = "1";
+		}else if (cat.equals("vegetable")){
+			c_id ="2";
+		}else if (cat.equals("meat")){
+			c_id ="3";
+		}else if (cat.equals("seafood")){
+			c_id ="4";
+		}
+		
+		List<Product> all = dao.getAllProduct(c_id);
+		
+		mv.addObject("productallData", all);
+		mv.setViewName("list");
+		
+		return mv;
+	}
+}
+
+public class ProductDAO {
+
+public List<Product> getAllProduct(String c_id) {
+		EntityManager em = DBUtil.getEntityManager();
+		
+		Category c = new Category();
+		c.setCategoryId(c_id);
+		
+		List<Product> all = null;
+		try {
+			all = em.createQuery("select p from Product p where p.category = :category")
+					.setParameter("category", c)
+					.getResultList();
+		}finally {
+			em.close();
+		}
+		
+		return all;
+	}
+}
+```
+
+
+
 
 ## :open_book: Summary 
 > * 아이디 중복체크를 하지 않으면 회원가입을 할 수 없습니다.
