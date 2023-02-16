@@ -67,6 +67,15 @@
       <div class="focus_action_button_container">
          <a class="btn-inline-product-delete"> </a><a class="btn-inline-product-settings"> </a>
       </div>
+  
+	<li class="form-line" data-type="control_button" id="id_26">
+          <div id="cid_26" class="form-input-wide" data-layout="full">
+            <div data-align="auto" class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField">
+              <button id="input_26" type="button" class="w3-btn w3-white w3-border w3-border-green w3-round-large" style="width:15%" 	
+	      onclick="location.href='${pageContext.request.contextPath}/homepage.html'">메인으로</button>             
+            </div>
+          </div>
+        </li>    
 ```  
 장바구니 및 바로 구매 에서 받아온 정보를 출력하고, 주문자의 정보를 보여주며 결제를 진행하면 영수증 페이지로 넘어가고 영수증 페이지에서 결제를 끝마침으로서 버튼을 눌러 메인 홈페이지로 돌아갈수 있습니다.
 
