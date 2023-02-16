@@ -183,29 +183,7 @@ public class ProductDAO {
 		return all;
 	}
 
-### :full_moon_with_face: 리스트
-![list](https://user-images.githubusercontent.com/113893324/219263966-f9ef9db4-6580-46a7-b83d-fbd0c1a2cb3f.png)
-```js
-            <div class="shop-category nav navbar-nav navbar-left">
-                <div class="btn-group">
 
-                  <button type="button" class="btn btn-shop-category dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   	 전체 카테고리 <span class="caret"></span>
-                  </button>
-
-                  <ul class="dropdown-menu">
-                    
-                   	<li><a href="category/list?cat=fruit">과일</a></li>
-                    <li><a href="category/list?cat=vegetable">채소</a></li>
-                    
-                    <li role="separator" class="divider"></li>
-                    
-                    <li><a href="category/list?cat=meat">정육/계란류</a></li>
-                    <li><a href="category/list?cat=seafood">수산물/건해산</a></li>
-
-                  </ul>
-                </div>
-            </div>
 
 
 
