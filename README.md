@@ -153,3 +153,8 @@
 > * 주문/결제 시 자동으로 로그인된 고객의 정보가 들어가며 수정 가능합니다.
 <br/><br/>
 
+
+## :compass: Setting
+이 프로젝트에는 소스코드만 포함되어 있습니다. <br/>
+Build Tool (Maven) : [pom.txt](https://github.com/wonuseo/htamart/files/10751738/pom.txt)
+<br/><br/>
