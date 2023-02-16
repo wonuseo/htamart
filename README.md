@@ -76,8 +76,26 @@
 >
 > <img src="https://user-images.githubusercontent.com/116073413/219250849-db93e494-f60a-4baf-aba4-6d2ee5aa3f87.jpg" width="40%" height="40%"/> <img src="https://user-images.githubusercontent.com/116073413/219251506-7acc3f6e-8ad8-4c1d-8539-5c7d2e866da0.jpg" width="40%" height="40%"/>
 >
+> ```java
+> //onload 로 즉시 실행. 장바구니의 길이가 0 이면 상품 주문 버튼 disabled	
+>	function cartSize() {
+>		if(document.querySelectorAll(".form-checkbox").length == 0) {
+>			document.getElementById("input_55").disabled=true;
+>		}
+>	}
+> //체크가 된 checkbox의 개수가 0 이면 상품 주문 버튼 disabled
+>	function checkBox() {
+>		 var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+>		 if(checkboxes.length == 0 ) {
+>			 document.getElementById("input_55").disabled=true;
+>		 }else{
+>			 document.getElementById("input_55").disabled=false;
+>		 }
+>	}
+> ```
 > 사용자가 장바구니에 추가한 품목의 이미지, 수량, 이름, 총 가격을 출력하고, 만약 장바구니에 추가된 품목이 없을 경우, 알맞은 메시지를 출력하고 '상품 주문' 버튼은 비활성화 
 > 됩니다.
+> 
 <br/><br/>
 
 
