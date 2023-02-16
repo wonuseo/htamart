@@ -34,6 +34,14 @@
 > 이러한걸 사용하여 검색 기능을 구현했습니다.
 <br/><br/>
 
+> ### :shopping_cart: 장바구니
+>
+> <img src="https://user-images.githubusercontent.com/116073413/219250849-db93e494-f60a-4baf-aba4-6d2ee5aa3f87.jpg" width="40%" height="40%"/> <img src="https://user-images.githubusercontent.com/116073413/219251506-7acc3f6e-8ad8-4c1d-8539-5c7d2e866da0.jpg" width="40%" height="40%"/>
+>
+> 사용자가 장바구니에 추가한 품목의 이미지, 수량, 이름, 총 가격을 출력하고, 만약 장바구니에 추가된 품목이 없을 경우, 알맞은 메시지를 출력하고 '상품 주문' 버튼은 비활성화 
+> 됩니다.
+<br/><br/>
+
 
 ## :open_book: Summary 
 > * 아이디 중복체크를 하지 않으면 회원가입을 할 수 없습니다.
