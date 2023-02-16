@@ -4,7 +4,7 @@
 
 ## :hourglass: Develop Period
 23.02.01 (09:00) ~ 23.02.16 (16:00)
-<br/>
+<br/><br/>
 
 ## :hammer_and_wrench: Tech Stack
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
@@ -14,7 +14,7 @@
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
-<br/>
+<br/><br/>
 
 ## :runner: Team Memmber
 - Joo young Kim
@@ -24,7 +24,7 @@
 - Sung hwan Cho
 - Seong min Cho
 - Won jun Jung
-<br/>
+<br/><br/>
 
 ## :open_book: Main Functions
 > ### :memo: 검색 기능
@@ -32,7 +32,7 @@
 > 이미지
 > 
 > 이러한걸 사용하여 검색 기능을 구현했습니다.
-<br/>
+<br/><br/>
 
 ## :open_book: Summary 
 >
@@ -43,5 +43,5 @@
 > * 상세 페이지에서 수량, 바로 구매와 장바구니로 결제 방식을 선택 할 수 있습니다.
 > * 장바구니에서 담은 상품을 선택적으로 구매 가능합니다.
 > * 주문/결제 시 자동으로 로그인된 고객의 정보가 들어가며 수정 가능합니다.
-<br/>
+<br/><br/>
 
