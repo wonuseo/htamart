@@ -20,8 +20,22 @@
 - Joo young Kim
 - Han byeol Kim
 - Won woo Seo
-- Jun soo Lee
+- Junsu Lee
 - Sung hwan Cho
 - Sung min Cho
 - Won jun Jung
 
+## :open_book: Summary 
+>
+> * 이러한 기능이 있습니다
+> * 저러한 기능이 있습니다
+
+***
+## :open_book: Main Functions
+> ### :memo: 검색 기능
+> 
+> 이미지
+> 
+> 이러한걸 사용하여 검색 기능을 구현했습니다.
+
+<br/><br/>
