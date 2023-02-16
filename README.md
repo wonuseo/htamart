@@ -70,7 +70,50 @@
 >		return count == 1;
 >	}
 > ```
-> 회원가입/로그인의 중복체크와 검증의 주요 로직입니다
+> <br/><br/>
+> ```js
+> function dedupId() {
+>		axios.post('userinfo/dedupId', {}, {
+>			params : {
+>				u_id : document.getElementById("userId").value
+>			}
+>		})
+>		 .then(function (resData) {
+>			 validate(resData['data']);
+>		 })
+>	}
+>	function validate(val) {
+>		const userId = document.getElementById("userId").value;	
+>		if(userId == ""){
+>			alert('아이디를 입력하세요');
+>			return;
+>		}else if(val == true) {
+>			alert('사용가능한 아이디 입니다.')
+>			document.getElementById("submit").disabled=false;
+>			document.getElementById("userId").readOnly=true;
+>		}else {
+>			alert('이미 존재하는 아이디 입니다.');
+>		}
+>	}
+>	function login(obj) {
+>		axios.post('userinfo/validateUser', {}, {
+>			params : {
+>				userId : document.getElementById("userId1").value,
+>				userPassword : document.getElementById("userPassword1").value
+>			}
+>		})
+>		 .then(function (resData) {
+>			 if(resData['data'] == true) {
+>				 obj.submit();
+>			 }else{
+>				 alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.');
+>			 }
+>		 })
+>	}
+> ```
+> <br/>
+> 첫번째 코드는 회원가입/로그인의 중복체크와 검증의 주요 로직입니다. <br/>
+> 두번쨰 코드로 검증로직을 비동기로 사용하고 있습니다.
 <br/><br/>
 > ### :shopping_cart: 장바구니
 >
