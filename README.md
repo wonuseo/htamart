@@ -27,7 +27,7 @@
 <br/><br/>
 
 ## :compass: Setting
-이 프로젝트에는 소스코드만 포함되어 있습니다. <br/>
+- 이 프로젝트에는 소스코드만 포함되어 있습니다. 추가설정이 필요합니다. <br/>
 Schema : [Htamall_schema.txt](https://github.com/wonuseo/htamart/files/10752578/Htamall_schema.txt)<br/>
 EntityManagerFactory : [EntityManagerFactory.txt](https://github.com/wonuseo/htamart/files/10752455/EntityManagerFactory.txt)<br/>
 Build Tool (Maven) : [pom.txt](https://github.com/wonuseo/htamart/files/10751738/pom.txt)<br/>
