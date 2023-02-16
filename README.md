@@ -188,7 +188,7 @@
  <br/><br/>
 >
 ### :bread: 리스트 기능
-![list](https://user-images.githubusercontent.com/113893324/219275831-456eb3eb-e202-4488-bdb1-990724c1c1cd.png)
+<img src="https://user-images.githubusercontent.com/113893324/219275831-456eb3eb-e202-4488-bdb1-990724c1c1cd.png" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
 
 ```java
 @Controller
