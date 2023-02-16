@@ -31,8 +31,9 @@
 >
 > 이러한걸 사용하여 검색 기능을 구현했습니다.
 
-🧾 영수증 <p>
-<img src="https://user-images.githubusercontent.com/122374054/219255479-7cdc5a76-a4a7-4b9b-af99-dbf480f2e355.png" width="500" height="500">
+> ### :page_with_curl:결제 <p>
+<img src="https://user-images.githubusercontent.com/122374054/219255479-7cdc5a76-a4a7-4b9b-af99-dbf480f2e355.png" width="500" height="500"/> <img src="https://user-images.githubusercontent.com/122374054/219257489-c18f827e-4316-4f66-be23-fdcd84b47b0a.png" width="400" heigth="400"/>
 
+장바구니 및 바로 구매 에서 받아온 정보를 출력하고, 주문자의 정보를 보여주며 결제를 진행하면 영수증 페이지로 넘어가고 영수증 페이지에서 결제를 끝낸것으로 버튼을 눌러 메인 홈페이지로 돌아갈수 있습니다.
 
 <br/><br/>
