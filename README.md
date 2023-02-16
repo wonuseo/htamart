@@ -140,6 +140,13 @@
 > 사용자가 장바구니에 추가한 품목의 이미지, 수량, 이름, 총 가격을 출력하고, 만약 장바구니에 추가된 품목이 없을 경우, 알맞은 메시지를 출력하고 '상품 주문' 버튼은 비활성화 
 > 됩니다.
 > 
+
+<br/><br/>
+> ### :page_with_curl:결제 <p>
+<img src="https://user-images.githubusercontent.com/122374054/219255479-7cdc5a76-a4a7-4b9b-af99-dbf480f2e355.png" width="500" height="500"/> <img src="https://user-images.githubusercontent.com/122374054/219257489-c18f827e-4316-4f66-be23-fdcd84b47b0a.png" width="400" heigth="400"/>
+
+장바구니 및 바로 구매 에서 받아온 정보를 출력하고, 결제페이지에서 주문자의 정보를 보여주며 구매약관 항목을 누르고 결제를 진행하면 영수증 페이지로 넘어가 영수증 페이지에서 결제를 끝마침으로서 버튼을 눌러 메인 홈페이지로 돌아갈수 있습니다.
+
 <br/><br/>
 ### :mag: 검색 기능
 <img src="https://user-images.githubusercontent.com/122413012/219260768-fbf78ae7-aea5-4f14-b7d9-c23979c8e08b.PNG" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><img src="https://user-images.githubusercontent.com/122413012/219260797-bf23aa27-a0a5-4673-b05c-eef0affda1f9.PNG" width="40%" height="30%" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
