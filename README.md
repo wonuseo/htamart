@@ -20,7 +20,7 @@
 - Joo young Kim
 - Han byeol Kim
 - Won woo Seo
-- Junsu Lee
+- Jun soo Lee
 - Sung hwan Cho
 - Sung min Cho
 - Won jun Jung
