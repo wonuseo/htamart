@@ -73,7 +73,6 @@ persistence.xml : [persistence.txt](https://github.com/wonuseo/htamart/files/107
 >		}	
 >		return count == 0;
 >	}
->
 > public boolean validateUser(String userId, String userPassword) throws Exception{
 >		EntityManager em = DBUtil.getEntityManager();		
 >		Long count = null;
